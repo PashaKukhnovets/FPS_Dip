@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 5513c97dad7503b468de93db9a7460a3
+timeCreated: 1506791355
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Ak01
+    100002: Ak02
+    100004: Ak03
+    100006: Ak04
+    100008: Ak04_0
+    100010: Ak05
+    100012: Ak06
+    100014: Ak07
+    100016: Ak08
+    100018: Ak08_0
+    100020: Ak09
+    100022: Ak09_0
+    100024: Ak10
+    100026: Ak11
+    100028: Ak11_0
+    100030: Ak12
+    100032: Ak12_0
+    100034: Ak13
+    100036: Ak14
+    100038: Ak15
+    100040: Ak15_0
+    100042: //RootNode
+    400000: Ak01
+    400002: Ak02
+    400004: Ak03
+    400006: Ak04
+    400008: Ak04_0
+    400010: Ak05
+    400012: Ak06
+    400014: Ak07
+    400016: Ak08
+    400018: Ak08_0
+    400020: Ak09
+    400022: Ak09_0
+    400024: Ak10
+    400026: Ak11
+    400028: Ak11_0
+    400030: Ak12
+    400032: Ak12_0
+    400034: Ak13
+    400036: Ak14
+    400038: Ak15
+    400040: Ak15_0
+    400042: //RootNode
+    2300000: Ak01
+    2300002: Ak02
+    2300004: Ak03
+    2300006: Ak04
+    2300008: Ak04_0
+    2300010: Ak05
+    2300012: Ak06
+    2300014: Ak07
+    2300016: Ak08
+    2300018: Ak08_0
+    2300020: Ak09
+    2300022: Ak09_0
+    2300024: Ak10
+    2300026: Ak11
+    2300028: Ak11_0
+    2300030: Ak12
+    2300032: Ak12_0
+    2300034: Ak13
+    2300036: Ak14
+    2300038: Ak15
+    2300040: Ak15_0
+    3300000: Ak01
+    3300002: Ak02
+    3300004: Ak03
+    3300006: Ak04
+    3300008: Ak04_0
+    3300010: Ak05
+    3300012: Ak06
+    3300014: Ak07
+    3300016: Ak08
+    3300018: Ak08_0
+    3300020: Ak09
+    3300022: Ak09_0
+    3300024: Ak10
+    3300026: Ak11
+    3300028: Ak11_0
+    3300030: Ak12
+    3300032: Ak12_0
+    3300034: Ak13
+    3300036: Ak14
+    3300038: Ak15
+    3300040: Ak15_0
+    4300000: Ak05
+    4300002: Ak02
+    4300004: Ak09
+    4300006: Ak13
+    4300008: Ak07
+    4300010: Ak06
+    4300012: Ak08
+    4300014: Ak04
+    4300016: Ak11
+    4300018: Ak15
+    4300020: Ak10
+    4300022: Ak03
+    4300024: Ak12
+    4300026: Ak14
+    4300028: Ak01
+    4300030: Ak08_0
+    4300032: Ak04_0
+    4300034: Ak15_0
+    4300036: Ak12_0
+    4300038: Ak11_0
+    4300040: Ak09_0
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

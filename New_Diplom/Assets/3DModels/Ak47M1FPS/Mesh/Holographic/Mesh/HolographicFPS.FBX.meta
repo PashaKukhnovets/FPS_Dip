@@ -1,0 +1,235 @@
+fileFormatVersion: 2
+guid: d1e2698629716934b9aecf23ad4e9397
+timeCreated: 1487502911
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BaseButtonLeft_Mat
+    100002: BaseButtonLeft_Mat 1
+    100004: BasePlank_Mat
+    100006: BaseScrewPI_Mat
+    100008: BaseScrewPI_Mat 1
+    100010: BaterryCap_Mat
+    100012: DecreaseBrightnessButtonLeft_Mat
+    100014: DecreaseBrightnessButtonRight_Mat
+    100016: ElevationAdjustment_Mat
+    100018: Eotech_Mat
+    100020: EotechGlass_Mat
+    100022: //RootNode
+    100024: Hood_Mat
+    100026: Other_Mat
+    100028: PlankConnectSafe_Mat
+    100030: ProtectiveHood_Mat
+    100032: PushbuttonInterface_Mat
+    100034: ScrewBasePlank_Mat
+    100036: ScrewBasePlank_Mat 1
+    100038: ScrewBasePlank_Mat 2
+    100040: ScrewBasePlank_Mat 3
+    100042: ScrewBasePlankHood_Mat
+    100044: ScrewBasePlankSafe_Mat
+    100046: ScrewHood_Mat
+    100048: ScrewHood_Mat 1
+    100050: ScrewHood_Mat 2
+    100052: ScrewPILeftDown_Mat
+    100054: ScrewPILeftUp_Mat
+    100056: ScrewPIRightDown_Mat
+    100058: ScrewPIRightUp_Mat
+    100060: Sight
+    100062: WindageAdjustment_Mat
+    400000: BaseButtonLeft_Mat
+    400002: BaseButtonLeft_Mat 1
+    400004: BasePlank_Mat
+    400006: BaseScrewPI_Mat
+    400008: BaseScrewPI_Mat 1
+    400010: BaterryCap_Mat
+    400012: DecreaseBrightnessButtonLeft_Mat
+    400014: DecreaseBrightnessButtonRight_Mat
+    400016: ElevationAdjustment_Mat
+    400018: Eotech_Mat
+    400020: EotechGlass_Mat
+    400022: //RootNode
+    400024: Hood_Mat
+    400026: Other_Mat
+    400028: PlankConnectSafe_Mat
+    400030: ProtectiveHood_Mat
+    400032: PushbuttonInterface_Mat
+    400034: ScrewBasePlank_Mat
+    400036: ScrewBasePlank_Mat 1
+    400038: ScrewBasePlank_Mat 2
+    400040: ScrewBasePlank_Mat 3
+    400042: ScrewBasePlankHood_Mat
+    400044: ScrewBasePlankSafe_Mat
+    400046: ScrewHood_Mat
+    400048: ScrewHood_Mat 1
+    400050: ScrewHood_Mat 2
+    400052: ScrewPILeftDown_Mat
+    400054: ScrewPILeftUp_Mat
+    400056: ScrewPIRightDown_Mat
+    400058: ScrewPIRightUp_Mat
+    400060: Sight
+    400062: WindageAdjustment_Mat
+    2300000: BaseButtonLeft_Mat
+    2300002: BaseButtonLeft_Mat 1
+    2300004: BasePlank_Mat
+    2300006: BaseScrewPI_Mat
+    2300008: BaseScrewPI_Mat 1
+    2300010: BaterryCap_Mat
+    2300012: DecreaseBrightnessButtonLeft_Mat
+    2300014: DecreaseBrightnessButtonRight_Mat
+    2300016: ElevationAdjustment_Mat
+    2300018: Eotech_Mat
+    2300020: EotechGlass_Mat
+    2300022: Hood_Mat
+    2300024: Other_Mat
+    2300026: PlankConnectSafe_Mat
+    2300028: ProtectiveHood_Mat
+    2300030: PushbuttonInterface_Mat
+    2300032: ScrewBasePlank_Mat
+    2300034: ScrewBasePlank_Mat 1
+    2300036: ScrewBasePlank_Mat 2
+    2300038: ScrewBasePlank_Mat 3
+    2300040: ScrewBasePlankHood_Mat
+    2300042: ScrewBasePlankSafe_Mat
+    2300044: ScrewHood_Mat
+    2300046: ScrewHood_Mat 1
+    2300048: ScrewHood_Mat 2
+    2300050: ScrewPILeftDown_Mat
+    2300052: ScrewPILeftUp_Mat
+    2300054: ScrewPIRightDown_Mat
+    2300056: ScrewPIRightUp_Mat
+    2300058: Sight
+    2300060: WindageAdjustment_Mat
+    3300000: BaseButtonLeft_Mat
+    3300002: BaseButtonLeft_Mat 1
+    3300004: BasePlank_Mat
+    3300006: BaseScrewPI_Mat
+    3300008: BaseScrewPI_Mat 1
+    3300010: BaterryCap_Mat
+    3300012: DecreaseBrightnessButtonLeft_Mat
+    3300014: DecreaseBrightnessButtonRight_Mat
+    3300016: ElevationAdjustment_Mat
+    3300018: Eotech_Mat
+    3300020: EotechGlass_Mat
+    3300022: Hood_Mat
+    3300024: Other_Mat
+    3300026: PlankConnectSafe_Mat
+    3300028: ProtectiveHood_Mat
+    3300030: PushbuttonInterface_Mat
+    3300032: ScrewBasePlank_Mat
+    3300034: ScrewBasePlank_Mat 1
+    3300036: ScrewBasePlank_Mat 2
+    3300038: ScrewBasePlank_Mat 3
+    3300040: ScrewBasePlankHood_Mat
+    3300042: ScrewBasePlankSafe_Mat
+    3300044: ScrewHood_Mat
+    3300046: ScrewHood_Mat 1
+    3300048: ScrewHood_Mat 2
+    3300050: ScrewPILeftDown_Mat
+    3300052: ScrewPILeftUp_Mat
+    3300054: ScrewPIRightDown_Mat
+    3300056: ScrewPIRightUp_Mat
+    3300058: Sight
+    3300060: WindageAdjustment_Mat
+    4300000: ProtectiveHood_Mat
+    4300002: Eotech_Mat
+    4300004: EotechGlass_Mat
+    4300006: Sight
+    4300008: BasePlank_Mat
+    4300010: ElevationAdjustment_Mat
+    4300012: WindageAdjustment_Mat
+    4300014: BaterryCap_Mat
+    4300016: PushbuttonInterface_Mat
+    4300018: ScrewPILeftUp_Mat
+    4300020: ScrewPIRightUp_Mat
+    4300022: ScrewPILeftDown_Mat
+    4300024: ScrewPIRightDown_Mat
+    4300026: DecreaseBrightnessButtonLeft_Mat
+    4300028: DecreaseBrightnessButtonRight_Mat
+    4300030: BaseButtonLeft_Mat
+    4300032: BaseButtonLeft_Mat
+    4300034: BaseScrewPI_Mat
+    4300036: BaseScrewPI_Mat
+    4300038: ScrewBasePlank_Mat
+    4300040: ScrewBasePlank_Mat
+    4300042: ScrewBasePlank_Mat
+    4300044: ScrewBasePlank_Mat
+    4300046: ScrewHood_Mat
+    4300048: ScrewHood_Mat
+    4300050: ScrewHood_Mat
+    4300052: ScrewBasePlankHood_Mat
+    4300054: ScrewBasePlankSafe_Mat
+    4300056: Other_Mat
+    4300058: PlankConnectSafe_Mat
+    4300060: Hood_Mat
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

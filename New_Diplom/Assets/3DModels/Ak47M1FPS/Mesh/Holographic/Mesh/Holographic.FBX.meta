@@ -1,0 +1,265 @@
+fileFormatVersion: 2
+guid: 04c01855b76d35d4faae360f6872e905
+timeCreated: 1487358289
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BaseBattery_Mat01
+    100002: BaseButtonLeft_Mat01
+    100004: BaseButtonLeft_Mat01 1
+    100006: BasePlank_Mat04
+    100008: BaseScrewPI_Mat01
+    100010: BaseScrewPI_Mat01 1
+    100012: Baterry_Mat02
+    100014: BaterryCap_Mat01
+    100016: ConnectBattery_Mat01
+    100018: DecreaseBrightnessButtonLeft_Mat02
+    100020: DecreaseBrightnessButtonRight_Mat02
+    100022: ElevationAdjustment_Mat01
+    100024: Eotech_Mat02
+    100026: EotechGlass_Mat02
+    100028: //RootNode
+    100030: Hood_Mat03
+    100032: Other_Mat01
+    100034: PlankConnectBaseSafe_Mat01
+    100036: PlankConnectSafe_Mat02
+    100038: ProtectiveHood_Mat04
+    100040: PushbuttonInterface_Mat03
+    100042: ScrewBasePlank_Mat01
+    100044: ScrewBasePlank_Mat01 1
+    100046: ScrewBasePlank_Mat01 2
+    100048: ScrewBasePlank_Mat01 3
+    100050: ScrewBasePlankHood_Mat01
+    100052: ScrewBasePlankSafe_Mat01
+    100054: ScrewBaseSafePlank_Mat01
+    100056: ScrewBaseSafePlank_Mat01 1
+    100058: ScrewHood_Mat01
+    100060: ScrewHood_Mat01 1
+    100062: ScrewHood_Mat01 2
+    100064: ScrewPILeftDown_Mat01
+    100066: ScrewPILeftUp_Mat01
+    100068: ScrewPIRightDown_Mat01
+    100070: ScrewPIRightUp_Mat01
+    100072: Sight
+    100074: WindageAdjustment_Mat01
+    400000: BaseBattery_Mat01
+    400002: BaseButtonLeft_Mat01
+    400004: BaseButtonLeft_Mat01 1
+    400006: BasePlank_Mat04
+    400008: BaseScrewPI_Mat01
+    400010: BaseScrewPI_Mat01 1
+    400012: Baterry_Mat02
+    400014: BaterryCap_Mat01
+    400016: ConnectBattery_Mat01
+    400018: DecreaseBrightnessButtonLeft_Mat02
+    400020: DecreaseBrightnessButtonRight_Mat02
+    400022: ElevationAdjustment_Mat01
+    400024: Eotech_Mat02
+    400026: EotechGlass_Mat02
+    400028: //RootNode
+    400030: Hood_Mat03
+    400032: Other_Mat01
+    400034: PlankConnectBaseSafe_Mat01
+    400036: PlankConnectSafe_Mat02
+    400038: ProtectiveHood_Mat04
+    400040: PushbuttonInterface_Mat03
+    400042: ScrewBasePlank_Mat01
+    400044: ScrewBasePlank_Mat01 1
+    400046: ScrewBasePlank_Mat01 2
+    400048: ScrewBasePlank_Mat01 3
+    400050: ScrewBasePlankHood_Mat01
+    400052: ScrewBasePlankSafe_Mat01
+    400054: ScrewBaseSafePlank_Mat01
+    400056: ScrewBaseSafePlank_Mat01 1
+    400058: ScrewHood_Mat01
+    400060: ScrewHood_Mat01 1
+    400062: ScrewHood_Mat01 2
+    400064: ScrewPILeftDown_Mat01
+    400066: ScrewPILeftUp_Mat01
+    400068: ScrewPIRightDown_Mat01
+    400070: ScrewPIRightUp_Mat01
+    400072: Sight
+    400074: WindageAdjustment_Mat01
+    2300000: BaseBattery_Mat01
+    2300002: BaseButtonLeft_Mat01
+    2300004: BaseButtonLeft_Mat01 1
+    2300006: BasePlank_Mat04
+    2300008: BaseScrewPI_Mat01
+    2300010: BaseScrewPI_Mat01 1
+    2300012: Baterry_Mat02
+    2300014: BaterryCap_Mat01
+    2300016: ConnectBattery_Mat01
+    2300018: DecreaseBrightnessButtonLeft_Mat02
+    2300020: DecreaseBrightnessButtonRight_Mat02
+    2300022: ElevationAdjustment_Mat01
+    2300024: Eotech_Mat02
+    2300026: EotechGlass_Mat02
+    2300028: Hood_Mat03
+    2300030: Other_Mat01
+    2300032: PlankConnectBaseSafe_Mat01
+    2300034: PlankConnectSafe_Mat02
+    2300036: ProtectiveHood_Mat04
+    2300038: PushbuttonInterface_Mat03
+    2300040: ScrewBasePlank_Mat01
+    2300042: ScrewBasePlank_Mat01 1
+    2300044: ScrewBasePlank_Mat01 2
+    2300046: ScrewBasePlank_Mat01 3
+    2300048: ScrewBasePlankHood_Mat01
+    2300050: ScrewBasePlankSafe_Mat01
+    2300052: ScrewBaseSafePlank_Mat01
+    2300054: ScrewBaseSafePlank_Mat01 1
+    2300056: ScrewHood_Mat01
+    2300058: ScrewHood_Mat01 1
+    2300060: ScrewHood_Mat01 2
+    2300062: ScrewPILeftDown_Mat01
+    2300064: ScrewPILeftUp_Mat01
+    2300066: ScrewPIRightDown_Mat01
+    2300068: ScrewPIRightUp_Mat01
+    2300070: Sight
+    2300072: WindageAdjustment_Mat01
+    3300000: BaseBattery_Mat01
+    3300002: BaseButtonLeft_Mat01
+    3300004: BaseButtonLeft_Mat01 1
+    3300006: BasePlank_Mat04
+    3300008: BaseScrewPI_Mat01
+    3300010: BaseScrewPI_Mat01 1
+    3300012: Baterry_Mat02
+    3300014: BaterryCap_Mat01
+    3300016: ConnectBattery_Mat01
+    3300018: DecreaseBrightnessButtonLeft_Mat02
+    3300020: DecreaseBrightnessButtonRight_Mat02
+    3300022: ElevationAdjustment_Mat01
+    3300024: Eotech_Mat02
+    3300026: EotechGlass_Mat02
+    3300028: Hood_Mat03
+    3300030: Other_Mat01
+    3300032: PlankConnectBaseSafe_Mat01
+    3300034: PlankConnectSafe_Mat02
+    3300036: ProtectiveHood_Mat04
+    3300038: PushbuttonInterface_Mat03
+    3300040: ScrewBasePlank_Mat01
+    3300042: ScrewBasePlank_Mat01 1
+    3300044: ScrewBasePlank_Mat01 2
+    3300046: ScrewBasePlank_Mat01 3
+    3300048: ScrewBasePlankHood_Mat01
+    3300050: ScrewBasePlankSafe_Mat01
+    3300052: ScrewBaseSafePlank_Mat01
+    3300054: ScrewBaseSafePlank_Mat01 1
+    3300056: ScrewHood_Mat01
+    3300058: ScrewHood_Mat01 1
+    3300060: ScrewHood_Mat01 2
+    3300062: ScrewPILeftDown_Mat01
+    3300064: ScrewPILeftUp_Mat01
+    3300066: ScrewPIRightDown_Mat01
+    3300068: ScrewPIRightUp_Mat01
+    3300070: Sight
+    3300072: WindageAdjustment_Mat01
+    4300000: ProtectiveHood_Mat04
+    4300002: Hood_Mat03
+    4300004: PlankConnectBaseSafe_Mat01
+    4300006: Eotech_Mat02
+    4300008: EotechGlass_Mat02
+    4300010: Sight
+    4300012: BasePlank_Mat04
+    4300014: ElevationAdjustment_Mat01
+    4300016: WindageAdjustment_Mat01
+    4300018: BaterryCap_Mat01
+    4300020: Baterry_Mat02
+    4300022: PushbuttonInterface_Mat03
+    4300024: ScrewPILeftUp_Mat01
+    4300026: ScrewPIRightUp_Mat01
+    4300028: ScrewPILeftDown_Mat01
+    4300030: ScrewPIRightDown_Mat01
+    4300032: DecreaseBrightnessButtonLeft_Mat02
+    4300034: DecreaseBrightnessButtonRight_Mat02
+    4300036: BaseButtonLeft_Mat01
+    4300038: BaseButtonLeft_Mat01
+    4300040: BaseScrewPI_Mat01
+    4300042: BaseScrewPI_Mat01
+    4300044: ScrewBasePlank_Mat01
+    4300046: ScrewBasePlank_Mat01
+    4300048: ScrewBasePlank_Mat01
+    4300050: ScrewBasePlank_Mat01
+    4300052: ScrewHood_Mat01
+    4300054: ScrewHood_Mat01
+    4300056: ScrewHood_Mat01
+    4300058: BaseBattery_Mat01
+    4300060: ConnectBattery_Mat01
+    4300062: ScrewBasePlankHood_Mat01
+    4300064: ScrewBasePlankSafe_Mat01
+    4300066: Other_Mat01
+    4300068: PlankConnectSafe_Mat02
+    4300070: ScrewBaseSafePlank_Mat01
+    4300072: ScrewBaseSafePlank_Mat01
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

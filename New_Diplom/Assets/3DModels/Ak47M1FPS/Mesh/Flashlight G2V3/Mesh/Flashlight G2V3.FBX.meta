@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 1079ced11255b8c4ebe54a3fe7e66f6b
+timeCreated: 1487056760
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Mat1_Body Bottom
+    100004: Mat1_Body Top
+    100006: Mat2_Button
+    100008: Mat2_Connector1
+    100010: Mat2_Connector2
+    100012: Mat2_Connector3
+    100014: Mat2_ConnectorBase
+    100016: Mat2_Light-emitting diode_Base
+    100018: Mat2_SupportConnector
+    100020: Mat3_Battery
+    100022: Mat3_Reflector
+    100024: Mat3_Spring
+    100026: Mat3_SupportBattery
+    100028: Mat4_Glass
+    100030: Mat4_Light-emitting diode_Glass
+    400000: //RootNode
+    400002: Mat1_Body Bottom
+    400004: Mat1_Body Top
+    400006: Mat2_Button
+    400008: Mat2_Connector1
+    400010: Mat2_Connector2
+    400012: Mat2_Connector3
+    400014: Mat2_ConnectorBase
+    400016: Mat2_Light-emitting diode_Base
+    400018: Mat2_SupportConnector
+    400020: Mat3_Battery
+    400022: Mat3_Reflector
+    400024: Mat3_Spring
+    400026: Mat3_SupportBattery
+    400028: Mat4_Glass
+    400030: Mat4_Light-emitting diode_Glass
+    2300000: Mat1_Body Bottom
+    2300002: Mat1_Body Top
+    2300004: Mat2_Button
+    2300006: Mat2_Connector1
+    2300008: Mat2_Connector2
+    2300010: Mat2_Connector3
+    2300012: Mat2_ConnectorBase
+    2300014: Mat2_Light-emitting diode_Base
+    2300016: Mat2_SupportConnector
+    2300018: Mat3_Battery
+    2300020: Mat3_Reflector
+    2300022: Mat3_Spring
+    2300024: Mat3_SupportBattery
+    2300026: Mat4_Glass
+    2300028: Mat4_Light-emitting diode_Glass
+    3300000: Mat1_Body Bottom
+    3300002: Mat1_Body Top
+    3300004: Mat2_Button
+    3300006: Mat2_Connector1
+    3300008: Mat2_Connector2
+    3300010: Mat2_Connector3
+    3300012: Mat2_ConnectorBase
+    3300014: Mat2_Light-emitting diode_Base
+    3300016: Mat2_SupportConnector
+    3300018: Mat3_Battery
+    3300020: Mat3_Reflector
+    3300022: Mat3_Spring
+    3300024: Mat3_SupportBattery
+    3300026: Mat4_Glass
+    3300028: Mat4_Light-emitting diode_Glass
+    4300000: Mat4_Glass
+    4300002: Mat2_ConnectorBase
+    4300004: Mat1_Body Bottom
+    4300006: Mat3_Spring
+    4300008: Mat1_Body Top
+    4300010: Mat2_Button
+    4300012: Mat2_Connector1
+    4300014: Mat2_SupportConnector
+    4300016: Mat3_SupportBattery
+    4300018: Mat3_Reflector
+    4300020: Mat3_Battery
+    4300022: Mat4_Light-emitting diode_Glass
+    4300024: Mat2_Light-emitting diode_Base
+    4300026: Mat2_Connector2
+    4300028: Mat2_Connector3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,270 @@
+fileFormatVersion: 2
+guid: e80d97696aa789d46ad856cf092c8bdf
+timeCreated: 1506791497
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Ak01_Lower_handguard_LOD0
+    100002: Ak01_Pistol_frip_LOD0
+    100004: Ak01_Stock_LOD0
+    100006: Ak01_Upper_handguard_LOD0
+    100008: Ak02_Receiver_LOD0
+    100010: Ak03_Receiver_cover_LOD0
+    100012: Ak04_Gas_tube_latch_LOD0
+    100014: Ak04_Rear_sight_base_LOD0
+    100016: Ak05_Barrel_trunion_LOD0
+    100018: Ak06_Gas_pison_tube_LOD0
+    100020: Ak06_Gas_pison_tube_LOD0 1
+    100022: Ak06_Handguard_base_LOD0
+    100024: Ak06_Handguard_retainer_LOD0
+    100026: Ak07_Gas_pison_tube_LOD0
+    100028: Ak07_Gas_port_LOD0
+    100030: Ak08_Front_sight_base_LOD0
+    100032: Ak09_Barrel_LOD0
+    100034: Ak09_Cleaning_rod_LOD0
+    100036: Ak10_Magazine_LOD0
+    100038: Ak10_Magazine_plate_LOD0
+    100040: Ak11_Pistol_grip_base_LOD0
+    100042: Ak11_Rear_trunion_LOD0
+    100044: Ak11_Receiver_LOD0
+    100046: Ak11_Selector_plate_LOD0
+    100048: Ak11_Selector_plate_polt_LOD0
+    100050: Ak12_Auto_sear_pin_LOD0
+    100052: Ak12_Barrel_trunion_rivets_LOD0
+    100054: Ak12_Buttplate_Cover_Base_LOD0
+    100056: Ak12_Buttplate_Cover_Lower_LOD0
+    100058: Ak12_Buttplate_LOD0
+    100060: Ak12_Hammer_pin_LOD0
+    100062: Ak12_Rear_trunion_pin_LOD0
+    100064: Ak12_Receiver_rivets_LOD0
+    100066: Ak12_Trigger_pin_LOD0
+    100068: Ak13_Bolt_carrier_LOD0
+    100070: Ak14_Recpil_spring_guide_LOD0
+    100072: Ak15_Selector_LOD0
+    100074: Ak15_Trigger_LOD0
+    100076: //RootNode
+    400000: Ak01_Lower_handguard_LOD0
+    400002: Ak01_Pistol_frip_LOD0
+    400004: Ak01_Stock_LOD0
+    400006: Ak01_Upper_handguard_LOD0
+    400008: Ak02_Receiver_LOD0
+    400010: Ak03_Receiver_cover_LOD0
+    400012: Ak04_Gas_tube_latch_LOD0
+    400014: Ak04_Rear_sight_base_LOD0
+    400016: Ak05_Barrel_trunion_LOD0
+    400018: Ak06_Gas_pison_tube_LOD0
+    400020: Ak06_Gas_pison_tube_LOD0 1
+    400022: Ak06_Handguard_base_LOD0
+    400024: Ak06_Handguard_retainer_LOD0
+    400026: Ak07_Gas_pison_tube_LOD0
+    400028: Ak07_Gas_port_LOD0
+    400030: Ak08_Front_sight_base_LOD0
+    400032: Ak09_Barrel_LOD0
+    400034: Ak09_Cleaning_rod_LOD0
+    400036: Ak10_Magazine_LOD0
+    400038: Ak10_Magazine_plate_LOD0
+    400040: Ak11_Pistol_grip_base_LOD0
+    400042: Ak11_Rear_trunion_LOD0
+    400044: Ak11_Receiver_LOD0
+    400046: Ak11_Selector_plate_LOD0
+    400048: Ak11_Selector_plate_polt_LOD0
+    400050: Ak12_Auto_sear_pin_LOD0
+    400052: Ak12_Barrel_trunion_rivets_LOD0
+    400054: Ak12_Buttplate_Cover_Base_LOD0
+    400056: Ak12_Buttplate_Cover_Lower_LOD0
+    400058: Ak12_Buttplate_LOD0
+    400060: Ak12_Hammer_pin_LOD0
+    400062: Ak12_Rear_trunion_pin_LOD0
+    400064: Ak12_Receiver_rivets_LOD0
+    400066: Ak12_Trigger_pin_LOD0
+    400068: Ak13_Bolt_carrier_LOD0
+    400070: Ak14_Recpil_spring_guide_LOD0
+    400072: Ak15_Selector_LOD0
+    400074: Ak15_Trigger_LOD0
+    400076: //RootNode
+    2300000: Ak01_Lower_handguard_LOD0
+    2300002: Ak01_Pistol_frip_LOD0
+    2300004: Ak01_Stock_LOD0
+    2300006: Ak01_Upper_handguard_LOD0
+    2300008: Ak02_Receiver_LOD0
+    2300010: Ak03_Receiver_cover_LOD0
+    2300012: Ak04_Gas_tube_latch_LOD0
+    2300014: Ak04_Rear_sight_base_LOD0
+    2300016: Ak05_Barrel_trunion_LOD0
+    2300018: Ak06_Gas_pison_tube_LOD0
+    2300020: Ak06_Gas_pison_tube_LOD0 1
+    2300022: Ak06_Handguard_base_LOD0
+    2300024: Ak06_Handguard_retainer_LOD0
+    2300026: Ak07_Gas_pison_tube_LOD0
+    2300028: Ak07_Gas_port_LOD0
+    2300030: Ak08_Front_sight_base_LOD0
+    2300032: Ak09_Barrel_LOD0
+    2300034: Ak09_Cleaning_rod_LOD0
+    2300036: Ak10_Magazine_LOD0
+    2300038: Ak10_Magazine_plate_LOD0
+    2300040: Ak11_Pistol_grip_base_LOD0
+    2300042: Ak11_Rear_trunion_LOD0
+    2300044: Ak11_Receiver_LOD0
+    2300046: Ak11_Selector_plate_LOD0
+    2300048: Ak11_Selector_plate_polt_LOD0
+    2300050: Ak12_Auto_sear_pin_LOD0
+    2300052: Ak12_Barrel_trunion_rivets_LOD0
+    2300054: Ak12_Buttplate_Cover_Base_LOD0
+    2300056: Ak12_Buttplate_Cover_Lower_LOD0
+    2300058: Ak12_Buttplate_LOD0
+    2300060: Ak12_Hammer_pin_LOD0
+    2300062: Ak12_Rear_trunion_pin_LOD0
+    2300064: Ak12_Receiver_rivets_LOD0
+    2300066: Ak12_Trigger_pin_LOD0
+    2300068: Ak13_Bolt_carrier_LOD0
+    2300070: Ak14_Recpil_spring_guide_LOD0
+    2300072: Ak15_Selector_LOD0
+    2300074: Ak15_Trigger_LOD0
+    3300000: Ak01_Lower_handguard_LOD0
+    3300002: Ak01_Pistol_frip_LOD0
+    3300004: Ak01_Stock_LOD0
+    3300006: Ak01_Upper_handguard_LOD0
+    3300008: Ak02_Receiver_LOD0
+    3300010: Ak03_Receiver_cover_LOD0
+    3300012: Ak04_Gas_tube_latch_LOD0
+    3300014: Ak04_Rear_sight_base_LOD0
+    3300016: Ak05_Barrel_trunion_LOD0
+    3300018: Ak06_Gas_pison_tube_LOD0
+    3300020: Ak06_Gas_pison_tube_LOD0 1
+    3300022: Ak06_Handguard_base_LOD0
+    3300024: Ak06_Handguard_retainer_LOD0
+    3300026: Ak07_Gas_pison_tube_LOD0
+    3300028: Ak07_Gas_port_LOD0
+    3300030: Ak08_Front_sight_base_LOD0
+    3300032: Ak09_Barrel_LOD0
+    3300034: Ak09_Cleaning_rod_LOD0
+    3300036: Ak10_Magazine_LOD0
+    3300038: Ak10_Magazine_plate_LOD0
+    3300040: Ak11_Pistol_grip_base_LOD0
+    3300042: Ak11_Rear_trunion_LOD0
+    3300044: Ak11_Receiver_LOD0
+    3300046: Ak11_Selector_plate_LOD0
+    3300048: Ak11_Selector_plate_polt_LOD0
+    3300050: Ak12_Auto_sear_pin_LOD0
+    3300052: Ak12_Barrel_trunion_rivets_LOD0
+    3300054: Ak12_Buttplate_Cover_Base_LOD0
+    3300056: Ak12_Buttplate_Cover_Lower_LOD0
+    3300058: Ak12_Buttplate_LOD0
+    3300060: Ak12_Hammer_pin_LOD0
+    3300062: Ak12_Rear_trunion_pin_LOD0
+    3300064: Ak12_Receiver_rivets_LOD0
+    3300066: Ak12_Trigger_pin_LOD0
+    3300068: Ak13_Bolt_carrier_LOD0
+    3300070: Ak14_Recpil_spring_guide_LOD0
+    3300072: Ak15_Selector_LOD0
+    3300074: Ak15_Trigger_LOD0
+    4300000: Ak05_Barrel_trunion_LOD0
+    4300002: Ak02_Receiver_LOD0
+    4300004: Ak09_Barrel_LOD0
+    4300006: Ak07_Gas_port_LOD0
+    4300008: Ak06_Handguard_retainer_LOD0
+    4300010: Ak01_Pistol_frip_LOD0
+    4300012: Ak01_Lower_handguard_LOD0
+    4300014: Ak01_Upper_handguard_LOD0
+    4300016: Ak09_Cleaning_rod_LOD0
+    4300018: Ak07_Gas_pison_tube_LOD0
+    4300020: Ak06_Gas_pison_tube_LOD0
+    4300022: Ak06_Handguard_base_LOD0
+    4300024: Ak14_Recpil_spring_guide_LOD0
+    4300026: Ak04_Gas_tube_latch_LOD0
+    4300028: Ak04_Rear_sight_base_LOD0
+    4300030: Ak11_Selector_plate_LOD0
+    4300032: Ak11_Receiver_LOD0
+    4300034: Ak11_Pistol_grip_base_LOD0
+    4300036: Ak11_Rear_trunion_LOD0
+    4300038: Ak11_Selector_plate_polt_LOD0
+    4300040: Ak12_Barrel_trunion_rivets_LOD0
+    4300042: Ak12_Auto_sear_pin_LOD0
+    4300044: Ak12_Hammer_pin_LOD0
+    4300046: Ak12_Trigger_pin_LOD0
+    4300048: Ak12_Rear_trunion_pin_LOD0
+    4300050: Ak15_Trigger_LOD0
+    4300052: Ak15_Selector_LOD0
+    4300054: Ak10_Magazine_LOD0
+    4300056: Ak10_Magazine_plate_LOD0
+    4300058: Ak01_Stock_LOD0
+    4300060: Ak12_Buttplate_Cover_Lower_LOD0
+    4300062: Ak12_Buttplate_Cover_Base_LOD0
+    4300064: Ak12_Buttplate_LOD0
+    4300066: Ak12_Receiver_rivets_LOD0
+    4300068: Ak13_Bolt_carrier_LOD0
+    4300070: Ak06_Gas_pison_tube_LOD0
+    4300072: Ak03_Receiver_cover_LOD0
+    4300074: Ak08_Front_sight_base_LOD0
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

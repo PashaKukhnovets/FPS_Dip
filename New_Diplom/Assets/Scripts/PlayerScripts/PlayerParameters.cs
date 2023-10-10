@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class PlayerParameters : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private float playerHealth = 100.0f;
+    private float playerEnergy = 100.0f;
+    private float playerPoints;
+
+    public void AddPlayerHealth(float hp) {
+        this.playerHealth += hp;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void AddPlayerDamage(float damage) {
+        this.playerHealth -= damage;
+    }
+
+    public void AddPlayerEnergy(float energy) {
+        this.playerEnergy += energy;
+    }
+
+    public void AddPlayerPoints(float points) {
+        this.playerPoints += points;
+    }
+
+    public float GetPlayerHealth() {
+        return this.playerHealth;
+    }
+
+    public float GetPlayerEnergy() {
+        return this.playerEnergy;
+    }
+
+    public float GetPlayerPoints() {
+        return this.playerPoints;
     }
 }

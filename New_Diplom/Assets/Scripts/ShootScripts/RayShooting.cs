@@ -10,7 +10,7 @@ public class RayShooting : MonoBehaviour
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private Camera playerCamera;
     private float damage;
-    private float rate;
+    private float rate = 5.0f;
     private float nextShoot = 0.0f;
 
     void Start()

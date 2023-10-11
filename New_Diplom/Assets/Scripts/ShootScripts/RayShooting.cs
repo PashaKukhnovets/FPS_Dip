@@ -51,12 +51,12 @@ public class RayShooting : MonoBehaviour
                 if (hitObject.GetComponent<Rigidbody>())
                 {
                     Debug.Log("Человек");
-                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    StartCoroutine(BloodEffect(hit));
                 }
                 else if (hitObject.GetComponent<BoxCollider>())
                 {
                     StartCoroutine(HoleIndicator(hit.point));
-                    Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+                    StartCoroutine(BloodEffect(hit));
                 }
 
             }
@@ -71,5 +71,14 @@ public class RayShooting : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         Destroy(sphere);
+    }
+
+    private IEnumerator BloodEffect(RaycastHit hit)
+    {
+        GameObject blood = Instantiate(bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+
+        yield return new WaitForSeconds(1.5f);
+
+        Destroy(blood);
     }
 }

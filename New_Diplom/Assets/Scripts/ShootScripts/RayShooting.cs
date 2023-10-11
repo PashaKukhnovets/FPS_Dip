@@ -6,11 +6,10 @@ public class RayShooting : MonoBehaviour
 {
     [SerializeField] private ParticleSystem muzzleEffect;
     [SerializeField] private GameObject bloodEffect;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip audioClip;
     [SerializeField] private Camera playerCamera;
+    [SerializeField] private MouseLook mouseLook;
     private float damage;
-    private float rate = 5.0f;
+    private float rate = 7.0f;
     private float nextShoot = 0.0f;
 
     void Start()
@@ -21,7 +20,7 @@ public class RayShooting : MonoBehaviour
 
     void OnGUI()
     {
-        int size = 40;
+        int size = 20;
         float posX = playerCamera.pixelWidth / 2 - size / 4;
         float posY = playerCamera.pixelHeight / 2 - size / 2;
         GUI.Label(new Rect(posX, posY, size, size), "+");
@@ -38,8 +37,9 @@ public class RayShooting : MonoBehaviour
         {
             nextShoot = Time.time + 1.0f / rate;
 
-            audioSource.PlayOneShot(audioClip);
             muzzleEffect.Play();
+
+            mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
 
             Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
             Ray ray = playerCamera.ScreenPointToRay(point);

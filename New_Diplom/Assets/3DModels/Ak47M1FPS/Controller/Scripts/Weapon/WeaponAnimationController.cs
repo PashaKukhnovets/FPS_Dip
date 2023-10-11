@@ -2,9 +2,8 @@
 
 [RequireComponent(typeof(AudioSource))]
 
-public class sWeaponFPS : MonoBehaviour
+public class WeaponAnimationController : MonoBehaviour
 {
-    [Header("ANIMATION CONTROL")]
     public Animation WeaponAnim;
     public AnimationClip[] AnimIdle;
     public AnimationClip[] AnimWalk;
@@ -19,22 +18,18 @@ public class sWeaponFPS : MonoBehaviour
     public AnimationClip AnimAimDown;
     public AnimationClip[] AnimReload;
 
-    [Header("AUDIO CONTROL")]
-    public AudioClip a_AudioFire;
-    private AudioSource a_AudioSource;
+    public AudioClip audioFire;
+    private AudioSource audioSource;
 
-    public static sWeaponFPS instance;
-    private bool IsAiming = false;
+    private bool isAiming = false;
     private int RandAnimReload = 0;
+    private float rate = 7.0f;
+    private float nextShoot = 0.0f;
 
-    void OnEnable()
-    {
-        instance = this;
-    }
 
     void Start ()
     {
-        a_AudioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	void Update ()
@@ -62,10 +57,11 @@ public class sWeaponFPS : MonoBehaviour
         // Fire
         //
 
-        if (IsAiming == false)
+        if (isAiming == false)
         {
-            if (Input.GetMouseButton(0))
-            {
+            if (Input.GetButton("Fire1") && Time.time > nextShoot){ 
+                nextShoot = Time.time + 1.0f / rate;
+               
                 fire();
             }
         }
@@ -86,7 +82,7 @@ public class sWeaponFPS : MonoBehaviour
         // Idle \ Walk \ Run
         //
 
-        if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimGet.name) && IsAiming == false && Mathf.Abs(Input.GetAxis("Vertical")) > 0.1F)
+        if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimGet.name) && isAiming == false && Mathf.Abs(Input.GetAxis("Vertical")) > 0.1F)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -97,7 +93,7 @@ public class sWeaponFPS : MonoBehaviour
                 WeaponAnim.CrossFade(AnimWalk[0].name);
             }
         }
-        else if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimGet.name) && IsAiming == false)
+        else if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimGet.name) && isAiming == false)
         {
             WeaponAnim.CrossFade(AnimIdle[0].name);
         }
@@ -108,13 +104,18 @@ public class sWeaponFPS : MonoBehaviour
     {
         WeaponAnim.Stop();
 
-        if (!IsAiming)
+        if (!isAiming )
+        {
+            Debug.Log("AAA");
             WeaponAnim.Play(AnimFire[0].name);
+        }
         else
+        {
             WeaponAnim.Play(AnimAimFire[0].name);
+        }
 
-        a_AudioSource.clip = a_AudioFire;
-        a_AudioSource.PlayOneShot(a_AudioSource.clip);
+        audioSource.clip = audioFire;
+        audioSource.PlayOneShot(audioSource.clip);
     }
 
     void reload()
@@ -127,14 +128,14 @@ public class sWeaponFPS : MonoBehaviour
     {
         WeaponAnim.Stop();
         WeaponAnim.Play(AnimAimUp.name);
-        IsAiming = true;
+        isAiming = true;
     }
 
     void AimingDown()
     {
         WeaponAnim.Stop();
         WeaponAnim.Play(AnimAimDown.name);
-        IsAiming = false;
+        isAiming = false;
     }
 
 }

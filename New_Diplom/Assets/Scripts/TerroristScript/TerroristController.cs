@@ -12,13 +12,15 @@ public class TerroristController : MonoBehaviour
     public float terroristHealth = 100.0f;
     public float damage = 7.0f;
 
-    public event UnityAction TerroristAttack;
-    public event UnityAction TerroristAttackFalse;
+    public event UnityAction TerroristRunFire;
+    public event UnityAction TerroristRunFireFalse;
     public event UnityAction TerroristDeath;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        this.gameObject.GetComponent<Pursue>().enabled = false;
+        this.gameObject.GetComponent<Face>().enabled = false;
     }
 
     void Update()
@@ -39,8 +41,11 @@ public class TerroristController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            this.gameObject.GetComponent<Pursue>().enabled = true;
+            this.gameObject.GetComponent<Face>().enabled = true;
+            this.gameObject.GetComponent<Agent>().maxSpeed = 1.3f;
             isTerroristRunning = false;
-            TerroristAttack?.Invoke();
+            TerroristRunFire?.Invoke();
         }
     }
 
@@ -58,7 +63,8 @@ public class TerroristController : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>())
         {
             isTerroristRunning = true;
-            TerroristAttackFalse?.Invoke();
+            TerroristRunFireFalse?.Invoke();
+            this.gameObject.GetComponent<Agent>().maxSpeed = 2.5f;
         }
 
     }

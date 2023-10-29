@@ -8,11 +8,14 @@ public class Pursue : Seek
     public float maxPrediction;
     private GameObject targetAux;
     private Agent targetAgent;
+    private bool isLowDistance = false;
     public float targetRadius;
     public float slowRadius;
     public float timeToTarget = 0.1f;
 
     public event UnityAction TerroristRunning;
+    public event UnityAction TerroristStandFire;
+    public event UnityAction TerroristStandFireFalse;
 
     public override void Awake()
     {
@@ -37,9 +40,19 @@ public class Pursue : Seek
 
         if (distance < targetRadius)
         {
+            if (!isLowDistance)
+                isLowDistance = true;
+
+            TerroristStandFire?.Invoke();
             steering.linear = Vector3.zero;
             steering.angular = 0.0f;
             return steering;
+        }
+        else {
+            if (isLowDistance) {
+                isLowDistance = false;
+                TerroristStandFireFalse?.Invoke();
+            }
         }
 
         if (distance > slowRadius)

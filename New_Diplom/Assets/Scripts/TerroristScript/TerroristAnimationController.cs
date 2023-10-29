@@ -14,8 +14,10 @@ public class TerroristAnimationController : MonoBehaviour
         animator = this.GetComponent<Animator>();
         terroristPursue = this.GetComponent<Pursue>();
         terroristPursue.TerroristRunning += TerroristRunning;
-        terrorist.TerroristAttack += TerroristAttack;
-        terrorist.TerroristAttackFalse += TerroristAttackFalse;
+        terroristPursue.TerroristStandFire += TerroristStandFire;
+        terroristPursue.TerroristStandFireFalse += TerroristStandFireFalse;
+        terrorist.TerroristRunFire += TerroristRunFire;
+        terrorist.TerroristRunFireFalse += TerroristRunFireFalse;
         terrorist.TerroristDeath += TerroristDeath;
     }
 
@@ -24,16 +26,27 @@ public class TerroristAnimationController : MonoBehaviour
         animator.SetBool("isRunning", true);
     }
 
-    public void TerroristAttack()
+    public void TerroristRunFire()
     {
         animator.SetBool("isRunning", false);
-        animator.SetBool("isAttacking", true);
+        animator.SetBool("isRunFire", true);
     }
 
-    public void TerroristAttackFalse()
+    public void TerroristRunFireFalse()
     {
-        animator.SetBool("isAttacking", false);
+        animator.SetBool("isRunFire", false);
         animator.SetBool("isRunning", true);
+    }
+
+    public void TerroristStandFire() {
+        animator.SetBool("isStandFire", true);
+        animator.SetBool("isRunFire", false);
+    }
+
+    public void TerroristStandFireFalse()
+    {
+        animator.SetBool("isStandFire", false);
+        animator.SetBool("isRunFire", true);
     }
 
     public void TerroristDeath()

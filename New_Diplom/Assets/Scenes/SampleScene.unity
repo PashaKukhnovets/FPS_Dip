@@ -791,6 +791,7 @@ MonoBehaviour:
   bloodEffect: {fileID: 1793845074898013879, guid: 364194ea7004dfb4b8021533f6f989e7, type: 3}
   playerCamera: {fileID: 963194227}
   mouseLook: {fileID: 963194229}
+  weaponAnim: {fileID: 1850025776}
 --- !u!1 &1113948836
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,8 +993,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.314536, y: 2.6259627, z: 12.916427}
-  m_Center: {x: 0.4035707, y: 0.8129811, z: 0.11488438}
+  m_Size: {x: 11.077243, y: 2.6259627, z: 10.899292}
+  m_Center: {x: 0.16626199, y: 0.8129811, z: 0.11488676}
 --- !u!114 &1134192753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1022,8 +1023,8 @@ MonoBehaviour:
   weight: 1
   priority: 1
   maxPrediction: 0
-  targetRadius: 1
-  slowRadius: 1.34
+  targetRadius: 3.57
+  slowRadius: 3.25
   timeToTarget: 0.1
 --- !u!114 &1134192755
 MonoBehaviour:
@@ -1040,8 +1041,8 @@ MonoBehaviour:
   target: {fileID: 0}
   weight: 1
   priority: 1
-  targetRadius: 30
-  slowRadius: 30
+  targetRadius: 7
+  slowRadius: 7
   timeToTarget: 0.1
 --- !u!114 &1134192756
 MonoBehaviour:
@@ -1055,8 +1056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aebfd1a8daaa3ec44baf222fc41ff790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0.7
-  maxAccel: 0.65
+  maxSpeed: 2.5
+  maxAccel: 11.17
   maxRotation: 360
   maxAngularAccel: 190
   orientation: 0

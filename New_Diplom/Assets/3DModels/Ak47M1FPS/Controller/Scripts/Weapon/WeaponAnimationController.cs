@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -26,50 +27,52 @@ public class WeaponAnimationController : MonoBehaviour
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
 
+    private bool blockMouse = false;
+
 
     void Start ()
     {
         audioSource = GetComponent<AudioSource>();
     }
 	
-	void Update ()
-    {
-        //
-        // Reload
-        //
+	void Update() {
+        Fire();
+        Reload();
+        AimingUp();
+        AimingDown();
+        Walking();
+    }
 
+    private void Fire() {
+        if (!isAiming && !blockMouse)
+        {
+            if (Input.GetButton("Fire1") && Time.time > nextShoot)
+            {
+                nextShoot = Time.time + 1.0f / rate;
+
+                FirePlay();
+            }
+        }
+    }
+
+    private void Reload() {
         if (!WeaponAnim.IsPlaying(AnimFire[0].name) && !WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimRemove.name) && Input.GetKeyDown(KeyCode.R))
         {
+            blockMouse = true;
             RandAnimReload = Random.Range(0, AnimReload.Length);
-            reload();
+            ReloadPlay();
+            StartCoroutine(UnblockMouse());
         }
+    }
 
-        //
-        // AimUp
-        //
-
+    private void AimingUp() {
         if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimAimUp.name) && Input.GetMouseButtonDown(1))
         {
             AimingUp();
-        }  
-
-        //
-        // Fire
-        //
-
-        if (isAiming == false)
-        {
-            if (Input.GetButton("Fire1") && Time.time > nextShoot){ 
-                nextShoot = Time.time + 1.0f / rate;
-               
-                fire();
-            }
         }
+    }
 
-        //
-        // AimDown
-        //
-
+    private void AimingDown() {
         if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimAimDown.name) && Input.GetMouseButtonUp(1))
         {
             AimingDown();
@@ -77,30 +80,30 @@ public class WeaponAnimationController : MonoBehaviour
 
         if (WeaponAnim.IsPlaying(AnimRemove.name))
             return;
+    }
 
-        //
-        // Idle \ Walk \ Run
-        //
-
+    private void Walking() {
         if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimGet.name) && isAiming == false && Mathf.Abs(Input.GetAxis("Vertical")) > 0.1F)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 WeaponAnim.CrossFade(AnimRun[0].name);
+                blockMouse = true;
             }
             else
             {
                 WeaponAnim.CrossFade(AnimWalk[0].name);
+                blockMouse = false;
             }
         }
         else if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimGet.name) && isAiming == false)
         {
             WeaponAnim.CrossFade(AnimIdle[0].name);
         }
+
     }
 
-
-    void fire()
+    private void FirePlay()
     {
         WeaponAnim.Stop();
 
@@ -118,24 +121,33 @@ public class WeaponAnimationController : MonoBehaviour
         audioSource.PlayOneShot(audioSource.clip);
     }
 
-    void reload()
+    private void ReloadPlay()
     {
         WeaponAnim.Stop();
         WeaponAnim.Play(AnimReload[RandAnimReload].name);
     }
 
-    void AimingUp()
+    private void AimingUpPlay()
     {
         WeaponAnim.Stop();
         WeaponAnim.Play(AnimAimUp.name);
         isAiming = true;
     }
 
-    void AimingDown()
+    private void AimingDownPlay()
     {
         WeaponAnim.Stop();
         WeaponAnim.Play(AnimAimDown.name);
         isAiming = false;
     }
+
+    public bool IsBlockedMouse() {
+        return this.blockMouse;
+    }
+
+    private IEnumerator UnblockMouse() {
+        yield return new WaitForSeconds(2.0f);
+        blockMouse = false;
+    } 
 
 }

@@ -8,6 +8,8 @@ public class RayShooting : MonoBehaviour
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
+    [SerializeField] private WeaponAnimationController weaponAnim;
+
     private float damage;
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
@@ -33,7 +35,7 @@ public class RayShooting : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextShoot)
+        if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse())
         {
             nextShoot = Time.time + 1.0f / rate;
 

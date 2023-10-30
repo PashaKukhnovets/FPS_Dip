@@ -68,14 +68,14 @@ public class WeaponAnimationController : MonoBehaviour
     private void AimingUp() {
         if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimAimUp.name) && Input.GetMouseButtonDown(1))
         {
-            AimingUp();
+            AimingUpPlay();
         }
     }
 
     private void AimingDown() {
         if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimAimDown.name) && Input.GetMouseButtonUp(1))
         {
-            AimingDown();
+            AimingDownPlay();
         }
 
         if (WeaponAnim.IsPlaying(AnimRemove.name))

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RayShooting : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class RayShooting : MonoBehaviour
     private float damage;
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
+
+    public event UnityAction HitChecker;
 
     void Start()
     {
@@ -52,7 +55,7 @@ public class RayShooting : MonoBehaviour
 
                 if (hitObject.GetComponent<Rigidbody>())
                 {
-                    Debug.Log("Человек");
+                    HitChecker?.Invoke();
                     StartCoroutine(BloodEffect(hit));
                 }
                 else if (hitObject.GetComponent<BoxCollider>())

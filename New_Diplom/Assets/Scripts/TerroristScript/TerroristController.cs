@@ -5,8 +5,9 @@ using UnityEngine.Events;
 
 public class TerroristController : MonoBehaviour
 {
+    private RayShooting playerShoot;
     private GameObject player;
-    private bool isTerroristCount = true;
+    private bool isFirstMovement = true;
     private bool isTerroristRunning = true;
 
     public float terroristHealth = 100.0f;
@@ -18,9 +19,12 @@ public class TerroristController : MonoBehaviour
 
     private void Start()
     {
+        playerShoot = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<RayShooting>();
+        playerShoot.HitChecker += HitByPlayer;
         player = GameObject.FindGameObjectWithTag("Player");
         this.gameObject.GetComponent<Pursue>().enabled = false;
         this.gameObject.GetComponent<Face>().enabled = false;
+        ;
     }
 
     void Update()
@@ -43,17 +47,10 @@ public class TerroristController : MonoBehaviour
         {
             this.gameObject.GetComponent<Pursue>().enabled = true;
             this.gameObject.GetComponent<Face>().enabled = true;
+            isFirstMovement = false;
             this.gameObject.GetComponent<Agent>().maxSpeed = 1.3f;
             isTerroristRunning = false;
             TerroristRunFire?.Invoke();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Weapon"))
-        {
-            this.terroristHealth -= player.GetComponent<PlayerParameters>().playerDamage;
         }
     }
 
@@ -67,6 +64,17 @@ public class TerroristController : MonoBehaviour
             this.gameObject.GetComponent<Agent>().maxSpeed = 2.5f;
         }
 
+    }
+
+    private void HitByPlayer() {
+        if (isFirstMovement) {
+            isFirstMovement = false;
+            this.gameObject.GetComponent<Pursue>().enabled = true;
+            this.gameObject.GetComponent<Face>().enabled = true;
+        }
+
+        this.terroristHealth -= player.GetComponent<PlayerParameters>().playerDamage;
+        Debug.Log("Popal");
     }
 
     private IEnumerator DeathCoroutine()

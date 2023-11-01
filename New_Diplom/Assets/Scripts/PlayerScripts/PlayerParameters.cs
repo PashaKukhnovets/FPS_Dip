@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerParameters : MonoBehaviour
 {
-    public float playerDamage = 10.0f;
+    public float playerDamage = 20.0f;
 
     private float playerHealth = 100.0f;
     private float playerEnergy = 100.0f;

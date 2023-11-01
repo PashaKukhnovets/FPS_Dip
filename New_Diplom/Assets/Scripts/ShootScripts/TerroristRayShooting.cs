@@ -13,6 +13,7 @@ public class TerroristRayShooting : MonoBehaviour
     private int countOfShooting = 0;
     private bool isResetCount = true;
     private bool isShooting = false;
+    private bool isFirstShoot = true;
 
     public float rate = 3.5f;
 
@@ -68,7 +69,14 @@ public class TerroristRayShooting : MonoBehaviour
     }
 
     private void ShootPositive() {
-        isShooting = true;
+        if (isFirstShoot)
+        {
+            isFirstShoot = false;
+
+            StartCoroutine(TerroristFirstShoot());
+        }
+        else
+            isShooting = true;
     }
 
     private void ShootNegative() {
@@ -90,6 +98,12 @@ public class TerroristRayShooting : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         Destroy(blood);
+    }
+
+    private IEnumerator TerroristFirstShoot() {
+        yield return new WaitForSeconds(3.5f);
+
+        isShooting = true;
     }
 
 }

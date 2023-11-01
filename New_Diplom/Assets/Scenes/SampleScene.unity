@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9150dede613094590ba009bd61179c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDamage: 10
+  playerDamage: 20
 --- !u!114 &865996373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,7 +1111,7 @@ MonoBehaviour:
   target: {fileID: 0}
   weight: 1
   priority: 1
-  targetRadius: 7
+  targetRadius: 1
   slowRadius: 7
   timeToTarget: 0.1
 --- !u!114 &1134192756
@@ -1958,7 +1958,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1747635044815804, guid: d858d5056b7561f4497e9f0f135cfdee, type: 3}
       propertyPath: m_Name
-      value: Ak47M1 Tactical Vol3
+      value: TerroristWeapon
       objectReference: {fileID: 0}
     - target: {fileID: 4825275166856070, guid: d858d5056b7561f4497e9f0f135cfdee, type: 3}
       propertyPath: m_RootOrder

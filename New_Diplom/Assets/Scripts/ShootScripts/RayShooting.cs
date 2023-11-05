@@ -10,18 +10,13 @@ public class RayShooting : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private WeaponAnimationController weaponAnim;
+    [SerializeField] private GameBehaviour gameManager;
 
     private float damage;
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
 
     public event UnityAction HitChecker;
-
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
 
     void OnGUI()
     {
@@ -33,6 +28,7 @@ public class RayShooting : MonoBehaviour
 
     void Update()
     {
+        CursorActivity();
         Shoot();
     }
 
@@ -65,6 +61,14 @@ public class RayShooting : MonoBehaviour
                 }
 
             }
+        }
+    }
+
+    private void CursorActivity() {
+        if (!gameManager.CheckPuzzleActivity())
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 

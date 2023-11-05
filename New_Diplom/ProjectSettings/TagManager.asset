@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: PuzzleBackground
+    uniqueID: 2578976299
+    locked: 0
+  - name: PuzzleDetails
+    uniqueID: 3133121385
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 4145803525
+    locked: 0

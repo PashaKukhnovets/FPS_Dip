@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class TubeMoving : MonoBehaviour
 {
+    [SerializeField] private GameObject form;
+
     private bool isMoving = false;
     private Vector3 mousePos;
     
     void Update()
     {
         PuzzleMoving();
-        //mousePos = Input.mousePosition;
-        //mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        //Debug.Log(mousePos);
     }
 
     private void OnMouseDown()
@@ -26,6 +25,11 @@ public class TubeMoving : MonoBehaviour
     private void OnMouseUp()
     {
         isMoving = false;
+
+        if (Mathf.Abs(this.transform.localPosition.x - form.transform.localPosition.x) <= 0.15f &&
+            Mathf.Abs(this.transform.localPosition.y - form.transform.localPosition.y) <= 0.15f) {
+            this.transform.position = new Vector2(form.transform.position.x, form.transform.position.y);
+        }
     }
 
     private void PuzzleMoving() {
@@ -33,7 +37,7 @@ public class TubeMoving : MonoBehaviour
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
        
-            this.gameObject.transform.position = new Vector2(mousePos.x, mousePos.y);
+            this.gameObject.transform.position = new Vector3(mousePos.x, mousePos.y, -0.62f);
         }
     }
 }

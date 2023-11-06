@@ -5,6 +5,7 @@ using UnityEngine;
 public class TubeMoving : MonoBehaviour
 {
     [SerializeField] private GameObject form;
+    [SerializeField] private Camera puzzleCamera;
 
     private bool isMoving = false;
     private Vector3 mousePos;
@@ -35,7 +36,7 @@ public class TubeMoving : MonoBehaviour
     private void PuzzleMoving() {
         if (isMoving) {
             mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos = puzzleCamera.ScreenToWorldPoint(mousePos);
        
             this.gameObject.transform.position = new Vector3(mousePos.x, mousePos.y, -0.62f);
         }

@@ -10,7 +10,7 @@ public class RayShooting : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private WeaponAnimationController weaponAnim;
-    [SerializeField] private GameBehaviour gameManager;
+    [SerializeField] private PuzzleBehaviour puzzleBehaviour;
 
     private float damage;
     private float rate = 7.0f;
@@ -28,7 +28,6 @@ public class RayShooting : MonoBehaviour
 
     void Update()
     {
-        CursorActivity();
         Shoot();
     }
 
@@ -61,14 +60,6 @@ public class RayShooting : MonoBehaviour
                 }
 
             }
-        }
-    }
-
-    private void CursorActivity() {
-        if (!gameManager.CheckPuzzleActivity())
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
     }
 

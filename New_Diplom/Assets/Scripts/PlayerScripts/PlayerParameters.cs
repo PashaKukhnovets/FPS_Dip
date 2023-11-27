@@ -2,39 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerParameters : MonoBehaviour
+public static class PlayerParameters
 {
-    public float playerDamage = 20.0f;
+    public static float playerDamage = 20.0f;
 
-    private float playerHealth = 100.0f;
-    private float playerEnergy = 100.0f;
-    private float playerPoints;
+    private static float playerHealth = 100.0f;
+    private static float playerEnergy = 100.0f;
+    private static float playerPoints;
 
-    public void AddPlayerHealth(float hp) {
-        this.playerHealth += hp;
+    public static void AddPlayerHealth(float hp) {
+        playerHealth += hp;
     }
 
-    public void AddPlayerDamage(float damage) {
-        this.playerHealth -= damage;
+    public static void AddPlayerDamage(float damage) {
+        playerHealth -= damage;
     }
 
-    public void AddPlayerEnergy(float energy) {
-        this.playerEnergy += energy;
+    public static void AddPlayerEnergy(float energy) {
+        playerEnergy += energy;
     }
 
-    public void AddPlayerPoints(float points) {
-        this.playerPoints += points;
+    public static void AddPlayerPoints(float points) {
+        playerPoints += points;
     }
 
-    public float GetPlayerHealth() {
-        return this.playerHealth;
+    public static float GetPlayerHealth() {
+        return playerHealth;
     }
 
-    public float GetPlayerEnergy() {
-        return this.playerEnergy;
+    public static float GetPlayerEnergy() {
+        return playerEnergy;
     }
 
-    public float GetPlayerPoints() {
-        return this.playerPoints;
+    public static float GetPlayerPoints() {
+        return playerPoints;
     }
 }

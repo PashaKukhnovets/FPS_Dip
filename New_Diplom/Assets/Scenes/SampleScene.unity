@@ -4424,7 +4424,6 @@ GameObject:
   - component: {fileID: 865996375}
   - component: {fileID: 865996374}
   - component: {fileID: 865996373}
-  - component: {fileID: 865996372}
   - component: {fileID: 865996379}
   m_Layer: 0
   m_Name: Player
@@ -4433,19 +4432,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &865996372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865996371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d9150dede613094590ba009bd61179c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerDamage: 20
 --- !u!114 &865996373
 MonoBehaviour:
   m_ObjectHideFlags: 0

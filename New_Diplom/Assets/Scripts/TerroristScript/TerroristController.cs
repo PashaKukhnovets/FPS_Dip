@@ -73,7 +73,7 @@ public class TerroristController : MonoBehaviour
             this.gameObject.GetComponent<Face>().enabled = true;
         }
 
-        this.terroristHealth -= player.GetComponent<PlayerParameters>().playerDamage;
+        this.terroristHealth -= PlayerParameters.playerDamage;
         Debug.Log("Popal");
     }
 

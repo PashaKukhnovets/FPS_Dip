@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,15 @@ public class PlayerController : MonoBehaviour
     private float rate = 7.0f;
     private float refillRate = 5.0f;
     private float nextStep = 0.0f;
+    private float jumpForce = 15.0f;
+    private float vertSpeed = 0.0f;
+    private float termVelocity = -10.0f;
+    private bool isFreezing = false;
+    private bool isJump = false;
+    private Vector3 movement;
+
+    public event UnityAction IsFreezeTime;
+    public event UnityAction NoFreezeTime;
 
     void Start()
     {
@@ -23,16 +33,34 @@ public class PlayerController : MonoBehaviour
         PlayerMove();
         Sprint();
         RefillEnergy();
+        FreezeTime();
     }
 
     private void PlayerMove() {
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
-        Vector3 movement = new Vector3(deltaX, 0, deltaZ);
+        movement = new Vector3(deltaX, 0, deltaZ);
         movement = Vector3.ClampMagnitude(movement, speed);
 
-        movement.y = gravity;
+        if (Input.GetKeyDown(KeyCode.Space) && !isJump)
+        {
+            vertSpeed = jumpForce;
+            
+            isJump = true;
+            Debug.Log(Time.deltaTime.ToString());
+        }
+        else
+        {
+            vertSpeed += gravity * 5.0f * Time.deltaTime;
 
+            if (vertSpeed < termVelocity) {
+                vertSpeed = termVelocity;
+            }
+            
+            isJump = false;
+        }
+
+        movement.y = vertSpeed;
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
         characterController.Move(movement);
@@ -58,6 +86,24 @@ public class PlayerController : MonoBehaviour
         }
         else
             this.speed = 6.0f;
+    }
+
+    private void FreezeTime() {
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            if (!isFreezing)
+            {
+                IsFreezeTime?.Invoke();
+                isFreezing = true;
+            }
+        }
+        else {
+            if (isFreezing)
+            {
+                NoFreezeTime?.Invoke();
+                isFreezing = false;
+            }
+        }
     }
 
     private void RefillEnergy() {

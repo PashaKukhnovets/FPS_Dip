@@ -265,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 114809449196239576, guid: e193aeba793b2ed4da311c6a1f433691, type: 3}
       propertyPath: puzzleWire_1
       value: 
-      objectReference: {fileID: 560118132}
+      objectReference: {fileID: 1013840399}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193aeba793b2ed4da311c6a1f433691, type: 3}
 --- !u!1 &113621519
@@ -5897,7 +5897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 2.5
-  maxAccel: 11.17
+  maxAccel: 11.3
   maxRotation: 360
   maxAngularAccel: 190
   orientation: 0
@@ -8561,7 +8561,6 @@ MonoBehaviour:
   bloodEffect: {fileID: 1793845074898013879, guid: 364194ea7004dfb4b8021533f6f989e7, type: 3}
   terrorist: {fileID: 1134192757}
   pointShooting: {fileID: 2047428526}
-  rate: 3.5
 --- !u!1 &1708849521
 GameObject:
   m_ObjectHideFlags: 0

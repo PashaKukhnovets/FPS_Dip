@@ -14,8 +14,7 @@ public class TerroristRayShooting : MonoBehaviour
     private bool isResetCount = true;
     private bool isShooting = false;
     private bool isFirstShoot = true;
-
-    public float rate = 3.5f;
+    private float rate = 3.5f;
 
     private void Start()
     {
@@ -104,6 +103,10 @@ public class TerroristRayShooting : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
 
         isShooting = true;
+    }
+
+    public void changeRateAttackTerrorist(float currentRate) {
+        this.rate = currentRate;
     }
 
 }

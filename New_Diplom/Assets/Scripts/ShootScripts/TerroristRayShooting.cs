@@ -47,14 +47,9 @@ public class TerroristRayShooting : MonoBehaviour
 
                     if (hitObject.GetComponent<PlayerController>())
                     {
-                        Debug.Log("Все норм");
+                        PlayerParameters.AddPlayerHealth(-15.0f);
                         StartCoroutine(BloodEffect(hit));
                     }
-                    else if (hitObject.GetComponent<BoxCollider>())
-                    {
-                        StartCoroutine(BloodEffect(hit));
-                    }
-
                 }
             }
         }

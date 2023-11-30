@@ -8,7 +8,7 @@ public static class PlayerParameters
 
     private static float playerHealth = 100.0f;
     private static float playerEnergy = 100.0f;
-    private static float playerPoints;
+    private static float playerPoints = 20.0f;
 
     public static void AddPlayerHealth(float hp) {
         playerHealth += hp;

@@ -11,6 +11,7 @@ public class TerroristController : MonoBehaviour
     private bool isTerroristRunning = true;
     private bool isInPlayerRadius = false;
     private bool isFreeze = false;
+    private bool isDeath = false;
 
     public float terroristHealth = 100.0f;
     public float damage = 7.0f;
@@ -32,16 +33,7 @@ public class TerroristController : MonoBehaviour
 
     void Update()
     {
-        if (this.terroristHealth <= 0.0f)
-        {
-            //if (isZombieCount)
-            //    GameManagerBehaviour.zombieDeathCount++;
-            //isZombieCount = false;
-            TerroristDeath?.Invoke();
-            this.gameObject.GetComponent<Pursue>().enabled = false;
-            this.gameObject.GetComponent<Face>().enabled = false;
-            StartCoroutine(DeathCoroutine());
-        }
+        CheckTerroristDeath();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,6 +82,7 @@ public class TerroristController : MonoBehaviour
         this.gameObject.GetComponent<Agent>().maxSpeed = 0.7f;
         this.gameObject.GetComponentInChildren<TerroristRayShooting>().changeRateAttackTerrorist(0.5f);
         this.gameObject.GetComponent<Animator>().speed = 0.1f;
+        this.gameObject.GetComponent<Agent>().maxAngularAccel = 1.0f;
         isFreeze = true;
     }
 
@@ -104,13 +97,34 @@ public class TerroristController : MonoBehaviour
 
         this.gameObject.GetComponentInChildren<TerroristRayShooting>().changeRateAttackTerrorist(3.5f);
         this.gameObject.GetComponent<Animator>().speed = 1.0f;
+        this.gameObject.GetComponent<Agent>().maxAngularAccel = 190.0f;
 
         isFreeze = false;
     }
 
+    public void CheckTerroristDeath() {
+        if (this.terroristHealth <= 0.0f && !isDeath)
+        {
+            //if (isZombieCount)
+            //    GameManagerBehaviour.zombieDeathCount++;
+            //isZombieCount = false;
+            isDeath = true;
+            TerroristDeath?.Invoke();
+            this.gameObject.GetComponent<Pursue>().enabled = false;
+            this.gameObject.GetComponent<Face>().enabled = false;
+            StartCoroutine(DeathCoroutine());
+        }
+    }
+
     private IEnumerator DeathCoroutine()
     {
+        if (PlayerParameters.GetPlayerPoints() < 100.0f) {
+            PlayerParameters.AddPlayerPoints(20.0f);
+        }
+
         yield return new WaitForSeconds(4.0f);
+        player.gameObject.GetComponent<PlayerController>().IsFreezeTime -= Freeze;
+        player.gameObject.GetComponent<PlayerController>().NoFreezeTime -= Unfreeze;
         Destroy(this.gameObject);
     }
 

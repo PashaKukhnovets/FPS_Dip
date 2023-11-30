@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private float vertSpeed = 0.0f;
     private float termVelocity = -10.0f;
     private bool isFreezing = false;
-    private bool isJump = false;
     private Vector3 movement;
 
     public event UnityAction IsFreezeTime;
@@ -34,6 +33,7 @@ public class PlayerController : MonoBehaviour
         Sprint();
         RefillEnergy();
         FreezeTime();
+        MinusFreezePoints();
     }
 
     private void PlayerMove() {
@@ -42,12 +42,9 @@ public class PlayerController : MonoBehaviour
         movement = new Vector3(deltaX, 0, deltaZ);
         movement = Vector3.ClampMagnitude(movement, speed);
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isJump)
+        if (Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
         {
             vertSpeed = jumpForce;
-            
-            isJump = true;
-            Debug.Log(Time.deltaTime.ToString());
         }
         else
         {
@@ -57,7 +54,6 @@ public class PlayerController : MonoBehaviour
                 vertSpeed = termVelocity;
             }
             
-            isJump = false;
         }
 
         movement.y = vertSpeed;
@@ -76,7 +72,6 @@ public class PlayerController : MonoBehaviour
                     nextStep = Time.time + 1.0f / rate;
 
                     PlayerParameters.AddPlayerEnergy(-5.0f);
-                    Debug.Log(PlayerParameters.GetPlayerEnergy());
                 }
 
                 this.speed = 8.0f;
@@ -89,7 +84,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FreezeTime() {
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1) && PlayerParameters.GetPlayerPoints() > 0.0f)
         {
             if (!isFreezing)
             {
@@ -106,6 +101,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void MinusFreezePoints() {
+        if (isFreezing)
+        {
+            if (Time.time > nextStep)
+            {
+                nextStep = Time.time + 1.0f / refillRate;
+                PlayerParameters.AddPlayerPoints(-1.0f);
+            }
+        }
+    }
+
     private void RefillEnergy() {
         if (!Input.GetKey(KeyCode.LeftShift)) {
             if (PlayerParameters.GetPlayerEnergy() < 100.0f)
@@ -115,7 +121,6 @@ public class PlayerController : MonoBehaviour
                     nextStep = Time.time + 1.0f / refillRate;
 
                     PlayerParameters.AddPlayerEnergy(2.0f);
-                    Debug.Log(PlayerParameters.GetPlayerEnergy());
                 }
             }
         }

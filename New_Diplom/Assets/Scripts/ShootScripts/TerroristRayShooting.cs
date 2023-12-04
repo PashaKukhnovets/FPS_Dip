@@ -12,6 +12,7 @@ public class TerroristRayShooting : MonoBehaviour
     private float nextShoot = 0.0f;
     private int countOfShooting = 0;
     private bool isResetCount = true;
+    private bool isStartShooting = false;
     private bool isShooting = false;
     private bool isFirstShoot = true;
     private float rate = 3.5f;
@@ -25,6 +26,7 @@ public class TerroristRayShooting : MonoBehaviour
     private void Update()
     {
         Shoot();
+        PlayerAIM();
     }
 
     private void Shoot()
@@ -62,6 +64,23 @@ public class TerroristRayShooting : MonoBehaviour
         }
     }
 
+    private void PlayerAIM() {
+        if (isStartShooting && !isShooting)
+        {
+            Ray ray = new Ray(pointShooting.transform.position, pointShooting.transform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                GameObject hitObject = hit.transform.gameObject;
+
+                if (hitObject.GetComponent<PlayerController>())
+                {
+                    isShooting = true;
+                }
+            }
+        }
+    }
+
     private void ShootPositive() {
         if (isFirstShoot)
         {
@@ -70,11 +89,11 @@ public class TerroristRayShooting : MonoBehaviour
             StartCoroutine(TerroristFirstShoot());
         }
         else
-            isShooting = true;
+            isStartShooting = true;
     }
 
     private void ShootNegative() {
-        isShooting = false;
+        isStartShooting = false;
     }
 
     private IEnumerator ResetCountOfShooting()
@@ -97,7 +116,7 @@ public class TerroristRayShooting : MonoBehaviour
     private IEnumerator TerroristFirstShoot() {
         yield return new WaitForSeconds(3.5f);
 
-        isShooting = true;
+        isStartShooting = true;
     }
 
     public void changeRateAttackTerrorist(float currentRate) {

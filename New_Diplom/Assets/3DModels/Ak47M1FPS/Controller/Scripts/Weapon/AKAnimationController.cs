@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 
-public class WeaponAnimationController : MonoBehaviour
+public class AKAnimationController : MonoBehaviour
 {
     public Animation WeaponAnim;
     public AnimationClip[] AnimIdle;
@@ -26,13 +27,16 @@ public class WeaponAnimationController : MonoBehaviour
     private int RandAnimReload = 0;
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
+    private AKBehaviour weapon;
 
     private bool blockMouse = false;
 
+    public event UnityAction RefillAK;
 
     void Start ()
     {
         audioSource = GetComponent<AudioSource>();
+        weapon = this.gameObject.GetComponent<AKBehaviour>();
     }
 	
 	void Update() {
@@ -46,9 +50,11 @@ public class WeaponAnimationController : MonoBehaviour
     private void Fire() {
         if (!isAiming && !blockMouse)
         {
-            if (Input.GetButton("Fire1") && Time.time > nextShoot)
+            if (Input.GetButton("Fire1") && Time.time > nextShoot && weapon.GetCurrentBulletCount() > 0)
             {
                 nextShoot = Time.time + 1.0f / rate;
+
+                weapon.AddCurrentBulletCount(-1);
 
                 FirePlay();
             }
@@ -56,7 +62,9 @@ public class WeaponAnimationController : MonoBehaviour
     }
 
     private void Reload() {
-        if (!WeaponAnim.IsPlaying(AnimFire[0].name) && !WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimRemove.name) && Input.GetKeyDown(KeyCode.R))
+        if (!WeaponAnim.IsPlaying(AnimFire[0].name) && !WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && 
+            !WeaponAnim.IsPlaying(AnimRemove.name) && Input.GetKeyDown(KeyCode.R) && weapon.GetAmountOfBullets() > 0 &&
+            weapon.GetCurrentBulletCount() != 30)
         {
             blockMouse = true;
             RandAnimReload = Random.Range(0, AnimReload.Length);
@@ -109,7 +117,6 @@ public class WeaponAnimationController : MonoBehaviour
 
         if (!isAiming )
         {
-            Debug.Log("AAA");
             WeaponAnim.Play(AnimFire[0].name);
         }
         else
@@ -123,6 +130,7 @@ public class WeaponAnimationController : MonoBehaviour
 
     private void ReloadPlay()
     {
+        RefillAK?.Invoke();
         WeaponAnim.Stop();
         WeaponAnim.Play(AnimReload[RandAnimReload].name);
     }

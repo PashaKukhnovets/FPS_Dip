@@ -10,7 +10,8 @@ public class AKBehaviour : MonoBehaviour
    
     void Start()
     {
-        currentBulletCount = maxBulletStore;   
+        currentBulletCount = maxBulletStore;
+        this.gameObject.GetComponent<AKAnimationController>().RefillAK += RefillBulletStore;
     }
 
     void Update()
@@ -34,7 +35,12 @@ public class AKBehaviour : MonoBehaviour
         this.amountOfBullets += bullets;
     }
 
-    public void RefillBulletStore() {
+    public void AddCurrentBulletCount(int bullets) {
+        this.currentBulletCount += bullets;
+    }
+
+    public void RefillBulletStore()
+    {
         if (currentBulletCount >= 0 && currentBulletCount < 30 && amountOfBullets > 0)
         {
             if (amountOfBullets + currentBulletCount >= 30)
@@ -42,11 +48,11 @@ public class AKBehaviour : MonoBehaviour
                 amountOfBullets -= maxBulletStore - currentBulletCount;
                 currentBulletCount = maxBulletStore;
             }
-            else if (amountOfBullets + currentBulletCount < 30) {
+            else if (amountOfBullets + currentBulletCount < 30)
+            {
                 currentBulletCount += amountOfBullets;
                 amountOfBullets = 0;
             }
-            
-        }
+        } 
     }
 }

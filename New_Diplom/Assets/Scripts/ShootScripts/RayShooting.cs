@@ -9,12 +9,13 @@ public class RayShooting : MonoBehaviour
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
-    [SerializeField] private WeaponAnimationController weaponAnim;
+    [SerializeField] private AKAnimationController weaponAnim;
     [SerializeField] private PuzzleBehaviour puzzleBehaviour;
 
     private float damage;
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
+    private GameObject weapon;
 
     public event UnityAction HitChecker;
 
@@ -26,14 +27,37 @@ public class RayShooting : MonoBehaviour
         GUI.Label(new Rect(posX, posY, size, size), "+");
     }
 
+    private void Start()
+    {
+        FindPlayerWeapon();
+    }
+
     void Update()
     {
         Shoot();
+        FindPlayerWeapon();
     }
 
     private void Shoot()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse())
+        //if(проверка на один тип оружия){
+        //    if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
+        //       weapon.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
+        //    {
+        //        .......................
+        //    }
+        //    }
+        //else if(проверка на другой тип оружия){
+        //    if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
+        //       weapon.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
+        //    {
+        //        ...............................
+        //    }
+        //    }
+        //и тд
+
+        if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
+            weapon.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
         {
             nextShoot = Time.time + 1.0f / rate;
 
@@ -61,6 +85,10 @@ public class RayShooting : MonoBehaviour
 
             }
         }
+    }
+
+    private void FindPlayerWeapon() {
+        weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
     }
 
     private IEnumerator HoleIndicator(Vector3 pos)

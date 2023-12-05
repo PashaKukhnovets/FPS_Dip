@@ -9,6 +9,7 @@ TagManager:
   - GreenWire
   - YellowWire
   - OrangeWire
+  - PlayerWeapon
   layers:
   - Default
   - TransparentFX

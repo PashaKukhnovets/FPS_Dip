@@ -32,7 +32,7 @@ public class PuzzleBehaviour : MonoBehaviour
             playerCamera.gameObject.SetActive(false);
             player.GetComponent<MouseLook>().enabled = false;
             player.GetComponent<PlayerController>().enabled = false;
-            playerWeapon.GetComponent<WeaponAnimationController>().enabled = false;
+            playerWeapon.GetComponent<AKAnimationController>().enabled = false;
         }
         else
         {
@@ -42,7 +42,7 @@ public class PuzzleBehaviour : MonoBehaviour
             playerCamera.gameObject.SetActive(true);
             player.GetComponent<MouseLook>().enabled = true;
             player.GetComponent<PlayerController>().enabled = true;
-            playerWeapon.GetComponent<WeaponAnimationController>().enabled = true;
+            playerWeapon.GetComponent<AKAnimationController>().enabled = true;
         }
     }
 

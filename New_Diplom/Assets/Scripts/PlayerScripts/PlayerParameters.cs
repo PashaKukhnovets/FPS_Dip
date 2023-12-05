@@ -6,35 +6,80 @@ public static class PlayerParameters
 {
     public static float playerDamage = 20.0f;
 
-    private static float playerHealth = 100.0f;
-    private static float playerEnergy = 100.0f;
-    private static float playerPoints = 20.0f;
+    private static float playerMaxHealth = 100.0f;
+    private static float playerMaxEnergy = 100.0f;
+    private static float playerMaxPoints = 20.0f;
 
-    public static void AddPlayerHealth(float hp) {
-        playerHealth += hp;
+    private static float playerCurrentHealth;
+    private static float playerCurrentEnergy;
+    private static float playerCurrentPoints;
+
+    public static void InitPlayerCurrentHealth(float health) {
+        playerCurrentHealth = health;
+    }
+
+    public static void InitPlayerCurrentEnergy(float energy) {
+        playerCurrentEnergy = energy;
+    }
+
+    public static void InitPlayerCurrentPoints(float points) {
+        playerCurrentPoints = points;
+    }
+
+    public static void AddPlayerMaxHealth(float hp) {
+        playerMaxHealth += hp;
+    }
+
+    public static void AddPlayerMaxEnergy(float energy)
+    {
+        playerMaxEnergy += energy;
+    }
+
+    public static void AddPlayerMaxPoints(float points)
+    {
+        playerMaxPoints += points;
     }
 
     public static void AddPlayerDamage(float damage) {
-        playerHealth -= damage;
+        playerCurrentHealth -= damage;
     }
 
-    public static void AddPlayerEnergy(float energy) {
-        playerEnergy += energy;
+    public static void AddPlayerCurrentHealth(float health) {
+        playerCurrentHealth += health;
     }
 
-    public static void AddPlayerPoints(float points) {
-        playerPoints += points;
+    public static void AddPlayerCurrentEnergy(float energy) {
+        playerCurrentEnergy += energy;
     }
 
-    public static float GetPlayerHealth() {
-        return playerHealth;
+    public static void AddPlayerCurrentPoints(float points) {
+        playerCurrentPoints += points;
     }
 
-    public static float GetPlayerEnergy() {
-        return playerEnergy;
+    public static float GetPlayerCurrentHealth() {
+        return playerCurrentHealth;
     }
 
-    public static float GetPlayerPoints() {
-        return playerPoints;
+    public static float GetPlayerCurrentEnergy() {
+        return playerCurrentEnergy;
+    }
+
+    public static float GetPlayerCurrentPoints() {
+        return playerCurrentPoints;
+    }
+
+    public static float GetPlayerMaxHealth()
+    {
+        return playerMaxHealth;
+    }
+
+    public static float GetPlayerMaxEnergy()
+    {
+        return playerMaxEnergy;
+    }
+
+    public static float GetPlayerMaxPoints()
+    {
+        return playerMaxPoints;
     }
 }

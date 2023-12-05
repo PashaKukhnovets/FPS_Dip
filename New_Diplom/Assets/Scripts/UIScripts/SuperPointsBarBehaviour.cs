@@ -12,7 +12,7 @@ public class SuperPointsBarBehaviour : MonoBehaviour
         superPointsBarSlider = this.GetComponent<Slider>();
 
         superPointsBarSlider.maxValue = 100.0f;
-        superPointsBarSlider.value = PlayerParameters.GetPlayerPoints();
+        superPointsBarSlider.value = PlayerParameters.GetPlayerCurrentPoints();
     }
 
     void Update()
@@ -22,6 +22,6 @@ public class SuperPointsBarBehaviour : MonoBehaviour
 
     public void UpdateHealth()
     {
-        superPointsBarSlider.value = PlayerParameters.GetPlayerPoints();
+        superPointsBarSlider.value = PlayerParameters.GetPlayerCurrentPoints();
     }
 }

@@ -15,7 +15,7 @@ public class GameBehaviour : MonoBehaviour
     }
 
     private void CheckPlayerDeath() {
-        if (PlayerParameters.GetPlayerHealth() <= 0.0f) { 
+        if (PlayerParameters.GetPlayerCurrentHealth() <= 0.0f) { 
             
         }
     }

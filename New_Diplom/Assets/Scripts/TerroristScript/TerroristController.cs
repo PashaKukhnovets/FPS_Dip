@@ -118,8 +118,8 @@ public class TerroristController : MonoBehaviour
 
     private IEnumerator DeathCoroutine()
     {
-        if (PlayerParameters.GetPlayerPoints() < 100.0f) {
-            PlayerParameters.AddPlayerPoints(20.0f);
+        if (PlayerParameters.GetPlayerCurrentPoints() < 100.0f) {
+            PlayerParameters.AddPlayerCurrentPoints(20.0f);
         }
 
         yield return new WaitForSeconds(4.0f);

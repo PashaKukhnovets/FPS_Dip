@@ -49,7 +49,7 @@ public class TerroristRayShooting : MonoBehaviour
 
                     if (hitObject.GetComponent<PlayerController>())
                     {
-                        PlayerParameters.AddPlayerHealth(-15.0f);
+                        PlayerParameters.AddPlayerDamage(15.0f);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }

@@ -11,8 +11,8 @@ public class EnergyBarBehaviour : MonoBehaviour
     {
         energyBarSlider = this.GetComponent<Slider>();
 
-        energyBarSlider.maxValue = PlayerParameters.GetPlayerEnergy();
-        energyBarSlider.value = PlayerParameters.GetPlayerEnergy();
+        energyBarSlider.maxValue = PlayerParameters.GetPlayerMaxEnergy();
+        energyBarSlider.value = PlayerParameters.GetPlayerCurrentEnergy();
     }
 
     void Update()
@@ -22,6 +22,6 @@ public class EnergyBarBehaviour : MonoBehaviour
 
     public void UpdateHealth()
     {
-        energyBarSlider.value = PlayerParameters.GetPlayerEnergy();
+        energyBarSlider.value = PlayerParameters.GetPlayerCurrentEnergy();
     }
 }

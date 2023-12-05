@@ -11,8 +11,8 @@ public class HealthBarBehaviour: MonoBehaviour
     {
         healthBarSlider = this.GetComponent<Slider>();
 
-        healthBarSlider.maxValue = PlayerParameters.GetPlayerHealth();
-        healthBarSlider.value = PlayerParameters.GetPlayerHealth();
+        healthBarSlider.maxValue = PlayerParameters.GetPlayerMaxHealth();
+        healthBarSlider.value = PlayerParameters.GetPlayerCurrentHealth();
     }
 
     void Update()
@@ -22,6 +22,6 @@ public class HealthBarBehaviour: MonoBehaviour
 
     public void UpdateHealth()
     {
-        healthBarSlider.value = PlayerParameters.GetPlayerHealth();
+        healthBarSlider.value = PlayerParameters.GetPlayerCurrentHealth();
     }
 }

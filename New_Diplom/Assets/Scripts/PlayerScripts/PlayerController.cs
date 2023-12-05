@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float termVelocity = -10.0f;
     private bool isFreezing = false;
     private Vector3 movement;
+    private bool isEnergyBonus = false;
 
     public event UnityAction IsFreezeTime;
     public event UnityAction NoFreezeTime;
@@ -25,6 +26,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+
+        PlayerParameters.InitPlayerCurrentHealth(PlayerParameters.GetPlayerMaxHealth());
+        PlayerParameters.InitPlayerCurrentEnergy(PlayerParameters.GetPlayerMaxEnergy());
+        PlayerParameters.InitPlayerCurrentPoints(PlayerParameters.GetPlayerMaxPoints());
     }
 
     void Update()
@@ -65,13 +70,13 @@ public class PlayerController : MonoBehaviour
     private void Sprint() {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            if (PlayerParameters.GetPlayerEnergy() > 0.0f)
+            if (PlayerParameters.GetPlayerCurrentEnergy() > 0.0f)
             {
                 if (Time.time > nextStep)
                 {
                     nextStep = Time.time + 1.0f / rate;
-
-                    PlayerParameters.AddPlayerEnergy(-5.0f);
+                    if(!isEnergyBonus)
+                        PlayerParameters.AddPlayerCurrentEnergy(-5.0f);
                 }
 
                 this.speed = 8.0f;
@@ -84,7 +89,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FreezeTime() {
-        if (Input.GetKey(KeyCode.Mouse1) && PlayerParameters.GetPlayerPoints() > 0.0f)
+        if (Input.GetKey(KeyCode.Mouse1) && PlayerParameters.GetPlayerCurrentPoints() > 0.0f)
         {
             if (!isFreezing)
             {
@@ -107,22 +112,27 @@ public class PlayerController : MonoBehaviour
             if (Time.time > nextStep)
             {
                 nextStep = Time.time + 1.0f / refillRate;
-                PlayerParameters.AddPlayerPoints(-1.0f);
+                PlayerParameters.AddPlayerCurrentPoints(-1.0f);
             }
         }
     }
 
     private void RefillEnergy() {
         if (!Input.GetKey(KeyCode.LeftShift)) {
-            if (PlayerParameters.GetPlayerEnergy() < 100.0f)
+            if (PlayerParameters.GetPlayerCurrentEnergy() < 100.0f)
             {
                 if (Time.time > nextStep)
                 {
                     nextStep = Time.time + 1.0f / refillRate;
 
-                    PlayerParameters.AddPlayerEnergy(2.0f);
+                    PlayerParameters.AddPlayerCurrentEnergy(2.0f);
                 }
             }
         }
     }
+
+    public void SetEnergyBonus(bool value) {
+        isEnergyBonus = value;
+    }
+
 }

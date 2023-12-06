@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class TerroristController : MonoBehaviour
 {
-    private RayShooting playerShoot;
     private GameObject player;
     private bool isFirstMovement = true;
     private bool isTerroristRunning = true;
@@ -22,8 +21,6 @@ public class TerroristController : MonoBehaviour
 
     private void Start()
     {
-        playerShoot = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<RayShooting>();
-        playerShoot.HitChecker += HitByPlayer;
         player = GameObject.FindGameObjectWithTag("Player");
         player.gameObject.GetComponent<PlayerController>().IsFreezeTime += Freeze;
         player.gameObject.GetComponent<PlayerController>().NoFreezeTime += Unfreeze;
@@ -67,7 +64,7 @@ public class TerroristController : MonoBehaviour
 
     }
 
-    private void HitByPlayer() {
+    public void HitByPlayer() {
         if (isFirstMovement) {
             isFirstMovement = false;
             this.gameObject.GetComponent<Pursue>().enabled = true;
@@ -75,7 +72,6 @@ public class TerroristController : MonoBehaviour
         }
 
         this.terroristHealth -= PlayerParameters.playerDamage;
-        Debug.Log("Popal");
     }
 
     private void Freeze() {
@@ -121,6 +117,8 @@ public class TerroristController : MonoBehaviour
         if (PlayerParameters.GetPlayerCurrentPoints() < 100.0f) {
             PlayerParameters.AddPlayerCurrentPoints(20.0f);
         }
+
+        PlayerParameters.AddPlayerCurrentBoostPoints(Random.Range(30, 50));
 
         yield return new WaitForSeconds(4.0f);
         player.gameObject.GetComponent<PlayerController>().IsFreezeTime -= Freeze;

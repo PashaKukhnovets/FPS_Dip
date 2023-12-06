@@ -6,12 +6,20 @@ using UnityEngine;
 public class GameBehaviour : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI bulletStore;
+    [SerializeField] private TextMeshProUGUI boostPoints;
+    [SerializeField] private GameObject boostWindow;
+    [SerializeField] private PuzzleBehaviour puzzle;
 
     private GameObject playerWeapon;
+    private bool isBoostOpen = false;
+    private bool isCursorShow = false;
 
     private void Update()
     {
         UpdateBulletStoreText();
+        UpdateBoostPointsText();
+        BoostWindowVisibility();
+        ShowCursor();
     }
 
     private void CheckPlayerDeath() {
@@ -21,16 +29,51 @@ public class GameBehaviour : MonoBehaviour
     }
 
     private void UpdateBulletStoreText() {
-        playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
-
-        if (playerWeapon.GetComponent<AKBehaviour>())
+        if (!puzzle.CheckPuzzleActivity())
         {
-            bulletStore.text = playerWeapon.GetComponent<AKBehaviour>().GetCurrentBulletCount().ToString() + "/" +
-                playerWeapon.GetComponent<AKBehaviour>().GetAmountOfBullets().ToString();
-        }
-        //else if ()
-        //{
+            playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
 
-        //}
+            if (playerWeapon.GetComponent<AKBehaviour>())
+            {
+                bulletStore.text = playerWeapon.GetComponent<AKBehaviour>().GetCurrentBulletCount().ToString() + "/" +
+                    playerWeapon.GetComponent<AKBehaviour>().GetAmountOfBullets().ToString();
+            }
+            //else if ()
+            //{
+
+            //}
+        }
+    }
+
+    private void UpdateBoostPointsText() {
+        boostPoints.text = PlayerParameters.GetPlayerCurrentBoostPoints().ToString();
+    }
+
+    private void BoostWindowVisibility() {
+        if (Input.GetKeyDown(KeyCode.Q) && !isBoostOpen)
+        {
+            boostWindow.gameObject.SetActive(true);
+            isBoostOpen = true;
+            isCursorShow = true;
+        }
+        else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q)) && isBoostOpen)
+        {
+            boostWindow.gameObject.SetActive(false);
+            isBoostOpen = false;
+            isCursorShow = false;
+        }
+    }
+
+    private void ShowCursor() {
+        if (isCursorShow)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        else if (!isCursorShow)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

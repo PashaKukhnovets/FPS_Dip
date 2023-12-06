@@ -17,8 +17,6 @@ public class RayShooting : MonoBehaviour
     private float nextShoot = 0.0f;
     private GameObject weapon;
 
-    public event UnityAction HitChecker;
-
     void OnGUI()
     {
         int size = 20;
@@ -72,9 +70,9 @@ public class RayShooting : MonoBehaviour
             {
                 GameObject hitObject = hit.transform.gameObject;
 
-                if (hitObject.GetComponent<Rigidbody>())
+                if (hitObject.GetComponent<TerroristController>())
                 {
-                    HitChecker?.Invoke();
+                    hitObject.GetComponent<TerroristController>().HitByPlayer();
                     StartCoroutine(BloodEffect(hit));
                 }
                 else if (hitObject.GetComponent<BoxCollider>())

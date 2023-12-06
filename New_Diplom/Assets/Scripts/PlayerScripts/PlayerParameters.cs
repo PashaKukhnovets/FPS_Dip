@@ -13,6 +13,7 @@ public static class PlayerParameters
     private static float playerCurrentHealth;
     private static float playerCurrentEnergy;
     private static float playerCurrentPoints;
+    private static int playerCurrentBoostPoints = 10000;
 
     public static void InitPlayerCurrentHealth(float health) {
         playerCurrentHealth = health;
@@ -24,6 +25,10 @@ public static class PlayerParameters
 
     public static void InitPlayerCurrentPoints(float points) {
         playerCurrentPoints = points;
+    }
+
+    public static void InitPlayerCurrentBoostPoints(int points) {
+        playerCurrentBoostPoints = points;
     }
 
     public static void AddPlayerMaxHealth(float hp) {
@@ -56,6 +61,15 @@ public static class PlayerParameters
         playerCurrentPoints += points;
     }
 
+    public static void AddPlayerCurrentBoostPoints(int points)
+    {
+        playerCurrentBoostPoints += points;
+    }
+
+    public static void SpendBoostPoints(int points) {
+        playerCurrentBoostPoints -= points;
+    }
+
     public static float GetPlayerCurrentHealth() {
         return playerCurrentHealth;
     }
@@ -66,6 +80,10 @@ public static class PlayerParameters
 
     public static float GetPlayerCurrentPoints() {
         return playerCurrentPoints;
+    }
+
+    public static float GetPlayerCurrentBoostPoints() {
+        return playerCurrentBoostPoints;
     }
 
     public static float GetPlayerMaxHealth()

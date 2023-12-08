@@ -9,6 +9,7 @@ public class DoorBehaviour : MonoBehaviour
     private bool isPuzzleActive = false;
     private bool isWire = false;
     private bool isTube = false;
+    private bool isEndPuzzle = false;
 
     private void Start()
     {
@@ -23,8 +24,11 @@ public class DoorBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        puzzle.SetActive(true);
-        isPuzzleActive = true;
+        if (!isEndPuzzle)
+        {
+            puzzle.SetActive(true);
+            isPuzzleActive = true;
+        }
     }
 
     private void OpenDoor() {
@@ -33,12 +37,14 @@ public class DoorBehaviour : MonoBehaviour
             if (isPuzzleActive && puzzle.GetComponent<CheckWinTube>().IsEndTubes())
             {
                 GetComponent<Animator>().SetTrigger("DoorATrigger");
+                isEndPuzzle = true;
             }
         }
         if (isWire) {
             if (isPuzzleActive && puzzle.GetComponent<CheckWinWires>().IsEndWires())
             {
                 GetComponent<Animator>().SetTrigger("DoorATrigger");
+                isEndPuzzle = true;
             }
         }
     }

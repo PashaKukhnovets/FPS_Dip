@@ -263,6 +263,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114809449196239576, guid: e193aeba793b2ed4da311c6a1f433691, type: 3}
+      propertyPath: puzzle
+      value: 
+      objectReference: {fileID: 1013840399}
+    - target: {fileID: 114809449196239576, guid: e193aeba793b2ed4da311c6a1f433691, type: 3}
       propertyPath: puzzleWire_1
       value: 
       objectReference: {fileID: 1013840399}

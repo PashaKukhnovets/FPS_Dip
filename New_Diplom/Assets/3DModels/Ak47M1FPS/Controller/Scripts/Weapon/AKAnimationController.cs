@@ -30,6 +30,7 @@ public class AKAnimationController : MonoBehaviour
     private AKBehaviour weapon;
 
     private bool blockMouse = false;
+    private bool isSprint = false;
 
     public event UnityAction RefillAK;
 
@@ -48,7 +49,7 @@ public class AKAnimationController : MonoBehaviour
     }
 
     private void Fire() {
-        if (!isAiming && !blockMouse)
+        if (!blockMouse)
         {
             if (Input.GetButton("Fire1") && Time.time > nextShoot && weapon.GetCurrentBulletCount() > 0)
             {
@@ -57,6 +58,7 @@ public class AKAnimationController : MonoBehaviour
                 weapon.AddCurrentBulletCount(-1);
 
                 FirePlay();
+ 
             }
         }
     }
@@ -74,14 +76,16 @@ public class AKAnimationController : MonoBehaviour
     }
 
     private void AimingUp() {
-        if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimAimUp.name) && Input.GetMouseButtonDown(1))
+        if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimAimUp.name) && 
+            Input.GetMouseButtonDown(1) && !isSprint)
         {
             AimingUpPlay();
+            
         }
     }
 
     private void AimingDown() {
-        if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimAimDown.name) && Input.GetMouseButtonUp(1))
+        if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimAimDown.name) && Input.GetMouseButtonUp(1) && !isSprint)
         {
             AimingDownPlay();
         }
@@ -97,11 +101,13 @@ public class AKAnimationController : MonoBehaviour
             {
                 WeaponAnim.CrossFade(AnimRun[0].name);
                 blockMouse = true;
+                isSprint = true;
             }
             else
             {
                 WeaponAnim.CrossFade(AnimWalk[0].name);
                 blockMouse = false;
+                isSprint = false;
             }
         }
         else if (!WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) && !WeaponAnim.IsPlaying(AnimGet.name) && isAiming == false)
@@ -119,10 +125,10 @@ public class AKAnimationController : MonoBehaviour
         {
             WeaponAnim.Play(AnimFire[0].name);
         }
-        else
-        {
-            WeaponAnim.Play(AnimAimFire[0].name);
-        }
+        //else if (Input.GetMouseButtonDown(0) && Input.GetMouseButtonDown(1))
+        //{
+        //    WeaponAnim.Play(AnimAimFire[0].name);
+        //}
 
         audioSource.clip = audioFire;
         audioSource.PlayOneShot(audioSource.clip);

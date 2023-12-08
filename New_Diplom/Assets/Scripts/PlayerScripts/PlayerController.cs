@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     private float rate = 7.0f;
     private float refillRate = 5.0f;
-    private float nextStep = 0.0f;
+    private float nextStepEnergy = 0.0f;
+    private float nextStepPoints = 0.0f;
     private float jumpForce = 15.0f;
     private float vertSpeed = 0.0f;
     private float termVelocity = -10.0f;
@@ -72,9 +73,9 @@ public class PlayerController : MonoBehaviour
         {
             if (PlayerParameters.GetPlayerCurrentEnergy() > 0.0f)
             {
-                if (Time.time > nextStep)
+                if (Time.time > nextStepEnergy)
                 {
-                    nextStep = Time.time + 1.0f / rate;
+                    nextStepEnergy = Time.time + 1.0f / rate;
                     if(!isEnergyBonus)
                         PlayerParameters.AddPlayerCurrentEnergy(-5.0f);
                 }
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FreezeTime() {
-        if (Input.GetKey(KeyCode.Mouse1) && PlayerParameters.GetPlayerCurrentPoints() > 0.0f)
+        if (Input.GetMouseButton(1) && PlayerParameters.GetPlayerCurrentPoints() > 0.0f)
         {
             if (!isFreezing)
             {
@@ -109,9 +110,9 @@ public class PlayerController : MonoBehaviour
     private void MinusFreezePoints() {
         if (isFreezing)
         {
-            if (Time.time > nextStep)
+            if (Time.time > nextStepPoints)
             {
-                nextStep = Time.time + 1.0f / refillRate;
+                nextStepPoints = Time.time + 1.0f / refillRate;
                 PlayerParameters.AddPlayerCurrentPoints(-1.0f);
             }
         }
@@ -121,9 +122,9 @@ public class PlayerController : MonoBehaviour
         if (!Input.GetKey(KeyCode.LeftShift)) {
             if (PlayerParameters.GetPlayerCurrentEnergy() < 100.0f)
             {
-                if (Time.time > nextStep)
+                if (Time.time > nextStepEnergy)
                 {
-                    nextStep = Time.time + 1.0f / refillRate;
+                    nextStepEnergy = Time.time + 1.0f / refillRate;
 
                     PlayerParameters.AddPlayerCurrentEnergy(2.0f);
                 }

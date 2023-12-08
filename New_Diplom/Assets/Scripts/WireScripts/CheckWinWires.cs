@@ -36,6 +36,10 @@ public class CheckWinWires : MonoBehaviour
         }
     }
 
+    public bool IsEndWires() {
+        return isEndPuzzles;
+    }
+
     private IEnumerator OffPuzzles()
     {
         yield return new WaitForSeconds(3.0f);

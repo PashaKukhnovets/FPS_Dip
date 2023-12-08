@@ -61,19 +61,21 @@ public class GameBehaviour : MonoBehaviour
             boostWindow.gameObject.SetActive(false);
             isBoostOpen = false;
             isCursorShow = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 
     private void ShowCursor() {
-        if (isCursorShow)
+        if (isCursorShow && isBoostOpen)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
-        else if (!isCursorShow)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        //else if (!isCursorShow && !isBoostOpen)
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+        //}
     }
 }

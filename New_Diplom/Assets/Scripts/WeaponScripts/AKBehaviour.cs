@@ -19,6 +19,10 @@ public class AKBehaviour : MonoBehaviour
         
     }
 
+    public void InitAmountOfBullets(int value) {
+        this.amountOfBullets = value;
+    }
+
     public int GetAmountOfBullets() { 
         return this.amountOfBullets;
     }

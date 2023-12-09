@@ -12,8 +12,14 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private GameObject escapeWindow;
 
     private GameObject playerWeapon;
+    private GameObject player;
     private bool isBoostOpen = false;
     private bool isCursorActive = false;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void Update()
     {
@@ -58,6 +64,7 @@ public class GameBehaviour : MonoBehaviour
             boostWindow.gameObject.SetActive(true);
             PlayerParameters.SetWindowOpen(true);
             isBoostOpen = true;
+            
         }
         else if (Input.GetKeyDown(KeyCode.Q) && PlayerParameters.GetWindowOpen() && isBoostOpen)
         {
@@ -66,6 +73,7 @@ public class GameBehaviour : MonoBehaviour
             Cursor.visible = false;
             PlayerParameters.SetWindowOpen(false);
             isBoostOpen = false;
+            player.GetComponent<PlayerController>().BlockPlayerMove(true);
         }
     }
 
@@ -74,6 +82,7 @@ public class GameBehaviour : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+            player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
     }
 
@@ -83,6 +92,7 @@ public class GameBehaviour : MonoBehaviour
         {
             escapeWindow.gameObject.SetActive(true);
             PlayerParameters.SetWindowOpen(true);
+            player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
     }  
 }

@@ -34,9 +34,7 @@ public class PuzzleBehaviour : MonoBehaviour
             Cursor.visible = true;
             puzzleCamera.gameObject.SetActive(true);
             playerCamera.gameObject.SetActive(false);
-            player.GetComponent<MouseLook>().enabled = false;
-            player.GetComponent<PlayerController>().enabled = false;
-            playerWeapon.GetComponent<AKAnimationController>().enabled = false;
+            player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
         else
         {
@@ -44,9 +42,7 @@ public class PuzzleBehaviour : MonoBehaviour
             Cursor.visible = false;
             puzzleCamera.gameObject.SetActive(false);
             playerCamera.gameObject.SetActive(true);
-            player.GetComponent<MouseLook>().enabled = true;
-            player.GetComponent<PlayerController>().enabled = true;
-            playerWeapon.GetComponent<AKAnimationController>().enabled = true;
+            player.GetComponent<PlayerController>().BlockPlayerMove(true);
         }
     }
 

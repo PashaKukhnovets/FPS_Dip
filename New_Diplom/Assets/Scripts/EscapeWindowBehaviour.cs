@@ -7,8 +7,16 @@ public class EscapeWindowBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject escapeWindow;
 
+    private GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     public void Resume() {
         PlayerParameters.SetWindowOpen(false);
+        player.GetComponent<PlayerController>().BlockPlayerMove(true);
         escapeWindow.SetActive(false);
     }
 

@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameObject mainCamera;
+
     public float speed = 6.0f;
 
     public float gravity = -9.8f;
@@ -20,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool isFreezing = false;
     private Vector3 movement;
     private bool isEnergyBonus = false;
+    private GameObject playerWeapon;
 
     public event UnityAction IsFreezeTime;
     public event UnityAction NoFreezeTime;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
 
         PlayerParameters.InitPlayerCurrentHealth(PlayerParameters.GetPlayerMaxHealth());
         PlayerParameters.InitPlayerCurrentEnergy(PlayerParameters.GetPlayerMaxEnergy());
@@ -134,6 +138,14 @@ public class PlayerController : MonoBehaviour
 
     public void SetEnergyBonus(bool value) {
         isEnergyBonus = value;
+    }
+
+    public void BlockPlayerMove(bool value) {
+        this.gameObject.GetComponent<MouseLook>().enabled = value;
+        this.gameObject.GetComponent<PlayerController>().enabled = value;
+        playerWeapon.GetComponent<AKAnimationController>().enabled = value;
+        mainCamera.GetComponent<MouseLook>().enabled = value;
+        mainCamera.GetComponent<RayShooting>().enabled = value;
     }
 
 }

@@ -9,10 +9,11 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private TextMeshProUGUI boostPoints;
     [SerializeField] private GameObject boostWindow;
     [SerializeField] private PuzzleBehaviour puzzle;
+    [SerializeField] private GameObject escapeWindow;
 
     private GameObject playerWeapon;
     private bool isBoostOpen = false;
-    private bool isCursorShow = false;
+    private bool isCursorActive = false;
 
     private void Update()
     {
@@ -20,11 +21,13 @@ public class GameBehaviour : MonoBehaviour
         UpdateBoostPointsText();
         BoostWindowVisibility();
         ShowCursor();
+        EscapeWindowVisibility();
+        Debug.Log(PlayerParameters.GetWindowOpen());
     }
 
     private void CheckPlayerDeath() {
-        if (PlayerParameters.GetPlayerCurrentHealth() <= 0.0f) { 
-            
+        if (PlayerParameters.GetPlayerCurrentHealth() <= 0.0f) {
+
         }
     }
 
@@ -50,32 +53,36 @@ public class GameBehaviour : MonoBehaviour
     }
 
     private void BoostWindowVisibility() {
-        if (Input.GetKeyDown(KeyCode.Q) && !isBoostOpen)
+        if (Input.GetKeyDown(KeyCode.Q) && !PlayerParameters.GetWindowOpen())
         {
             boostWindow.gameObject.SetActive(true);
+            PlayerParameters.SetWindowOpen(true);
             isBoostOpen = true;
-            isCursorShow = true;
         }
-        else if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q)) && isBoostOpen)
+        else if (Input.GetKeyDown(KeyCode.Q) && PlayerParameters.GetWindowOpen() && isBoostOpen)
         {
             boostWindow.gameObject.SetActive(false);
-            isBoostOpen = false;
-            isCursorShow = false;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            PlayerParameters.SetWindowOpen(false);
+            isBoostOpen = false;
         }
     }
 
     private void ShowCursor() {
-        if (isCursorShow && isBoostOpen)
+        if (boostWindow.activeSelf || escapeWindow.activeSelf || puzzle.CheckPuzzleActivity())
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
-        //else if (!isCursorShow && !isBoostOpen)
-        //{
-        //    Cursor.lockState = CursorLockMode.Locked;
-        //    Cursor.visible = false;
-        //}
     }
+
+    private void EscapeWindowVisibility()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !PlayerParameters.GetWindowOpen())
+        {
+            escapeWindow.gameObject.SetActive(true);
+            PlayerParameters.SetWindowOpen(true);
+        }
+    }  
 }

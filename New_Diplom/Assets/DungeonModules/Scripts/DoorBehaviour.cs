@@ -10,6 +10,7 @@ public class DoorBehaviour : MonoBehaviour
     private bool isWire = false;
     private bool isTube = false;
     private bool isEndPuzzle = false;
+    private bool isInTrigger = false;
 
     private void Start()
     {
@@ -24,10 +25,23 @@ public class DoorBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isEndPuzzle)
+        if (other.gameObject.GetComponent<PlayerController>())
         {
-            puzzle.SetActive(true);
-            isPuzzleActive = true;
+            if (!isEndPuzzle)
+            {
+                puzzle.SetActive(true);
+                isPuzzleActive = true;
+                PlayerParameters.SetWindowOpen(true);
+                isInTrigger = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>())
+        {
+            isInTrigger = false;
         }
     }
 
@@ -61,9 +75,15 @@ public class DoorBehaviour : MonoBehaviour
     }
 
     private void CheckExitPuzzle() {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isInTrigger)
         {
-            puzzle.SetActive(false);
+            StartCoroutine(PuzzleCLoseVariable());
         }
+    }
+
+    private IEnumerator PuzzleCLoseVariable() {
+        yield return new WaitForSeconds(0.5f);
+        PlayerParameters.SetWindowOpen(false);
+        puzzle.SetActive(false);
     }
 }

@@ -16,7 +16,6 @@ public class WireMoving : MonoBehaviour
         PuzzleMoving();
         mousePos = Input.mousePosition;
         mousePos = puzzleCamera.ScreenToWorldPoint(mousePos);
-        Debug.Log(mousePos);
     }
 
     private void OnMouseDown()

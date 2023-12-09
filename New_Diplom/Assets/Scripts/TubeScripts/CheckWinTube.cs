@@ -45,6 +45,7 @@ public class CheckWinTube : MonoBehaviour
     private IEnumerator OffPuzzles() {
         yield return new WaitForSeconds(3.0f);
 
+        PlayerParameters.SetWindowOpen(false);
         this.gameObject.SetActive(false);
     }
 }

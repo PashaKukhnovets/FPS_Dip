@@ -15,6 +15,8 @@ public static class PlayerParameters
     private static float playerCurrentPoints;
     private static int playerCurrentBoostPoints = 10000;
 
+    private static bool isWindowOpen = false;
+
     public static void InitPlayerCurrentHealth(float health) {
         playerCurrentHealth = health;
     }
@@ -100,4 +102,13 @@ public static class PlayerParameters
     {
         return playerMaxPoints;
     }
+
+    public static void SetWindowOpen(bool flag) {
+        isWindowOpen = flag;
+    }
+
+    public static bool GetWindowOpen() {
+        return isWindowOpen;
+    }
+
 }

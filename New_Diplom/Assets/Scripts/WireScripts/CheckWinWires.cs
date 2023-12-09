@@ -9,7 +9,7 @@ public class CheckWinWires : MonoBehaviour
     [SerializeField] private GameObject[] wireConnections;
     [SerializeField] private GameObject winLabel;
 
-    private bool isEndPuzzles = false;
+    private bool isEndPuzzles = false; 
 
     void Update()
     {
@@ -44,6 +44,7 @@ public class CheckWinWires : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
 
+        PlayerParameters.SetWindowOpen(false);
         this.gameObject.SetActive(false);
     }
 }

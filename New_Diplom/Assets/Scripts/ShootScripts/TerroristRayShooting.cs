@@ -15,7 +15,8 @@ public class TerroristRayShooting : MonoBehaviour
     private bool isStartShooting = false;
     private bool isShooting = false;
     private bool isFirstShoot = true;
-    private float rate = 3.5f;
+
+    public float terroristRate = 3.5f;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class TerroristRayShooting : MonoBehaviour
             {
                 countOfShooting++;
 
-                nextShoot = Time.time + 1.0f / rate;
+                nextShoot = Time.time + 1.0f / terroristRate;
 
                 muzzleEffect.Play();
 
@@ -120,7 +121,7 @@ public class TerroristRayShooting : MonoBehaviour
     }
 
     public void changeRateAttackTerrorist(float currentRate) {
-        this.rate = currentRate;
+        this.terroristRate = currentRate;
     }
 
 }

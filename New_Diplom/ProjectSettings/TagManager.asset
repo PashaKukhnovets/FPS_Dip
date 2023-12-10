@@ -10,6 +10,7 @@ TagManager:
   - YellowWire
   - OrangeWire
   - PlayerWeapon
+  - Terrorist
   layers:
   - Default
   - TransparentFX

@@ -101,9 +101,6 @@ public class TerroristController : MonoBehaviour
     public void CheckTerroristDeath() {
         if (this.terroristHealth <= 0.0f && !isDeath)
         {
-            //if (isZombieCount)
-            //    GameManagerBehaviour.zombieDeathCount++;
-            //isZombieCount = false;
             isDeath = true;
             TerroristDeath?.Invoke();
             this.gameObject.GetComponent<Pursue>().enabled = false;

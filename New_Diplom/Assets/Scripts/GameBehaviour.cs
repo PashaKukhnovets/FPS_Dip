@@ -10,14 +10,17 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private GameObject boostWindow;
     [SerializeField] private PuzzleBehaviour puzzle;
     [SerializeField] private GameObject escapeWindow;
+    [SerializeField] private GameObject deathWindow;
 
     private GameObject playerWeapon;
     private GameObject player;
     private bool isBoostOpen = false;
     private bool isCursorActive = false;
+    private bool isDeath = false;
 
     private void Start()
     {
+        Time.timeScale = 1;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -28,12 +31,18 @@ public class GameBehaviour : MonoBehaviour
         BoostWindowVisibility();
         ShowCursor();
         EscapeWindowVisibility();
-        Debug.Log(PlayerParameters.GetWindowOpen());
+        CheckPlayerDeath();
+        DeathBlock();
     }
 
     private void CheckPlayerDeath() {
-        if (PlayerParameters.GetPlayerCurrentHealth() <= 0.0f) {
-
+        if (PlayerParameters.GetPlayerCurrentHealth() <= 0.0f && !isDeath) {
+            isDeath = true;
+            boostWindow.SetActive(false);
+            escapeWindow.SetActive(false);
+            PlayerParameters.SetWindowOpen(true);
+            Time.timeScale = 0;
+            deathWindow.SetActive(true);
         }
     }
 
@@ -94,5 +103,14 @@ public class GameBehaviour : MonoBehaviour
             PlayerParameters.SetWindowOpen(true);
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
-    }  
+    }
+
+    private void DeathBlock() {
+        if (PlayerParameters.GetPlayerCurrentHealth() <= 0)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            player.GetComponent<PlayerController>().BlockPlayerMove(false);
+        }
+    }
 }

@@ -70,33 +70,23 @@ public class RayShooting : MonoBehaviour
             {
                 GameObject hitObject = hit.transform.gameObject;
 
-                if (hitObject.GetComponent<TerroristController>())
+                if (hitObject.gameObject.CompareTag("Terrorist"))
                 {
-                    hitObject.GetComponent<TerroristController>().HitByPlayer();
-                    StartCoroutine(BloodEffect(hit));
+                    if (hitObject.gameObject.GetComponent<TerroristController>()) {
+                        hitObject.GetComponent<TerroristController>().HitByPlayer();
+                        StartCoroutine(BloodEffect(hit));
+                    }
+                    if (hitObject.gameObject.GetComponent<SecondTerroristController>()) {
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
+                        StartCoroutine(BloodEffect(hit));
+                    }
                 }
-                else if (hitObject.GetComponent<BoxCollider>())
-                {
-                    StartCoroutine(HoleIndicator(hit.point));
-                    StartCoroutine(BloodEffect(hit));
-                }
-
             }
         }
     }
 
     private void FindPlayerWeapon() {
         weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
-    }
-
-    private IEnumerator HoleIndicator(Vector3 pos)
-    {
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere); //Instantiate
-        sphere.transform.position = pos;
-
-        yield return new WaitForSeconds(1);
-
-        Destroy(sphere);
     }
 
     private IEnumerator BloodEffect(RaycastHit hit)

@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Rifle_Sit
+    m_ConditionEvent: IsRifleSit
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4104457526747952950}
@@ -90,13 +90,13 @@ AnimatorController:
   m_Name: Terrorist_Second_ANim_Controller
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Rifle_Sit
+  - m_Name: IsRifleSit
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Death_Sit
+  - m_Name: IsDeathSit
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -124,7 +124,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Rifle_Sit
+    m_ConditionEvent: IsRifleSit
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4522817795974491870}
@@ -149,7 +149,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Death_Sit
+    m_ConditionEvent: IsDeathSit
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4102353854567535390}
@@ -228,7 +228,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Death_Sit
+    m_ConditionEvent: IsDeathSit
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4102353854567535390}

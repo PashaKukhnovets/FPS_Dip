@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1438562543947538}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4416301719978934}
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ecde3c6a9545943bebd5e84de20d17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzle: {fileID: 0}
 --- !u!65 &65708705781216632
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438562543947538}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: 26aec004d42c0a640bf94c71b19365ec, type: 3}
   m_Controller: {fileID: 9100000, guid: f5997804875ae5742b5619958df4af88, type: 2}
   m_CullingMode: 0
@@ -173,7 +174,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814416910804000}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.48499998, y: 0, z: -0.049999997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -30,16 +30,16 @@ public class PuzzleBehaviour : MonoBehaviour
     {
         if (CheckPuzzleActivity())
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            //Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.visible = true;
             puzzleCamera.gameObject.SetActive(true);
             playerCamera.gameObject.SetActive(false);
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
             puzzleCamera.gameObject.SetActive(false);
             playerCamera.gameObject.SetActive(true);
             player.GetComponent<PlayerController>().BlockPlayerMove(true);

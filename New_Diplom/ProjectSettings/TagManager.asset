@@ -11,6 +11,7 @@ TagManager:
   - OrangeWire
   - PlayerWeapon
   - Terrorist
+  - WinDoor
   layers:
   - Default
   - TransparentFX

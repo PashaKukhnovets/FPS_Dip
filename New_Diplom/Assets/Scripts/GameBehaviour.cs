@@ -93,6 +93,10 @@ public class GameBehaviour : MonoBehaviour
             Cursor.visible = true;
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
+        else if(!boostWindow.activeSelf && !escapeWindow.activeSelf && !puzzle.CheckPuzzleActivity()) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     private void EscapeWindowVisibility()

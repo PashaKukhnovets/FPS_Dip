@@ -8,6 +8,7 @@ public class TerroristSpawn : MonoBehaviour
 
     public void TerroristsOn() {
         foreach (var terrorist in terrorists) {
+            Debug.Log("spawn");
             terrorist.gameObject.SetActive(true);
         } 
     }

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private float refillRate = 5.0f;
     private float nextStepEnergy = 0.0f;
     private float nextStepPoints = 0.0f;
-    private float jumpForce = 15.0f;
+    private float jumpForce = 11.0f;
     private float vertSpeed = 0.0f;
     private float termVelocity = -10.0f;
     private bool isFreezing = false;

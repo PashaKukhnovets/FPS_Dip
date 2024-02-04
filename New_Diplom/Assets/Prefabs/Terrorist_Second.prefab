@@ -1002,8 +1002,6 @@ GameObject:
   - component: {fileID: 3325093154217690543}
   - component: {fileID: 3325093154217690545}
   - component: {fileID: 3325093154217690542}
-  - component: {fileID: 3325093154217690540}
-  - component: {fileID: 3325093154217690541}
   - component: {fileID: 3325093154217690538}
   - component: {fileID: 3325093154217690539}
   m_Layer: 0
@@ -1093,44 +1091,6 @@ CapsuleCollider:
   m_Height: 1.8034132
   m_Direction: 1
   m_Center: {x: 0.003463, y: 0.8934504, z: 0}
---- !u!114 &3325093154217690540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2514261256500132066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf5172afd83249941b9b73d9dba7f8e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  weight: 1
-  priority: 1
-  targetRadius: 1
-  slowRadius: 7
-  timeToTarget: 0.1
---- !u!114 &3325093154217690541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2514261256500132066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aebfd1a8daaa3ec44baf222fc41ff790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 2.5
-  maxAccel: 11.3
-  maxRotation: 360
-  maxAngularAccel: 190
-  orientation: 0
-  rotation: 0
-  velocity: {x: 0, y: 0, z: 0}
-  priorityThreshold: 0.2
 --- !u!114 &3325093154217690538
 MonoBehaviour:
   m_ObjectHideFlags: 0

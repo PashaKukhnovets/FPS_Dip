@@ -12,6 +12,7 @@ TagManager:
   - PlayerWeapon
   - Terrorist
   - WinDoor
+  - Points
   layers:
   - Default
   - TransparentFX

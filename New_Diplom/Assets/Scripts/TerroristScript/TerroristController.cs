@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class TerroristController : MonoBehaviour
@@ -11,6 +12,9 @@ public class TerroristController : MonoBehaviour
     private bool isInPlayerRadius = false;
     private bool isFreeze = false;
     private bool isDeath = false;
+    private List<Transform> Points = new List<Transform>();
+    private NavMeshAgent agent;
+    private bool isPatroling = true;
 
     public float terroristHealth = 100.0f;
     public float damage = 7.0f;
@@ -25,12 +29,32 @@ public class TerroristController : MonoBehaviour
         player.gameObject.GetComponent<PlayerController>().IsFreezeTime += Freeze;
         player.gameObject.GetComponent<PlayerController>().NoFreezeTime += Unfreeze;
         this.gameObject.GetComponent<Pursue>().enabled = false;
-        this.gameObject.GetComponent<Face>().enabled = false;
+        agent = this.gameObject.GetComponent<NavMeshAgent>();
+        agent.speed = 2.7f;
+        agent.angularSpeed = 240.0f;
+
+        Transform pointsObject = GameObject.FindGameObjectWithTag("Points").transform;
+
+        foreach (Transform point in pointsObject)
+        {
+            Points.Add(point);
+        }
+
+        agent.SetDestination(Points[Random.Range(0, Points.Count)].position);
     }
 
     void Update()
     {
         CheckTerroristDeath();
+        Patrol();
+    }
+
+    private void Patrol()
+    {
+        if (isPatroling) {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+                agent.SetDestination(Points[Random.Range(0, Points.Count)].position);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,14 +62,14 @@ public class TerroristController : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>())
         {
             this.gameObject.GetComponent<Pursue>().enabled = true;
-            this.gameObject.GetComponent<Face>().enabled = true;
             isFirstMovement = false;
             isTerroristRunning = false;
             TerroristRunFire?.Invoke();
             isInPlayerRadius = true;
+            isPatroling = false;
 
             if (!isFreeze)
-                this.gameObject.GetComponent<Agent>().maxSpeed = 1.3f;
+                agent.speed = 1.3f;
         }
     }
 
@@ -59,7 +83,7 @@ public class TerroristController : MonoBehaviour
             isInPlayerRadius = false;
 
             if(!isFreeze)
-                this.gameObject.GetComponent<Agent>().maxSpeed = 2.5f;
+                agent.speed = 4.8f;
         }
 
     }
@@ -68,33 +92,34 @@ public class TerroristController : MonoBehaviour
         if (isFirstMovement) {
             isFirstMovement = false;
             this.gameObject.GetComponent<Pursue>().enabled = true;
-            this.gameObject.GetComponent<Face>().enabled = true;
+            this.gameObject.GetComponent<Animator>().SetLookAtPosition(player.transform.position);
+            this.isTerroristRunning = true;
+            isPatroling = false;
+            
         }
 
         this.terroristHealth -= PlayerParameters.playerDamage;
     }
 
     private void Freeze() {
-        this.gameObject.GetComponent<Agent>().maxSpeed = 0.7f;
+        agent.speed = 0.7f;
         this.gameObject.GetComponentInChildren<TerroristRayShooting>().changeRateAttackTerrorist(0.5f);
         this.gameObject.GetComponent<Animator>().speed = 0.1f;
-        this.gameObject.GetComponent<Agent>().maxAngularAccel = 1.0f;
         isFreeze = true;
     }
 
     private void Unfreeze() {
         if (isInPlayerRadius)
         {
-            this.gameObject.GetComponent<Agent>().maxSpeed = 1.3f;
+            agent.speed = 1.3f;
         }
         else if (!isInPlayerRadius) {
-            this.gameObject.GetComponent<Agent>().maxSpeed = 2.5f;
+            agent.speed = 4.8f;
         }
 
         this.gameObject.GetComponentInChildren<TerroristRayShooting>().changeRateAttackTerrorist(3.5f);
         this.gameObject.GetComponent<Animator>().speed = 1.0f;
-        this.gameObject.GetComponent<Agent>().maxAngularAccel = 190.0f;
-
+        
         isFreeze = false;
     }
 
@@ -102,9 +127,10 @@ public class TerroristController : MonoBehaviour
         if (this.terroristHealth <= 0.0f && !isDeath)
         {
             isDeath = true;
-            TerroristDeath?.Invoke();
+            agent.isStopped =true;
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             this.gameObject.GetComponent<Pursue>().enabled = false;
-            this.gameObject.GetComponent<Face>().enabled = false;
+            TerroristDeath?.Invoke();
             StartCoroutine(DeathCoroutine());
         }
     }

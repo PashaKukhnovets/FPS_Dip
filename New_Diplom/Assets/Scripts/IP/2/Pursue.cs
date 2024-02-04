@@ -10,9 +10,6 @@ public class Pursue : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private GameObject player;
-    private float distance;
-
-    public float shootDistance = 10.5f; 
    
     public event UnityAction TerroristRunning;
     public event UnityAction TerroristStandFire;
@@ -21,7 +18,7 @@ public class Pursue : MonoBehaviour
     private void Start()
     {
         agent = this.gameObject.GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = 7.0f;
+        //agent.stoppingDistance = 7.0f;
         animator = this.gameObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -34,30 +31,29 @@ public class Pursue : MonoBehaviour
     public void CheckDistance()
     {
         agent.SetDestination(player.transform.position);
-        animator.SetLookAtPosition(player.transform.position);
+        //animator.SetLookAtPosition(player.transform.position);
 
         if (this.gameObject.GetComponent<TerroristController>().IsTerroristRunning())
         {
-            Debug.Log("run");
+            Debug.Log(agent.stoppingDistance);
             TerroristRunning?.Invoke();
             
         }
 
-        if (agent.remainingDistance <= agent.stoppingDistance + 1.5f)
+        if (agent.remainingDistance <= 7.0f)
         {
             if (!isLowDistance)
                 isLowDistance = true;
 
-            agent.speed = 0.0f;
-
+            agent.speed = 0.1f;
             TerroristStandFire?.Invoke();
         }
-        else if (agent.remainingDistance > agent.stoppingDistance + 1.5f)
+        else if (agent.remainingDistance > 7.0f)
         {
             if (isLowDistance)
             {
                 isLowDistance = false;
-                agent.speed = 4.8f;
+                agent.speed = 1.3f;
                 TerroristStandFireFalse?.Invoke();
             }
         }

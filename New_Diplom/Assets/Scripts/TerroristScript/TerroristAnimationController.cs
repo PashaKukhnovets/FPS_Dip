@@ -8,6 +8,8 @@ public class TerroristAnimationController : MonoBehaviour
     private Pursue terroristPursue;
     private Animator animator;
 
+    public bool isWalk = false;
+
     void Start()
     {
         terrorist = this.GetComponent<TerroristController>();
@@ -19,6 +21,9 @@ public class TerroristAnimationController : MonoBehaviour
         terrorist.TerroristRunFire += TerroristRunFire;
         terrorist.TerroristRunFireFalse += TerroristRunFireFalse;
         terrorist.TerroristDeath += TerroristDeath;
+
+        if (isWalk)
+            animator.SetBool("isWalkIdle", true);
     }
 
     public void TerroristRunning()

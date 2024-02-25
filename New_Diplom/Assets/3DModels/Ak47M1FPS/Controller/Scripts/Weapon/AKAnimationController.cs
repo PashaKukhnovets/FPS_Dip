@@ -155,6 +155,10 @@ public class AKAnimationController : MonoBehaviour
         isAiming = false;
     }
 
+    public void SetBlockMouse(bool value) {
+        this.blockMouse = value;
+    }
+
     public bool IsBlockedMouse() {
         return this.blockMouse;
     }

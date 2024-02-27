@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class ChangeWeaponBehaviour : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class ChangeWeaponBehaviour : MonoBehaviour
 
     private int RandAnimReload = 0;
     private AKAnimationController animController;
-    private bool isPistol = false;
 
+    public bool isPistol = false;
     public Animation WeaponAnim;
     public AnimationClip[] AnimFire;
     public AnimationClip AnimGet;
@@ -22,6 +23,17 @@ public class ChangeWeaponBehaviour : MonoBehaviour
     void Start()
     {
         animController = gameObject.GetComponent<AKAnimationController>();
+
+        if (isPistol)
+        {
+            SetToPistol();
+            leftTarget.localPosition = new Vector3(-0.091f, -0.438f, 0.66f);
+            leftTarget.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            rightTarget.localPosition = new Vector3(0.053f, -0.441f, -0.026f);
+            rightTarget.localRotation = Quaternion.Euler(12.535f, -262.3f, -86.8f);
+        }
+        else
+            SetToAk();
     }
 
     void Update()
@@ -41,31 +53,36 @@ public class ChangeWeaponBehaviour : MonoBehaviour
             if (!isPistol)
             {
                 isPistol = true;
-                ak.SetActive(false);
-                pistol.SetActive(true);
-                leftTarget.localPosition = new Vector3(-0.091f, -0.438f, 0.66f);
-                leftTarget.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-                rightTarget.localPosition = new Vector3(0.065f, -0.402f, -0.038f);
-                rightTarget.localRotation = Quaternion.Euler(12.535f, -262.3f, -86.8f);
-
+                SetToPistol();
             }
             else if (isPistol) {
                 isPistol = false;
-                ak.SetActive(true);
-                pistol.SetActive(false);
-                leftTarget.localPosition = new Vector3(-0.45f, -0.247f, -0.014f);
-                leftTarget.localRotation = Quaternion.Euler(-146.9f, 351.09f, -280.1f);
-                rightTarget.localPosition = new Vector3(0.094f, -0.49f, -0.077f);
-                rightTarget.localRotation = Quaternion.Euler(-2.969f, -265.2f, -90.02f);
+                SetToAk();
             }
 
             StartCoroutine(UnblockMouse());
         }
     }
 
+    private void SetToPistol() {
+        this.gameObject.GetComponent<RigBuilder>().enabled = true;
+        leftTarget.localPosition = new Vector3(-0.091f, -0.438f, 0.66f);
+        leftTarget.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        rightTarget.localPosition = new Vector3(0.0712f, 0.1031f, -0.031f);
+        rightTarget.localRotation = Quaternion.Euler(3.538f, -181.89f, -90.29f);
+        ak.SetActive(false);
+        pistol.SetActive(true);
+    }
+
+    private void SetToAk() {
+        this.gameObject.GetComponent<RigBuilder>().enabled = false;
+        ak.SetActive(true);
+        pistol.SetActive(false);
+    }
+
     private IEnumerator UnblockMouse()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.5f);
         animController.SetBlockMouse(false);
     }
 }

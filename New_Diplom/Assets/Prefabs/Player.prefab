@@ -346,6 +346,8 @@ MonoBehaviour:
   mouseLook: {fileID: 5380992168304858499}
   weaponAnim: {fileID: 5380992169695010758}
   puzzleBehaviour: {fileID: 0}
+  pistol: {fileID: 7722214444157981394}
+  ak: {fileID: 5380992170024307434}
 --- !u!1001 &5380992170024275362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -800,31 +802,12 @@ MonoBehaviour:
   leftTarget: {fileID: 0}
   pistol: {fileID: 0}
   ak: {fileID: 0}
+  isPistol: 0
   WeaponAnim: {fileID: 0}
-  AnimIdle: []
-  AnimWalk: []
   AnimFire: []
-  AnimIdleWalkToRun: {fileID: 0}
-  AnimRun: []
-  AnimRunToAnimIdleWalk: {fileID: 0}
   AnimGet: {fileID: 0}
   AnimRemove: {fileID: 0}
-  AnimAimUp: {fileID: 0}
-  AnimAimFire: []
-  AnimAimDown: {fileID: 0}
   AnimReload: []
---- !u!114 &5380992169695010757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5380992170024307432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 787d80c6b4e1a03458f3d0fb17e78698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5380992169695010758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,6 +858,24 @@ MonoBehaviour:
   - m_Rig: {fileID: 3371191084821018838}
     m_Active: 1
   m_Effectors: []
+--- !u!1 &5380992170024307434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100168, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}
+  m_PrefabInstance: {fileID: 5380992170024275362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1170857650076472543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5380992170024307434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787d80c6b4e1a03458f3d0fb17e78698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationController: {fileID: 0}
 --- !u!111 &5380992170031174338 stripped
 Animation:
   m_CorrespondingSourceObject: {fileID: 11100000, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}
@@ -1019,3 +1020,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24293e33d3322f84bb98b6c032ce2dc9, type: 3}
+--- !u!1 &7722214444157981394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3763604498974455608, guid: 24293e33d3322f84bb98b6c032ce2dc9, type: 3}
+  m_PrefabInstance: {fileID: 6850488808006378986}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &158267209887750033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7722214444157981394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4089012579c034c92d7443bcb730b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationController: {fileID: 0}

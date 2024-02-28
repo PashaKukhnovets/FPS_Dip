@@ -11,12 +11,15 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private PuzzleBehaviour puzzle;
     [SerializeField] private GameObject escapeWindow;
     [SerializeField] private GameObject deathWindow;
+    [SerializeField] private GameObject pistol;
+    [SerializeField] private GameObject ak;
 
-    private GameObject playerWeapon;
     private GameObject player;
     private bool isBoostOpen = false;
     private bool isCursorActive = false;
     private bool isDeath = false;
+    private bool isPistol;
+    private bool isAK;
 
     private void Start()
     {
@@ -49,17 +52,20 @@ public class GameBehaviour : MonoBehaviour
     private void UpdateBulletStoreText() {
         if (!puzzle.CheckPuzzleActivity())
         {
-            playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
-
-            if (playerWeapon.GetComponent<AKBehaviour>())
+            if (pistol.activeSelf)
             {
-                bulletStore.text = playerWeapon.GetComponent<AKBehaviour>().GetCurrentBulletCount().ToString() + "/" +
-                    playerWeapon.GetComponent<AKBehaviour>().GetAmountOfBullets().ToString();
+                bulletStore.text = pistol.GetComponent<PistolBehaviour>().GetCurrentBulletCount().ToString() + "/" +
+                    pistol.GetComponent<PistolBehaviour>().GetAmountOfBullets().ToString();
+                isPistol = true;
+                isAK = false;
             }
-            //else if ()
-            //{
-
-            //}
+            else if (ak.activeSelf)
+            {
+                bulletStore.text = ak.GetComponent<AKBehaviour>().GetCurrentBulletCount().ToString() + "/" +
+                    ak.GetComponent<AKBehaviour>().GetAmountOfBullets().ToString();
+                isPistol = false;
+                isAK = true;
+            }
         }
     }
 
@@ -116,5 +122,44 @@ public class GameBehaviour : MonoBehaviour
             Cursor.visible = true;
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
+    }
+
+    public bool CheckPistol()
+    {
+        return isPistol;
+    }
+
+    public bool CheckAK()
+    {
+        return isAK;
+    }
+
+    public int GetAmountOfPistolBullets() {
+        return pistol.GetComponent<PistolBehaviour>().GetAmountOfBullets();
+    }
+
+    public void InitAmountOfPistolBullets()
+    {
+        pistol.GetComponent<PistolBehaviour>().InitAmountOfBullets(35);
+    }
+
+    public void AddAmountOfPistolBullets()
+    {
+        pistol.GetComponent<PistolBehaviour>().AddAmountOfBullets(10);
+    }
+
+    public int GetAmountOfAKBullets()
+    {
+        return ak.GetComponent<AKBehaviour>().GetAmountOfBullets();
+    }
+
+    public void InitAmountOfAKBullets()
+    {
+        ak.GetComponent<AKBehaviour>().InitAmountOfBullets(120);
+    }
+
+    public void AddAmountOfAKBullets()
+    {
+        ak.GetComponent<AKBehaviour>().AddAmountOfBullets(20);
     }
 }

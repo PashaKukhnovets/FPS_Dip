@@ -1385,6 +1385,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BulletBonus
       objectReference: {fileID: 0}
+    - target: {fileID: 3724160702187272036, guid: 305f17d6643547141ba66d7c6adecbb7, type: 3}
+      propertyPath: ak
+      value: 
+      objectReference: {fileID: 480778335}
+    - target: {fileID: 3724160702187272036, guid: 305f17d6643547141ba66d7c6adecbb7, type: 3}
+      propertyPath: pistol
+      value: 
+      objectReference: {fileID: 693409168}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 305f17d6643547141ba66d7c6adecbb7, type: 3}
 --- !u!4 &215843833 stripped
@@ -18613,6 +18621,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 158267209887750033, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: animationController
+      value: 
+      objectReference: {fileID: 5380992168985983223}
     - target: {fileID: 474153960882755300, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: ak
       value: 
@@ -18661,6 +18673,10 @@ PrefabInstance:
       propertyPath: AnimReload.Array.data[0]
       value: 
       objectReference: {fileID: 7400030, guid: 62ee6b85f7e534c46b7aec6c51cbe101, type: 3}
+    - target: {fileID: 1170857650076472543, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: animationController
+      value: 
+      objectReference: {fileID: 5380992168985983223}
     - target: {fileID: 5177455891171775683, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.099
@@ -18737,6 +18753,22 @@ PrefabInstance:
       propertyPath: puzzleBehaviour
       value: 
       objectReference: {fileID: 768595696}
+    - target: {fileID: 5380992169695010758, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: ak
+      value: 
+      objectReference: {fileID: 480778335}
+    - target: {fileID: 5380992169695010758, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: pistol
+      value: 
+      objectReference: {fileID: 693409168}
+    - target: {fileID: 5380992170024146476, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.228
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380992170024146476, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.555
+      objectReference: {fileID: 0}
     - target: {fileID: 5380992170024146568, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.05
@@ -18753,6 +18785,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5380992170024307434, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5380992170031174338, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: m_Animations.Array.size
       value: 17
@@ -18763,10 +18799,25 @@ PrefabInstance:
       objectReference: {fileID: 7400028, guid: 6cae2f82a0a62ff4ab9be3eeeda19688, type: 3}
     - target: {fileID: 7722214444157981394, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722214444157981394, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+--- !u!114 &5380992168985983223 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5380992169695010758, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+  m_PrefabInstance: {fileID: 5380992168985983222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850025775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6df7766261a02f40b038a475f1187ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9097764473666569634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18778,6 +18829,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9097764474388853364, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: m_TagString
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: ak
+      value: 
+      objectReference: {fileID: 480778335}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: pistol
+      value: 
+      objectReference: {fileID: 693409168}
     - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: puzzle
       value: 

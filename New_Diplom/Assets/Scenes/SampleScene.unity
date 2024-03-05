@@ -15365,6 +15365,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2478961553079219844, guid: b4f729d9618a65543baedfac3b0a7311, type: 3}
   m_PrefabInstance: {fileID: 1764457196}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1766075405 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3492366438084329095, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+  m_PrefabInstance: {fileID: 5380992168985983222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1768595129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16056,6 +16061,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7589819978036697002, guid: d7cd5c7975835a14cae4bcbafa34bd4b, type: 3}
   m_PrefabInstance: {fileID: 1741677775}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1915644381 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7431579559026637718, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+  m_PrefabInstance: {fileID: 5380992168985983222}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1920480358
 PrefabInstance:
@@ -18750,9 +18760,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5380992168304858496, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: akMuzzleEffect
+      value: 
+      objectReference: {fileID: 1766075405}
+    - target: {fileID: 5380992168304858496, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: puzzleBehaviour
       value: 
       objectReference: {fileID: 768595696}
+    - target: {fileID: 5380992168304858496, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: pistolMuzzleEffect
+      value: 
+      objectReference: {fileID: 1915644381}
     - target: {fileID: 5380992169695010758, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: ak
       value: 

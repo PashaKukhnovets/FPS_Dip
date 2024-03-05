@@ -54,7 +54,7 @@ public class AKAnimationController : MonoBehaviour
         {
             if (pistol.activeSelf)
             {
-                if (Input.GetButton("Fire1") && Time.time > nextShoot && pistol.GetComponent<PistolBehaviour>().GetCurrentBulletCount() > 0)
+                if (Input.GetButtonDown("Fire1") && Time.time > nextShoot && pistol.GetComponent<PistolBehaviour>().GetCurrentBulletCount() > 0)
                 {
                     nextShoot = Time.time + 1.0f / rate;
 

@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class RayShooting : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem muzzleEffect;
+    [SerializeField] private ParticleSystem akMuzzleEffect;
+    [SerializeField] private ParticleSystem pistolMuzzleEffect;
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
@@ -36,15 +37,17 @@ public class RayShooting : MonoBehaviour
             if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
                ak.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
             {
+                akMuzzleEffect.Play();
                 nextShoot = Time.time + 1.0f / rate;
                 ak.GetComponent<AKBehaviour>().AddCurrentBulletCount(-1);
                 PlayerRayCast();
             }
         }
         else if (pistol.activeSelf){
-            if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
+            if (Input.GetButtonDown("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
                pistol.GetComponent<PistolBehaviour>().GetCurrentBulletCount() > 0)
             {
+                pistolMuzzleEffect.Play();
                 nextShoot = Time.time + 1.0f / rate;
                 pistol.GetComponent<PistolBehaviour>().AddCurrentBulletCount(-1);
                 PlayerRayCast();
@@ -54,8 +57,6 @@ public class RayShooting : MonoBehaviour
     }
 
     private void PlayerRayCast() {
-        
-        muzzleEffect.Play();
 
         mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
 

@@ -9,11 +9,12 @@ public class ChangeWeaponBehaviour : MonoBehaviour
     [SerializeField] private Transform leftTarget;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
+    [SerializeField] private PlayerController player;
 
     private int RandAnimReload = 0;
     private AKAnimationController animController;
 
-    public bool isPistol = false;
+    public bool isPistol = true;
     public Animation WeaponAnim;
     public AnimationClip[] AnimFire;
     public AnimationClip AnimGet;
@@ -55,7 +56,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
                 isPistol = true;
                 SetToPistol();
             }
-            else if (isPistol) {
+            else if (isPistol && player.GetUseAK()) {
                 isPistol = false;
                 SetToAk();
             }

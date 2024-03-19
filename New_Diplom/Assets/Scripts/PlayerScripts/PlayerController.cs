@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movement;
     private bool isEnergyBonus = false;
     private GameObject playerWeapon;
+    private bool useAK = false;
 
     public event UnityAction IsFreezeTime;
     public event UnityAction NoFreezeTime;
@@ -146,6 +147,14 @@ public class PlayerController : MonoBehaviour
         playerWeapon.GetComponent<AKAnimationController>().enabled = value;
         mainCamera.GetComponent<MouseLook>().enabled = value;
         mainCamera.GetComponent<RayShooting>().enabled = value;
+    }
+
+    public void SetUseAK(bool value) {
+        this.useAK = value;
+    }
+
+    public bool GetUseAK() {
+        return this.useAK;
     }
 
 }

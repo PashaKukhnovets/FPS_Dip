@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class TerroristController : MonoBehaviour
 {
+    [SerializeField] private GameObject AKGet;
+
     private GameObject player;
     private bool isFirstMovement = true;
     private bool isTerroristRunning = true;
@@ -131,6 +133,8 @@ public class TerroristController : MonoBehaviour
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             this.gameObject.GetComponent<Pursue>().enabled = false;
             TerroristDeath?.Invoke();
+            Instantiate(AKGet, new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
+                Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
             StartCoroutine(DeathCoroutine());
         }
     }

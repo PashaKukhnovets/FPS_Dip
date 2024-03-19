@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437188}
-  - component: {fileID: 20538612}
   - component: {fileID: 6571310}
+  - component: {fileID: 3964030568733555181}
   m_Layer: 0
   m_Name: Ak47M1 Base
-  m_TagString: Untagged
+  m_TagString: AKGet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,99 +25,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166532}
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.00000028088027}
-  m_LocalPosition: {x: -0.3493104, y: 0.6580001, z: 0.016065598}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4268019859327232}
   - {fileID: 4671213336785720}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.99998}
---- !u!205 &20538612
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166532}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.0130453, y: 0.00000020861626, z: 0.00060378015}
-  m_Size: 0.87843835
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.30192655
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 23664191833858052}
-    - renderer: {fileID: 23356084796038812}
-    - renderer: {fileID: 23462031576244152}
-    - renderer: {fileID: 23220649704285828}
-    - renderer: {fileID: 23960911907098560}
-    - renderer: {fileID: 23245077239782290}
-    - renderer: {fileID: 23451717450184684}
-    - renderer: {fileID: 23467691802095982}
-    - renderer: {fileID: 23673258183323518}
-    - renderer: {fileID: 23254591880636466}
-    - renderer: {fileID: 23767070769127964}
-    - renderer: {fileID: 23251591385583712}
-    - renderer: {fileID: 23293401389614066}
-    - renderer: {fileID: 23727036765249786}
-    - renderer: {fileID: 23538766190873578}
-    - renderer: {fileID: 23794797319521392}
-    - renderer: {fileID: 23514384425252564}
-    - renderer: {fileID: 23464095876778068}
-    - renderer: {fileID: 23285389028311942}
-    - renderer: {fileID: 23367155044334510}
-    - renderer: {fileID: 23593466635803766}
-  - screenRelativeHeight: 0.009951865
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 23547550275412218}
-    - renderer: {fileID: 23259117046407648}
-    - renderer: {fileID: 23480432976118876}
-    - renderer: {fileID: 23007308637621346}
-    - renderer: {fileID: 23548179661004838}
-    - renderer: {fileID: 23770178106169018}
-    - renderer: {fileID: 23228994461433258}
-    - renderer: {fileID: 23457018115225368}
-    - renderer: {fileID: 23334555450424260}
-    - renderer: {fileID: 23280121349873370}
-    - renderer: {fileID: 23735831928810570}
-    - renderer: {fileID: 23030646380610844}
-    - renderer: {fileID: 23452237385664230}
-    - renderer: {fileID: 23809141991491452}
-    - renderer: {fileID: 23122549080747290}
-    - renderer: {fileID: 23215206133317366}
-    - renderer: {fileID: 23554902485572286}
-    - renderer: {fileID: 23483591614084670}
-    - renderer: {fileID: 23301431225475264}
-    - renderer: {fileID: 23408601084296754}
-    - renderer: {fileID: 23358448845108376}
-    - renderer: {fileID: 23910018609153190}
-    - renderer: {fileID: 23110583642204664}
-    - renderer: {fileID: 23004736698529370}
-    - renderer: {fileID: 23553007251151290}
-    - renderer: {fileID: 23133355759814354}
-    - renderer: {fileID: 23839246601475174}
-    - renderer: {fileID: 23888526049369122}
-    - renderer: {fileID: 23151903715062540}
-    - renderer: {fileID: 23292677625656752}
-    - renderer: {fileID: 23838448175788336}
-    - renderer: {fileID: 23316494230396112}
-    - renderer: {fileID: 23537594443569118}
-    - renderer: {fileID: 23982162587024572}
-    - renderer: {fileID: 23548221634080510}
-    - renderer: {fileID: 23246057911417208}
-    - renderer: {fileID: 23901587466090672}
-    - renderer: {fileID: 23374154833187926}
-  - screenRelativeHeight: 0.0005023135
-    fadeTransitionWidth: 0
-    renderers: []
-  m_Enabled: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!65 &6571310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -126,11 +43,23 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166532}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.06362581, y: 0.28267086, z: 0.887197}
   m_Center: {x: 0.00036437623, y: -0.0021653473, z: -0.0031015873}
+--- !u!114 &3964030568733555181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76643b5573bdc024e94e1d80b330aecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1002497902448850
 GameObject:
   m_ObjectHideFlags: 0

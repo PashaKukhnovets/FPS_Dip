@@ -18736,6 +18736,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.191
       objectReference: {fileID: 0}
+    - target: {fileID: 5380992168121824931, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: AKGet
+      value: 
+      objectReference: {fileID: 166532, guid: 6aa9645a267fb39498fba44f567baa21, type: 3}
+    - target: {fileID: 5380992168121824931, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: droppingAK
+      value: 
+      objectReference: {fileID: 166532, guid: 6aa9645a267fb39498fba44f567baa21, type: 3}
+    - target: {fileID: 5380992168121824931, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: changeWeapon
+      value: 
+      objectReference: {fileID: 5380992168985983226}
     - target: {fileID: 5380992168121824933, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: m_Name
       value: Player
@@ -18871,6 +18883,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6df7766261a02f40b038a475f1187ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5380992168985983226 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 474153960882755300, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+  m_PrefabInstance: {fileID: 5380992168985983222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850025775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd97e98038ff30344afce243953dd765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &9097764473666569634

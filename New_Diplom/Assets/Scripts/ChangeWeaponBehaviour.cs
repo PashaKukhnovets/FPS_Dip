@@ -65,7 +65,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         }
     }
 
-    private void SetToPistol() {
+    public void SetToPistol() {
         this.gameObject.GetComponent<RigBuilder>().enabled = true;
         leftTarget.localPosition = new Vector3(-0.091f, -0.438f, 0.66f);
         leftTarget.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);

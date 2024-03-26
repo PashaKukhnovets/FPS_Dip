@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24107f221bf3b6d4d8c09994a3f729e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWalkIdle: 0
+  isWalk: 0
 --- !u!114 &1620853188813072297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39a734bebca7417489334376695e6c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AKGet: {fileID: 166532, guid: 6aa9645a267fb39498fba44f567baa21, type: 3}
   terroristHealth: 100
   damage: 7
 --- !u!195 &4793784359854870265

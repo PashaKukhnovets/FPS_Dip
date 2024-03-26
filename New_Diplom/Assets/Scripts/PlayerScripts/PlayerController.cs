@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera;
+    [SerializeField] private GameObject droppingAK;
+    [SerializeField] private ChangeWeaponBehaviour changeWeapon;
 
     public float speed = 6.0f;
 
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movement;
     private bool isEnergyBonus = false;
     private GameObject playerWeapon;
+    private bool useAK = false;
 
     public event UnityAction IsFreezeTime;
     public event UnityAction NoFreezeTime;
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour
         RefillEnergy();
         FreezeTime();
         MinusFreezePoints();
+        DropWeapon();
     }
 
     private void PlayerMove() {
@@ -63,7 +67,7 @@ public class PlayerController : MonoBehaviour
             if (vertSpeed < termVelocity) {
                 vertSpeed = termVelocity;
             }
-            
+
         }
 
         movement.y = vertSpeed;
@@ -80,7 +84,7 @@ public class PlayerController : MonoBehaviour
                 if (Time.time > nextStepEnergy)
                 {
                     nextStepEnergy = Time.time + 1.0f / rate;
-                    if(!isEnergyBonus)
+                    if (!isEnergyBonus)
                         PlayerParameters.AddPlayerCurrentEnergy(-5.0f);
                 }
 
@@ -136,6 +140,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void DropWeapon()
+    {
+        if (Input.GetKeyDown(KeyCode.G)) {
+            if (GetUseAK()) {
+                SetUseAK(false);
+                Instantiate(droppingAK, new Vector3(this.gameObject.transform.position.x + 3* this.gameObject.transform.forward.x, 0.3f, 
+                    this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
+                changeWeapon.SetToPistol();
+            }
+            //else if
+        }
+    }
+
     public void SetEnergyBonus(bool value) {
         isEnergyBonus = value;
     }
@@ -146,6 +163,14 @@ public class PlayerController : MonoBehaviour
         playerWeapon.GetComponent<AKAnimationController>().enabled = value;
         mainCamera.GetComponent<MouseLook>().enabled = value;
         mainCamera.GetComponent<RayShooting>().enabled = value;
+    }
+
+    public void SetUseAK(bool value) {
+        this.useAK = value;
+    }
+
+    public bool GetUseAK() {
+        return this.useAK;
     }
 
 }

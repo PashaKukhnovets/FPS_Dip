@@ -4,29 +4,49 @@ using UnityEngine;
 
 public class BulletBonusBehaviour : MonoBehaviour
 {
-    private GameObject playerWeapon;
+    private GameObject gameManager;
 
     void Start()
     {
-        playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
     }
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            if (playerWeapon.GetComponent<AKBehaviour>().GetAmountOfBullets() < 120)
+            if (gameManager.GetComponent<GameBehaviour>().CheckAK())
             {
-                if (120 - playerWeapon.GetComponent<AKBehaviour>().GetAmountOfBullets() <= 30.0f)
+                if (gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() < 120)
                 {
-                    playerWeapon.GetComponent<AKBehaviour>().InitAmountOfBullets(120);
-                    Destroy(this.gameObject);
+                    if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20.0f)
+                    {
+                        gameManager.GetComponent<GameBehaviour>().InitAmountOfAKBullets();
+                        Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        gameManager.GetComponent<GameBehaviour>().AddAmountOfAKBullets();
+                        Destroy(this.gameObject);
+                    }
                 }
-                else
+            }
+            else if (gameManager.GetComponent<GameBehaviour>().CheckPistol())
                 {
-                    playerWeapon.GetComponent<AKBehaviour>().AddAmountOfBullets(20);
-                    Destroy(this.gameObject);
-                }
+                if (gameManager.GetComponent<GameBehaviour>().GetAmountOfPistolBullets() < 35)
+                {
+                    if (35 - gameManager.GetComponent<GameBehaviour>().GetAmountOfPistolBullets() <= 10.0f)
+                    {
+                        gameManager.GetComponent<GameBehaviour>().InitAmountOfPistolBullets();
+                        Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        gameManager.GetComponent<GameBehaviour>().AddAmountOfPistolBullets();
+                        Destroy(this.gameObject);
+                    }
+                } 
             }
         }
     }

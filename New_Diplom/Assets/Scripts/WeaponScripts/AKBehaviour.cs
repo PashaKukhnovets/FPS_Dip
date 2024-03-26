@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AKBehaviour : MonoBehaviour
 {
+    [SerializeField] private AKAnimationController animationController;
+
     private int amountOfBullets = 120;
     private int maxBulletStore = 30;
     private int currentBulletCount = 0;
@@ -11,12 +13,7 @@ public class AKBehaviour : MonoBehaviour
     void Start()
     {
         currentBulletCount = maxBulletStore;
-        this.gameObject.GetComponent<AKAnimationController>().RefillAK += RefillBulletStore;
-    }
-
-    void Update()
-    {
-        
+        animationController.RefillAK += RefillBulletStore;
     }
 
     public void InitAmountOfBullets(int value) {

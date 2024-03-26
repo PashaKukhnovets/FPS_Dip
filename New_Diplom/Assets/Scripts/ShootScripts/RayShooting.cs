@@ -5,17 +5,18 @@ using UnityEngine.Events;
 
 public class RayShooting : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem muzzleEffect;
+    [SerializeField] private ParticleSystem akMuzzleEffect;
+    [SerializeField] private ParticleSystem pistolMuzzleEffect;
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private AKAnimationController weaponAnim;
     [SerializeField] private PuzzleBehaviour puzzleBehaviour;
+    [SerializeField] private GameObject pistol;
+    [SerializeField] private GameObject ak;
 
-    private float damage;
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
-    private GameObject weapon;
 
     void OnGUI()
     {
@@ -25,68 +26,61 @@ public class RayShooting : MonoBehaviour
         GUI.Label(new Rect(posX, posY, size, size), "+");
     }
 
-    private void Start()
-    {
-        FindPlayerWeapon();
-    }
-
     void Update()
     {
         Shoot();
-        FindPlayerWeapon();
     }
 
     private void Shoot()
     {
-        //if(проверка на один тип оружия){
-        //    if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
-        //       weapon.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
-        //    {
-        //        .......................
-        //    }
-        //    }
-        //else if(проверка на другой тип оружия){
-        //    if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
-        //       weapon.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
-        //    {
-        //        ...............................
-        //    }
-        //    }
-        //и тд
-
-        if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
-            weapon.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
-        {
-            nextShoot = Time.time + 1.0f / rate;
-
-            muzzleEffect.Play();
-
-            mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
-
-            Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
-            Ray ray = playerCamera.ScreenPointToRay(point);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+        if (ak.activeSelf){
+            if (Input.GetButton("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
+               ak.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
             {
-                GameObject hitObject = hit.transform.gameObject;
+                akMuzzleEffect.Play();
+                nextShoot = Time.time + 1.0f / rate;
+                ak.GetComponent<AKBehaviour>().AddCurrentBulletCount(-1);
+                PlayerRayCast();
+            }
+        }
+        else if (pistol.activeSelf){
+            if (Input.GetButtonDown("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
+               pistol.GetComponent<PistolBehaviour>().GetCurrentBulletCount() > 0)
+            {
+                pistolMuzzleEffect.Play();
+                nextShoot = Time.time + 1.0f / rate;
+                pistol.GetComponent<PistolBehaviour>().AddCurrentBulletCount(-1);
+                PlayerRayCast();
+            }
+        }
+        
+    }
 
-                if (hitObject.gameObject.CompareTag("Terrorist"))
+    private void PlayerRayCast() {
+
+        mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
+
+        Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
+        Ray ray = playerCamera.ScreenPointToRay(point);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            GameObject hitObject = hit.transform.gameObject;
+
+            if (hitObject.gameObject.CompareTag("Terrorist"))
+            {
+                if (hitObject.gameObject.GetComponent<TerroristController>())
                 {
-                    if (hitObject.gameObject.GetComponent<TerroristController>()) {
-                        hitObject.GetComponent<TerroristController>().HitByPlayer();
-                        StartCoroutine(BloodEffect(hit));
-                    }
-                    if (hitObject.gameObject.GetComponent<SecondTerroristController>()) {
-                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
-                        StartCoroutine(BloodEffect(hit));
-                    }
+                    hitObject.GetComponent<TerroristController>().HitByPlayer();
+                    StartCoroutine(BloodEffect(hit));
+                }
+                if (hitObject.gameObject.GetComponent<SecondTerroristController>())
+                {
+                    hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
+                    StartCoroutine(BloodEffect(hit));
                 }
             }
         }
-    }
-
-    private void FindPlayerWeapon() {
-        weapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
     }
 
     private IEnumerator BloodEffect(RaycastHit hit)

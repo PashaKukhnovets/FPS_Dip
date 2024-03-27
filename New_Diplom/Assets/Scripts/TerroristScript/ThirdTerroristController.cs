@@ -10,24 +10,25 @@ public class ThirdTerroristController : MonoBehaviour
 
     private GameObject player;
     private bool isFirstMovement = true;
-    private bool isTerroristRunning = true;
-    private bool isInPlayerRadius = false;
-    private bool isFreeze = false;
+    private bool isTerroristRunning = false;
     private bool isDeath = false;
     private List<Transform> Points = new List<Transform>();
     private NavMeshAgent agent;
     private bool isPatroling = true;
+    private float maxTerroristHealth;
 
     public float terroristHealth = 400.0f;
     public float damage = 7.0f;
+    public bool isStunned = false;
 
-    //public event UnityAction TerroristRunFire;
-    //public event UnityAction TerroristRunFireFalse;
-    //public event UnityAction TerroristDeath;
+    public event UnityAction ThirdTerroristDeath;
+    public event UnityAction ThirdTerroristStunning;
+    public event UnityAction ThirdTerroristStunningFalse;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        maxTerroristHealth = this.terroristHealth;
         player.gameObject.GetComponent<PlayerController>().IsFreezeTime += Freeze;
         player.gameObject.GetComponent<PlayerController>().NoFreezeTime += Unfreeze;
         this.gameObject.GetComponent<Pursue>().enabled = false;
@@ -66,29 +67,10 @@ public class ThirdTerroristController : MonoBehaviour
         {
             this.gameObject.GetComponent<Pursue>().enabled = true;
             isFirstMovement = false;
-            isTerroristRunning = false;
-            //TerroristRunFire?.Invoke();
-            isInPlayerRadius = true;
-            isPatroling = false;
-
-            if (!isFreeze)
-                agent.speed = 1.3f;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.gameObject.GetComponent<PlayerController>())
-        {
             isTerroristRunning = true;
-            //TerroristRunFireFalse?.Invoke();
-            isInPlayerRadius = false;
-
-            if (!isFreeze)
-                agent.speed = 4.8f;
+            isPatroling = false;
+            agent.speed = 4.5f;
         }
-
     }
 
     public void HitByPlayer()
@@ -104,31 +86,28 @@ public class ThirdTerroristController : MonoBehaviour
         }
 
         this.terroristHealth -= PlayerParameters.playerDamage;
+
+        if (!isStunned)
+        {
+            if (IsInRange(this.terroristHealth, (maxTerroristHealth / 2.0f) - 30.0f, (maxTerroristHealth / 2.0f) + 30.0f))
+            {
+                isStunned = true;
+                ThirdTerroristStunning?.Invoke();
+                StartCoroutine(StunCoroutine());
+            }
+        }
     }
 
     private void Freeze()
     {
         agent.speed = 0.7f;
-        this.gameObject.GetComponentInChildren<TerroristRayShooting>().changeRateAttackTerrorist(0.5f);
-        this.gameObject.GetComponent<Animator>().speed = 0.1f;
-        isFreeze = true;
+        this.gameObject.GetComponent<Animator>().speed = 0.1f;    
     }
 
     private void Unfreeze()
     {
-        if (isInPlayerRadius)
-        {
-            agent.speed = 1.3f;
-        }
-        else if (!isInPlayerRadius)
-        {
-            agent.speed = 4.8f;
-        }
-
-        this.gameObject.GetComponentInChildren<TerroristRayShooting>().changeRateAttackTerrorist(3.5f);
+        agent.speed = 4.5f;
         this.gameObject.GetComponent<Animator>().speed = 1.0f;
-
-        isFreeze = false;
     }
 
     public void CheckTerroristDeath()
@@ -139,7 +118,7 @@ public class ThirdTerroristController : MonoBehaviour
             agent.isStopped = true;
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             this.gameObject.GetComponent<Pursue>().enabled = false;
-            //TerroristDeath?.Invoke();
+            ThirdTerroristDeath?.Invoke();
             Instantiate(AKGet, new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
                 Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
             StartCoroutine(DeathCoroutine());
@@ -161,8 +140,29 @@ public class ThirdTerroristController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    private IEnumerator StunCoroutine() {
+        agent.isStopped = true;
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        
+        yield return new WaitForSeconds(10.0f);
+
+        agent.isStopped = false;
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        ThirdTerroristStunningFalse?.Invoke();
+    }
+
     public bool IsTerroristRunning()
     {
         return this.isTerroristRunning;
+    }
+
+    public bool IsInRange(float value, float start, float end) {
+        if (value >= start && value <= end)
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

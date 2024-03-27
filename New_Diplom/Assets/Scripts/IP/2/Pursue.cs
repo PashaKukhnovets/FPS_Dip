@@ -15,6 +15,10 @@ public class Pursue : MonoBehaviour
     public event UnityAction TerroristStandFire;
     public event UnityAction TerroristStandFireFalse;
 
+    public event UnityAction ThirdTerroristAttacking;
+    public event UnityAction ThirdTerroristAttackingFalse;
+    public event UnityAction ThirdTerroristAgrWalking;
+
     private void Start()
     {
         agent = this.gameObject.GetComponent<NavMeshAgent>();
@@ -33,28 +37,55 @@ public class Pursue : MonoBehaviour
         agent.SetDestination(player.transform.position);
         //animator.SetLookAtPosition(player.transform.position);
 
-        if (this.gameObject.GetComponent<TerroristController>().IsTerroristRunning())
+        if (this.gameObject.GetComponent<TerroristController>())
         {
-            Debug.Log(agent.stoppingDistance);
-            TerroristRunning?.Invoke();
-            
-        }
-
-        if (agent.remainingDistance <= 7.0f)
-        {
-            if (!isLowDistance)
-                isLowDistance = true;
-
-            agent.speed = 0.1f;
-            TerroristStandFire?.Invoke();
-        }
-        else if (agent.remainingDistance > 7.0f)
-        {
-            if (isLowDistance)
+            if (this.gameObject.GetComponent<TerroristController>().IsTerroristRunning())
             {
-                isLowDistance = false;
-                agent.speed = 1.3f;
-                TerroristStandFireFalse?.Invoke();
+                Debug.Log(agent.stoppingDistance);
+                TerroristRunning?.Invoke();
+
+            }
+
+            if (agent.remainingDistance <= 7.0f)
+            {
+                if (!isLowDistance)
+                    isLowDistance = true;
+
+                agent.speed = 0.1f;
+                TerroristStandFire?.Invoke();
+            }
+            else if (agent.remainingDistance > 7.0f)
+            {
+                if (isLowDistance)
+                {
+                    isLowDistance = false;
+                    agent.speed = 1.3f;
+                    TerroristStandFireFalse?.Invoke();
+                }
+            }
+        }
+        else if (this.gameObject.GetComponent<ThirdTerroristController>()) {
+            if (this.gameObject.GetComponent<ThirdTerroristController>().IsTerroristRunning())
+            {
+                ThirdTerroristAgrWalking?.Invoke();
+            }
+
+            if (agent.remainingDistance <= 4.0f)
+            {
+                if (!isLowDistance)
+                    isLowDistance = true;
+
+                agent.speed = 0.1f;
+                ThirdTerroristAttacking?.Invoke();
+            }
+            else if (agent.remainingDistance > 4.0f)
+            {
+                if (isLowDistance)
+                {
+                    isLowDistance = false;
+                    agent.speed = 4.5f;
+                    ThirdTerroristAttackingFalse?.Invoke();
+                }
             }
         }
     }

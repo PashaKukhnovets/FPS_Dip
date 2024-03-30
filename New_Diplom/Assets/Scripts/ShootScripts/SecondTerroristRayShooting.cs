@@ -9,6 +9,8 @@ public class SecondTerroristRayShooting : MonoBehaviour
     [SerializeField] private SecondTerroristController terrorist;
     [SerializeField] private GameObject pointShooting;
 
+    private GameObject player;
+    private Vector3 temporaryPlayerPosition;
     private float nextShoot = 0.0f;
     private int countOfShooting = 0;
     private bool isResetCount = true;
@@ -16,10 +18,14 @@ public class SecondTerroristRayShooting : MonoBehaviour
     private bool isShooting = false;
     private bool isFirstShoot = true;
 
+    private float checkPeriod = 1.0f;
+    private float lastCheckPeriod;
     public float terroristRate = 3.5f;
 
     private void Start()
     {
+        lastCheckPeriod = checkPeriod;
+        player = GameObject.FindGameObjectWithTag("Player");
         terrorist.TerroristSitFire += ShootPositive;
         terrorist.TerroristSitFireFalse += ShootNegative;
     }
@@ -28,6 +34,7 @@ public class SecondTerroristRayShooting : MonoBehaviour
     {
         Shoot();
         PlayerAIM();
+        SetTemporaryPlayerPosition();
     }
 
     private void Shoot()
@@ -40,13 +47,12 @@ public class SecondTerroristRayShooting : MonoBehaviour
 
             muzzleEffect.Play();
 
-            Ray ray = new Ray(pointShooting.transform.position, pointShooting.transform.forward);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.SphereCast(pointShooting.transform.position, 1.0f, temporaryPlayerPosition - pointShooting.transform.position, out hit, 5000.0f))
             {
                 GameObject hitObject = hit.transform.gameObject;
 
-                if (hitObject.GetComponent<PlayerController>())
+                if (hitObject.CompareTag("Player"))
                 {
                     PlayerParameters.AddPlayerDamage(15.0f);
                     StartCoroutine(BloodEffect(hit));
@@ -59,13 +65,12 @@ public class SecondTerroristRayShooting : MonoBehaviour
     {
         if (isStartShooting && !isShooting)
         {
-            Ray ray = new Ray(pointShooting.transform.position, pointShooting.transform.forward);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.SphereCast(pointShooting.transform.position, 1.0f, temporaryPlayerPosition - pointShooting.transform.position, out hit, 5000.0f))
             {
                 GameObject hitObject = hit.transform.gameObject;
 
-                if (hitObject.GetComponent<PlayerController>())
+                if (hitObject.CompareTag("Player"))
                 {
                     isShooting = true;
                 }
@@ -88,6 +93,15 @@ public class SecondTerroristRayShooting : MonoBehaviour
     private void ShootNegative()
     {
         isStartShooting = false;
+    }
+
+    private void SetTemporaryPlayerPosition()
+    {
+        lastCheckPeriod -= Time.deltaTime;
+        if (lastCheckPeriod < 0.0f) {
+            temporaryPlayerPosition = player.transform.position;
+            lastCheckPeriod = checkPeriod;
+        }
     }
 
     private IEnumerator BloodEffect(RaycastHit hit)

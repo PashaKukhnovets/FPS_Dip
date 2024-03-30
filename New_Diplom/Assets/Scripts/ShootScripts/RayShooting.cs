@@ -79,6 +79,11 @@ public class RayShooting : MonoBehaviour
                     hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
                     StartCoroutine(BloodEffect(hit));
                 }
+                if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
+                {
+                    hitObject.GetComponent<ThirdTerroristController>().HitByPlayer();
+                    StartCoroutine(BloodEffect(hit));
+                }
             }
         }
     }

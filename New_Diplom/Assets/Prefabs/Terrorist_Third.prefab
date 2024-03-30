@@ -1114,7 +1114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AKGet: {fileID: 0}
   terroristHealth: 400
-  damage: 7
+  damage: 15
+  isStunned: 0
 --- !u!114 &5487950975892492727
 MonoBehaviour:
   m_ObjectHideFlags: 0

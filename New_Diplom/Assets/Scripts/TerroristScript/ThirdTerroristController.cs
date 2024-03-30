@@ -18,7 +18,7 @@ public class ThirdTerroristController : MonoBehaviour
     private float maxTerroristHealth;
 
     public float terroristHealth = 400.0f;
-    public float damage = 7.0f;
+    public float damage = 15.0f;
     public bool isStunned = false;
 
     public event UnityAction ThirdTerroristDeath;

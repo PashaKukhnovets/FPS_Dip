@@ -9,17 +9,22 @@ public class TerroristRayShooting : MonoBehaviour
     [SerializeField] private TerroristController terrorist;
     [SerializeField] private GameObject pointShooting;
 
+    private GameObject player;
     private float nextShoot = 0.0f;
     private int countOfShooting = 0;
     private bool isResetCount = true;
     private bool isStartShooting = false;
     private bool isShooting = false;
-    private bool isFirstShoot = true;
+    private Vector3 temporaryPlayerPosition;
+    private float checkPeriod = 2.5f;
+    private float lastCheckPeriod;
 
     public float terroristRate = 3.5f;
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         terrorist.TerroristRunFire += ShootPositive;
         terrorist.TerroristRunFireFalse += ShootNegative;
     }
@@ -28,6 +33,7 @@ public class TerroristRayShooting : MonoBehaviour
     {
         Shoot();
         PlayerAIM();
+        SetTemporaryPlayerPosition();
     }
 
     private void Shoot()
@@ -42,9 +48,8 @@ public class TerroristRayShooting : MonoBehaviour
 
                 muzzleEffect.Play();
 
-                Ray ray = new Ray(pointShooting.transform.position, pointShooting.transform.forward);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.SphereCast(pointShooting.transform.position, 1.0f, temporaryPlayerPosition - pointShooting.transform.position, out hit, 5000.0f))
                 {
                     GameObject hitObject = hit.transform.gameObject;
 
@@ -68,9 +73,8 @@ public class TerroristRayShooting : MonoBehaviour
     private void PlayerAIM() {
         if (isStartShooting && !isShooting)
         {
-            Ray ray = new Ray(pointShooting.transform.position, pointShooting.transform.forward);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.SphereCast(pointShooting.transform.position, 1.0f, temporaryPlayerPosition - pointShooting.transform.position, out hit, 5000.0f))
             {
                 GameObject hitObject = hit.transform.gameObject;
 
@@ -83,18 +87,21 @@ public class TerroristRayShooting : MonoBehaviour
     }
 
     private void ShootPositive() {
-        if (isFirstShoot)
-        {
-            isFirstShoot = false;
-
-            StartCoroutine(TerroristFirstShoot());
-        }
-        else
-            isStartShooting = true;
+        StartCoroutine(TerroristFirstShoot());
     }
 
     private void ShootNegative() {
         isStartShooting = false;
+    }
+
+    private void SetTemporaryPlayerPosition()
+    {
+        lastCheckPeriod -= Time.deltaTime;
+        if (lastCheckPeriod < 0.0f)
+        {
+            temporaryPlayerPosition = player.transform.position;
+            lastCheckPeriod = checkPeriod;
+        }
     }
 
     private IEnumerator ResetCountOfShooting()
@@ -115,7 +122,7 @@ public class TerroristRayShooting : MonoBehaviour
     }
 
     private IEnumerator TerroristFirstShoot() {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(1.5f);
 
         isStartShooting = true;
     }

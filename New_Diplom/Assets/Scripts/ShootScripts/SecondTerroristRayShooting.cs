@@ -12,11 +12,8 @@ public class SecondTerroristRayShooting : MonoBehaviour
     private GameObject player;
     private Vector3 temporaryPlayerPosition;
     private float nextShoot = 0.0f;
-    private int countOfShooting = 0;
-    private bool isResetCount = true;
     private bool isStartShooting = false;
     private bool isShooting = false;
-    private bool isFirstShoot = true;
 
     private float checkPeriod = 1.0f;
     private float lastCheckPeriod;
@@ -41,8 +38,7 @@ public class SecondTerroristRayShooting : MonoBehaviour
     {
         if (Time.time > nextShoot && isShooting)
         {
-            countOfShooting++;
-
+          
             nextShoot = Time.time + 1.0f / terroristRate;
 
             muzzleEffect.Play();
@@ -80,14 +76,7 @@ public class SecondTerroristRayShooting : MonoBehaviour
 
     private void ShootPositive()
     {
-        if (isFirstShoot)
-        {
-            isFirstShoot = false;
-
-            StartCoroutine(TerroristFirstShoot());
-        }
-        else
-            isStartShooting = true;
+        StartCoroutine(TerroristFirstShoot());
     }
 
     private void ShootNegative()

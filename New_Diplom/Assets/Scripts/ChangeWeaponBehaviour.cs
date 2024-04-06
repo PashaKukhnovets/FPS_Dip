@@ -9,6 +9,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
     [SerializeField] private Transform leftTarget;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
+    [SerializeField] private GameObject shotgun;
     [SerializeField] private PlayerController player;
 
     private int RandAnimReload = 0;
@@ -56,9 +57,14 @@ public class ChangeWeaponBehaviour : MonoBehaviour
                 isPistol = true;
                 SetToPistol();
             }
-            else if (isPistol && player.GetUseAK()) {
+            else if (isPistol && player.GetUseAK())
+            {
                 isPistol = false;
                 SetToAk();
+            }
+            else if (isPistol && player.GetUseShotgun()) {
+                isPistol = false;
+                SetToShotgun();
             }
 
             StartCoroutine(UnblockMouse());
@@ -72,6 +78,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         rightTarget.localPosition = new Vector3(0.0712f, 0.1031f, -0.031f);
         rightTarget.localRotation = Quaternion.Euler(3.538f, -181.89f, -90.29f);
         ak.SetActive(false);
+        shotgun.SetActive(false);
         pistol.SetActive(true);
     }
 
@@ -79,6 +86,19 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         this.gameObject.GetComponent<RigBuilder>().enabled = false;
         ak.SetActive(true);
         pistol.SetActive(false);
+        shotgun.SetActive(false);
+    }
+
+    private void SetToShotgun()
+    {
+        this.gameObject.GetComponent<RigBuilder>().enabled = true;
+        leftTarget.localPosition = new Vector3(-0.091f, -0.438f, 0.66f);
+        leftTarget.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+        rightTarget.localPosition = new Vector3(0.0712f, 0.1031f, -0.031f);
+        rightTarget.localRotation = Quaternion.Euler(3.538f, -181.89f, -90.29f);
+        ak.SetActive(false);
+        pistol.SetActive(false);
+        shotgun.SetActive(true);
     }
 
     private IEnumerator UnblockMouse()

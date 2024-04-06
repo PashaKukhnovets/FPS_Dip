@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class SecondTerroristController : MonoBehaviour
 {
+    [SerializeField] private SecondTerroristRayShooting shooting;
+
     private GameObject player;
     private bool isFirstMovement = true;
     private bool isFreeze = false;
@@ -89,6 +91,7 @@ public class SecondTerroristController : MonoBehaviour
             isDeath = true;
             TerroristDeath?.Invoke();
             this.gameObject.GetComponent<Face>().enabled = false;
+            shooting.enabled = false;
             StartCoroutine(DeathCoroutine());
         }
     }

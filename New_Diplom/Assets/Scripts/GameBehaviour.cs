@@ -13,6 +13,7 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private GameObject deathWindow;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
+    [SerializeField] private GameObject shotgun;
 
     private GameObject player;
     private bool isBoostOpen = false;
@@ -20,6 +21,7 @@ public class GameBehaviour : MonoBehaviour
     private bool isDeath = false;
     private bool isPistol;
     private bool isAK;
+    private bool isShotgun;
 
     private void Start()
     {
@@ -58,13 +60,22 @@ public class GameBehaviour : MonoBehaviour
                     pistol.GetComponent<PistolBehaviour>().GetAmountOfBullets().ToString();
                 isPistol = true;
                 isAK = false;
+                isShotgun = false;
             }
             else if (ak.activeSelf)
             {
                 bulletStore.text = ak.GetComponent<AKBehaviour>().GetCurrentBulletCount().ToString() + "/" +
                     ak.GetComponent<AKBehaviour>().GetAmountOfBullets().ToString();
                 isPistol = false;
+                isShotgun = false;
                 isAK = true;
+            }
+            else if (shotgun.activeSelf) {
+                bulletStore.text = shotgun.GetComponent<ShotgunBehaviour>().GetCurrentBulletCount().ToString() + "/" +
+                    shotgun.GetComponent<ShotgunBehaviour>().GetAmountOfBullets().ToString();
+                isPistol = false;
+                isAK = false;
+                isShotgun = true;
             }
         }
     }
@@ -134,6 +145,10 @@ public class GameBehaviour : MonoBehaviour
         return isAK;
     }
 
+    public bool CheckShotgun() {
+        return isShotgun;
+    }
+
     public int GetAmountOfPistolBullets() {
         return pistol.GetComponent<PistolBehaviour>().GetAmountOfBullets();
     }
@@ -161,5 +176,20 @@ public class GameBehaviour : MonoBehaviour
     public void AddAmountOfAKBullets()
     {
         ak.GetComponent<AKBehaviour>().AddAmountOfBullets(20);
+    }
+
+    public int GetAmountOfShotgunBullets()
+    {
+        return shotgun.GetComponent<ShotgunBehaviour>().GetAmountOfBullets();
+    }
+
+    public void InitAmountOfShotgunBullets()
+    {
+        shotgun.GetComponent<ShotgunBehaviour>().InitAmountOfBullets(25);
+    }
+
+    public void AddAmountOfShotgunBullets()
+    {
+        shotgun.GetComponent<ShotgunBehaviour>().AddAmountOfBullets(5);
     }
 }

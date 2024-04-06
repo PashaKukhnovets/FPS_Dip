@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject mainCamera;
     [SerializeField] private GameObject droppingAK;
+    [SerializeField] private GameObject droppingShotgun;
     [SerializeField] private ChangeWeaponBehaviour changeWeapon;
 
     public float speed = 6.0f;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool isEnergyBonus = false;
     private GameObject playerWeapon;
     private bool useAK = false;
+    private bool useShotgun = false;
 
     public event UnityAction IsFreezeTime;
     public event UnityAction NoFreezeTime;
@@ -143,13 +145,19 @@ public class PlayerController : MonoBehaviour
     private void DropWeapon()
     {
         if (Input.GetKeyDown(KeyCode.G)) {
-            if (GetUseAK()) {
+            if (GetUseAK())
+            {
                 SetUseAK(false);
-                Instantiate(droppingAK, new Vector3(this.gameObject.transform.position.x + 3* this.gameObject.transform.forward.x, 0.3f, 
+                Instantiate(droppingAK, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, 0.3f,
                     this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
                 changeWeapon.SetToPistol();
             }
-            //else if
+            else if (GetUseShotgun()) {
+                SetUseShotgun(false);
+                Instantiate(droppingShotgun, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, 0.3f,
+                    this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
+                changeWeapon.SetToPistol();
+            }
         }
     }
 
@@ -171,6 +179,14 @@ public class PlayerController : MonoBehaviour
 
     public bool GetUseAK() {
         return this.useAK;
+    }
+
+    public void SetUseShotgun(bool value) {
+        this.useShotgun = value;
+    }
+
+    public bool GetUseShotgun() {
+        return this.useShotgun;
     }
 
 }

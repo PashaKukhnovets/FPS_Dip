@@ -15,6 +15,7 @@ TagManager:
   - Points
   - GameManager
   - AKGet
+  - ShotgunGet
   layers:
   - Default
   - TransparentFX

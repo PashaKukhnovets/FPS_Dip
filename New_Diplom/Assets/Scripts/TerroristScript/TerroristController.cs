@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class TerroristController : MonoBehaviour
 {
     [SerializeField] private GameObject AKGet;
+    [SerializeField] private TerroristRayShooting shooting;
 
     private GameObject player;
     private bool isFirstMovement = true;
@@ -129,6 +130,7 @@ public class TerroristController : MonoBehaviour
         if (this.terroristHealth <= 0.0f && !isDeath)
         {
             isDeath = true;
+            shooting.enabled = false;
             agent.isStopped =true;
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             this.gameObject.GetComponent<Pursue>().enabled = false;

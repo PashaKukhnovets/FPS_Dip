@@ -20,7 +20,7 @@ public class BulletBonusBehaviour : MonoBehaviour
             {
                 if (gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() < 120)
                 {
-                    if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20.0f)
+                    if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20f)
                     {
                         gameManager.GetComponent<GameBehaviour>().InitAmountOfAKBullets();
                         Destroy(this.gameObject);
@@ -36,7 +36,7 @@ public class BulletBonusBehaviour : MonoBehaviour
                 {
                 if (gameManager.GetComponent<GameBehaviour>().GetAmountOfPistolBullets() < 35)
                 {
-                    if (35 - gameManager.GetComponent<GameBehaviour>().GetAmountOfPistolBullets() <= 10.0f)
+                    if (35 - gameManager.GetComponent<GameBehaviour>().GetAmountOfPistolBullets() <= 10)
                     {
                         gameManager.GetComponent<GameBehaviour>().InitAmountOfPistolBullets();
                         Destroy(this.gameObject);
@@ -47,6 +47,22 @@ public class BulletBonusBehaviour : MonoBehaviour
                         Destroy(this.gameObject);
                     }
                 } 
+            }
+            else if (gameManager.GetComponent<GameBehaviour>().CheckShotgun())
+            {
+                if (gameManager.GetComponent<GameBehaviour>().GetAmountOfShotgunBullets() < 25)
+                {
+                    if (25 - gameManager.GetComponent<GameBehaviour>().GetAmountOfShotgunBullets() <= 5)
+                    {
+                        gameManager.GetComponent<GameBehaviour>().InitAmountOfShotgunBullets();
+                        Destroy(this.gameObject);
+                    }
+                    else
+                    {
+                        gameManager.GetComponent<GameBehaviour>().AddAmountOfShotgunBullets();
+                        Destroy(this.gameObject);
+                    }
+                }
             }
         }
     }

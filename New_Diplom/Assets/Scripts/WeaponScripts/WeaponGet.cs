@@ -14,28 +14,59 @@ public class WeaponGet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerController>()) {
-            if (!other.gameObject.GetComponent<PlayerController>().GetUseAK())
-                other.gameObject.GetComponent<PlayerController>().SetUseAK(true);
-            else
+            if (this.gameObject.CompareTag("AKGet") && !other.gameObject.GetComponent<PlayerController>().GetUseShotgun())
             {
-                if (gameManager.GetComponent<GameBehaviour>().CheckAK())
+                if (!other.gameObject.GetComponent<PlayerController>().GetUseAK())
                 {
-                    if (gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() < 120)
+                    other.gameObject.GetComponent<PlayerController>().SetUseAK(true);
+                }
+                else
+                {
+                    if (gameManager.GetComponent<GameBehaviour>().CheckAK())
                     {
-                        if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20.0f)
+                        if (gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() < 120)
                         {
-                            gameManager.GetComponent<GameBehaviour>().InitAmountOfAKBullets();
-                            Destroy(this.gameObject);
-                        }
-                        else
-                        {
-                            gameManager.GetComponent<GameBehaviour>().AddAmountOfAKBullets();
-                            Destroy(this.gameObject);
+                            if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20.0f)
+                            {
+                                gameManager.GetComponent<GameBehaviour>().InitAmountOfAKBullets();
+                                Destroy(this.gameObject);
+                            }
+                            else
+                            {
+                                gameManager.GetComponent<GameBehaviour>().AddAmountOfAKBullets();
+                                Destroy(this.gameObject);
+                            }
                         }
                     }
                 }
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
+            else if (this.gameObject.CompareTag("ShotgunGet") && !other.gameObject.GetComponent<PlayerController>().GetUseAK()) {
+                if (!other.gameObject.GetComponent<PlayerController>().GetUseShotgun())
+                {
+                    other.gameObject.GetComponent<PlayerController>().SetUseShotgun(true);
+                }
+                else
+                {
+                    if (gameManager.GetComponent<GameBehaviour>().CheckAK())
+                    {
+                        if (gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() < 120)
+                        {
+                            if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20.0f)
+                            {
+                                gameManager.GetComponent<GameBehaviour>().InitAmountOfAKBullets();
+                                Destroy(this.gameObject);
+                            }
+                            else
+                            {
+                                gameManager.GetComponent<GameBehaviour>().AddAmountOfAKBullets();
+                                Destroy(this.gameObject);
+                            }
+                        }
+                    }
+                }
+                Destroy(this.gameObject);
+            }
         }
     }
 }

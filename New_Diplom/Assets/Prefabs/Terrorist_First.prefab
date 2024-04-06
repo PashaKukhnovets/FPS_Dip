@@ -559,6 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AKGet: {fileID: 166532, guid: 6aa9645a267fb39498fba44f567baa21, type: 3}
+  shooting: {fileID: 1620853188387061010}
   terroristHealth: 100
   damage: 7
 --- !u!195 &4793784359854870265
@@ -2522,7 +2523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleEffect: {fileID: 7828402361891215175}
-  bloodEffect: {fileID: 1793845074898013879, guid: 364194ea7004dfb4b8021533f6f989e7, type: 3}
+  bloodEffect: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
   terrorist: {fileID: 1620853188813072302}
   pointShooting: {fileID: 1620853187899558005}
   terroristRate: 3.5

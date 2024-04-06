@@ -1106,6 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8499c8897718e428d2c9da5c7a111d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shooting: {fileID: 3325093153648179573}
   terroristHealth: 100
   damage: 15
 --- !u!114 &3325093154217690539
@@ -2589,7 +2590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzleEffect: {fileID: 6124725621099772176}
-  bloodEffect: {fileID: 1793845074898013879, guid: 364194ea7004dfb4b8021533f6f989e7, type: 3}
+  bloodEffect: {fileID: 3548588485384254792, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
   terrorist: {fileID: 3325093154217690538}
   pointShooting: {fileID: 3325093154152768384}
   terroristRate: 0.4

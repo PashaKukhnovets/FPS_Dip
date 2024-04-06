@@ -7,6 +7,7 @@ public class RayShooting : MonoBehaviour
 {
     [SerializeField] private ParticleSystem akMuzzleEffect;
     [SerializeField] private ParticleSystem pistolMuzzleEffect;
+    [SerializeField] private ParticleSystem shotgunMuzzleEffect;
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
@@ -14,6 +15,7 @@ public class RayShooting : MonoBehaviour
     [SerializeField] private PuzzleBehaviour puzzleBehaviour;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
+    [SerializeField] private GameObject shotgun;
 
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
@@ -53,7 +55,18 @@ public class RayShooting : MonoBehaviour
                 PlayerRayCast();
             }
         }
-        
+        else if (shotgun.activeSelf)
+        {
+            if (Input.GetButtonDown("Fire1") && Time.time > nextShoot && !weaponAnim.IsBlockedMouse() &&
+               shotgun.GetComponent<ShotgunBehaviour>().GetCurrentBulletCount() > 0)
+            {
+                shotgunMuzzleEffect.Play();
+                nextShoot = Time.time + 1.0f / rate;
+                shotgun.GetComponent<ShotgunBehaviour>().AddCurrentBulletCount(-1);
+                PlayerRayCast();
+            }
+        }
+
     }
 
     private void PlayerRayCast() {

@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e85301b9f70ae342920eb3ecbab80a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBlood: {fileID: 7477514390803876097, guid: 364194ea7004dfb4b8021533f6f989e7, type: 3}
+  playerBlood: {fileID: 3548588485384254794, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
 --- !u!1102 &-6124788391966973971
 AnimatorState:
   serializedVersion: 6

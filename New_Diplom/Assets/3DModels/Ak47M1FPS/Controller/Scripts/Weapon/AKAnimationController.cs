@@ -8,6 +8,7 @@ public class AKAnimationController : MonoBehaviour
 {
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
+    [SerializeField] private GameObject shotgun;
 
     public Animation WeaponAnim;
     public AnimationClip[] AnimIdle;
@@ -69,6 +70,15 @@ public class AKAnimationController : MonoBehaviour
                     FirePlay();
                 }
             }
+            else if (shotgun.activeSelf)
+            {
+                if (Input.GetButtonDown("Fire1") && Time.time > nextShoot && shotgun.GetComponent<ShotgunBehaviour>().GetCurrentBulletCount() > 0)
+                {
+                    nextShoot = Time.time + 1.0f / rate;
+
+                    FirePlay();
+                }
+            }
         }
     }
 
@@ -89,6 +99,18 @@ public class AKAnimationController : MonoBehaviour
             if (!WeaponAnim.IsPlaying(AnimFire[0].name) && !WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) &&
                     !WeaponAnim.IsPlaying(AnimRemove.name) && Input.GetKeyDown(KeyCode.R) && ak.GetComponent<AKBehaviour>().GetAmountOfBullets() > 0 &&
                     ak.GetComponent<AKBehaviour>().GetCurrentBulletCount() != 30)
+            {
+                blockMouse = true;
+                RandAnimReload = Random.Range(0, AnimReload.Length);
+                ReloadPlay();
+                StartCoroutine(UnblockMouse());
+            }
+        }
+        else if (shotgun.activeSelf)
+        {
+            if (!WeaponAnim.IsPlaying(AnimFire[0].name) && !WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) &&
+                    !WeaponAnim.IsPlaying(AnimRemove.name) && Input.GetKeyDown(KeyCode.R) && shotgun.GetComponent<ShotgunBehaviour>().GetAmountOfBullets() > 0 &&
+                    shotgun.GetComponent<ShotgunBehaviour>().GetCurrentBulletCount() != 5)
             {
                 blockMouse = true;
                 RandAnimReload = Random.Range(0, AnimReload.Length);

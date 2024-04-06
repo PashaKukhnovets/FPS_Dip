@@ -69,7 +69,7 @@ public class SecondTerroristController : MonoBehaviour
     private void Freeze()
     {
         this.gameObject.GetComponent<Agent>().maxSpeed = 0.7f;
-        this.gameObject.GetComponentInChildren<SecondTerroristRayShooting>().changeRateAttackTerrorist(0.5f);
+        this.gameObject.GetComponentInChildren<SecondTerroristRayShooting>().changeRateAttackTerrorist(0.1f);
         this.gameObject.GetComponent<Animator>().speed = 0.1f;
         this.gameObject.GetComponent<Agent>().maxAngularAccel = 1.0f;
         isFreeze = true;
@@ -77,7 +77,7 @@ public class SecondTerroristController : MonoBehaviour
 
     private void Unfreeze()
     {
-        this.gameObject.GetComponentInChildren<SecondTerroristRayShooting>().changeRateAttackTerrorist(3.5f);
+        this.gameObject.GetComponentInChildren<SecondTerroristRayShooting>().changeRateAttackTerrorist(0.4f);
         this.gameObject.GetComponent<Animator>().speed = 1.0f;
         this.gameObject.GetComponent<Agent>().maxAngularAccel = 190.0f;
 

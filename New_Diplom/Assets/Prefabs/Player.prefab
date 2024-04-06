@@ -387,15 +387,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 493592, guid: f9430978bd2bb6049a6bfb3cd528f158, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.133
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 493592, guid: f9430978bd2bb6049a6bfb3cd528f158, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.225
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 493592, guid: f9430978bd2bb6049a6bfb3cd528f158, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.125
+      value: -0.177
       objectReference: {fileID: 0}
     - target: {fileID: 493592, guid: f9430978bd2bb6049a6bfb3cd528f158, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1110,6 +1110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pistol: {fileID: 0}
   ak: {fileID: 0}
+  shotgun: {fileID: 0}
   WeaponAnim: {fileID: 5380992170031174338}
   AnimIdle:
   - {fileID: 7400004, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}

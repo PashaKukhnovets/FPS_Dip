@@ -42,7 +42,7 @@ public class RayShooting : MonoBehaviour
                 akMuzzleEffect.Play();
                 nextShoot = Time.time + 1.0f / rate;
                 ak.GetComponent<AKBehaviour>().AddCurrentBulletCount(-1);
-                PlayerRayCast();
+                PlayerRayCast(false);
             }
         }
         else if (pistol.activeSelf){
@@ -52,7 +52,7 @@ public class RayShooting : MonoBehaviour
                 pistolMuzzleEffect.Play();
                 nextShoot = Time.time + 1.0f / rate;
                 pistol.GetComponent<PistolBehaviour>().AddCurrentBulletCount(-1);
-                PlayerRayCast();
+                PlayerRayCast(false);
             }
         }
         else if (shotgun.activeSelf)
@@ -61,41 +61,72 @@ public class RayShooting : MonoBehaviour
                shotgun.GetComponent<ShotgunBehaviour>().GetCurrentBulletCount() > 0)
             {
                 shotgunMuzzleEffect.Play();
-                nextShoot = Time.time + 1.0f / rate;
+                nextShoot = Time.time + 1.0f / 1.5f;
                 shotgun.GetComponent<ShotgunBehaviour>().AddCurrentBulletCount(-1);
-                PlayerRayCast();
+                PlayerRayCast(true);
             }
         }
 
     }
 
-    private void PlayerRayCast() {
+    private void PlayerRayCast(bool isShotgun) {
 
         mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
 
-        Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
-        Ray ray = playerCamera.ScreenPointToRay(point);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (!isShotgun)
         {
-            GameObject hitObject = hit.transform.gameObject;
-
-            if (hitObject.gameObject.CompareTag("Terrorist"))
+            Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
+            Ray ray = playerCamera.ScreenPointToRay(point);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                if (hitObject.gameObject.GetComponent<TerroristController>())
+                GameObject hitObject = hit.transform.gameObject;
+
+                if (hitObject.gameObject.CompareTag("Terrorist"))
                 {
-                    hitObject.GetComponent<TerroristController>().HitByPlayer();
-                    StartCoroutine(BloodEffect(hit));
+                    if (hitObject.gameObject.GetComponent<TerroristController>())
+                    {
+                        hitObject.GetComponent<TerroristController>().HitByPlayer();
+                        StartCoroutine(BloodEffect(hit));
+                    }
+                    if (hitObject.gameObject.GetComponent<SecondTerroristController>())
+                    {
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
+                        StartCoroutine(BloodEffect(hit));
+                    }
+                    if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
+                    {
+                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer();
+                        StartCoroutine(BloodEffect(hit));
+                    }
                 }
-                if (hitObject.gameObject.GetComponent<SecondTerroristController>())
+            }
+        }
+        else {
+            Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
+            Ray ray = playerCamera.ScreenPointToRay(point);
+            RaycastHit hit;
+            if (Physics.SphereCast(ray, 1.0f, out hit, 15.0f))
+            {
+                GameObject hitObject = hit.transform.gameObject;
+
+                if (hitObject.gameObject.CompareTag("Terrorist"))
                 {
-                    hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
-                    StartCoroutine(BloodEffect(hit));
-                }
-                if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
-                {
-                    hitObject.GetComponent<ThirdTerroristController>().HitByPlayer();
-                    StartCoroutine(BloodEffect(hit));
+                    if (hitObject.gameObject.GetComponent<TerroristController>())
+                    {
+                        hitObject.GetComponent<TerroristController>().HitByPlayer();
+                        StartCoroutine(BloodEffect(hit));
+                    }
+                    if (hitObject.gameObject.GetComponent<SecondTerroristController>())
+                    {
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
+                        StartCoroutine(BloodEffect(hit));
+                    }
+                    if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
+                    {
+                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer();
+                        StartCoroutine(BloodEffect(hit));
+                    }
                 }
             }
         }

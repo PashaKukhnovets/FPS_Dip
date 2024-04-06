@@ -74,7 +74,7 @@ public class AKAnimationController : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1") && Time.time > nextShoot && shotgun.GetComponent<ShotgunBehaviour>().GetCurrentBulletCount() > 0)
                 {
-                    nextShoot = Time.time + 1.0f / rate;
+                    nextShoot = Time.time + 1.0f / 1.5f;
 
                     FirePlay();
                 }

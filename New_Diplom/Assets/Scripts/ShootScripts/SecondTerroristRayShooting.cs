@@ -17,7 +17,7 @@ public class SecondTerroristRayShooting : MonoBehaviour
 
     private float checkPeriod = 1.0f;
     private float lastCheckPeriod;
-    public float terroristRate = 3.5f;
+    public float terroristRate = 0.4f;
 
     private void Start()
     {

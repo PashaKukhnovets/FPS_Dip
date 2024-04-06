@@ -19025,6 +19025,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5380992170027483526, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380992170027483526, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380992170027483526, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 2.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380992170027483526, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 2.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5380992170031174338, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: m_Animations.Array.size
       value: 17

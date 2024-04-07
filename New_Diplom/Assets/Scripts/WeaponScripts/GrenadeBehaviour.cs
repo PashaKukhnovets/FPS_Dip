@@ -7,7 +7,11 @@ public class GrenadeBehaviour : MonoBehaviour
     [SerializeField] private AKAnimationController animationController;
     [SerializeField] private ChangeWeaponBehaviour change;
     [SerializeField] private PlayerController player;
-
+    [SerializeField] private GameObject grenadePoint;
+    [SerializeField] private GameObject grenadeThrowPrefab;
+    
+    private GameObject grenadeInstance;
+    private float grenadeSpeed = 900.0f;
     private int amountOfGrenades = 3;
     private int maxGrenadeStore = 1;
     private int currentGrenadeCount = 0;
@@ -29,7 +33,7 @@ public class GrenadeBehaviour : MonoBehaviour
             change.SetToPistol();
         }
     }
-
+     
     public void InitAmountOfGrenades(int value)
     {
         this.amountOfGrenades = value;
@@ -67,6 +71,12 @@ public class GrenadeBehaviour : MonoBehaviour
             currentGrenadeCount++;
             amountOfGrenades--;
         }
+    }
+
+    public void GrenadeThrow() {
+        grenadeInstance = Instantiate(grenadeThrowPrefab, grenadePoint.transform.position, transform.rotation);
+        grenadeInstance.GetComponent<Rigidbody>().AddForce(transform.forward * grenadeSpeed);
+        
     }
 
 }

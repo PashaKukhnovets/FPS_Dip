@@ -16293,6 +16293,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7213181755310212143, guid: c90faeda1ce307e418ee73344aa5e431, type: 3}
   m_PrefabInstance: {fileID: 576056007}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1906598845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4571434468913018603, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+  m_PrefabInstance: {fileID: 5380992168985983222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1910004120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7589819978036697002, guid: d7cd5c7975835a14cae4bcbafa34bd4b, type: 3}
@@ -18943,6 +18948,14 @@ PrefabInstance:
       propertyPath: animationController
       value: 
       objectReference: {fileID: 5380992168985983223}
+    - target: {fileID: 4399347900245767983, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: grenadePoint
+      value: 
+      objectReference: {fileID: 1906598845}
+    - target: {fileID: 4399347900245767983, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: grenadeThrowPrefab
+      value: 
+      objectReference: {fileID: 5299674662019300391, guid: f9bbf609659d3b3408f27eb6a0282fdb, type: 3}
     - target: {fileID: 5177455891171775683, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.099

@@ -89,6 +89,7 @@ public class AKAnimationController : MonoBehaviour
                     //this.gameObject.GetComponent<AKAnimationController>().SetBlockMouse(true);
                     WeaponAnim.Stop();
                     WeaponAnim.Play(AnimGet.name);
+                    grenade.GetComponent<GrenadeBehaviour>().GrenadeThrow();
                 }
             }
         }

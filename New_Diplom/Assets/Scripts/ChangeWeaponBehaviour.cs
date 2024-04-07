@@ -153,6 +153,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         if (!wasAK)
         {
             this.gameObject.GetComponent<RigBuilder>().enabled = true;
+            grenade.transform.localPosition = new Vector3(-0.185f, 0.282f, -0.1f);
             leftTarget.localPosition = new Vector3(0.06f, -6.41f, -0.49f);
             leftTarget.localRotation = Quaternion.Euler(-22.2f, 119.1f, -93.3f);
             rightTarget.localPosition = new Vector3(0.005f, -0.374f, -0.073f);
@@ -165,10 +166,11 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         else
         {
             this.gameObject.GetComponent<RigBuilder>().enabled = true;
-            leftTarget.localPosition = new Vector3(0.054f, -0.111f, 0.042f);
+            grenade.transform.localPosition = new Vector3(-0.187f, 0.212f, -0.12f);
+            leftTarget.localPosition = new Vector3(-1.25f, -15.43f, -0.23f);
             leftTarget.localRotation = Quaternion.Euler(-20.41f, 43.41f, -105.3f);
-            rightTarget.localPosition = new Vector3(-0.55f, -3.36f, 0.17f);
-            rightTarget.localRotation = Quaternion.Euler(1.325f, -257.5f, -91.94f);
+            rightTarget.localPosition = new Vector3(0.086f, 0.713f, 0.092f);
+            rightTarget.localRotation = Quaternion.Euler(10.843f, -184.7f, -90.99f);
             ak.SetActive(false);
             pistol.SetActive(false);
             shotgun.SetActive(false);

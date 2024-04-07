@@ -14,6 +14,7 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
     [SerializeField] private GameObject shotgun;
+    [SerializeField] private GameObject grenade;
 
     private GameObject player;
     private bool isBoostOpen = false;
@@ -22,6 +23,7 @@ public class GameBehaviour : MonoBehaviour
     private bool isPistol;
     private bool isAK;
     private bool isShotgun;
+    private bool isGrenade;
 
     private void Start()
     {
@@ -61,6 +63,7 @@ public class GameBehaviour : MonoBehaviour
                 isPistol = true;
                 isAK = false;
                 isShotgun = false;
+                isGrenade = false;
             }
             else if (ak.activeSelf)
             {
@@ -69,6 +72,7 @@ public class GameBehaviour : MonoBehaviour
                 isPistol = false;
                 isShotgun = false;
                 isAK = true;
+                isGrenade = false;
             }
             else if (shotgun.activeSelf) {
                 bulletStore.text = shotgun.GetComponent<ShotgunBehaviour>().GetCurrentBulletCount().ToString() + "/" +
@@ -76,6 +80,16 @@ public class GameBehaviour : MonoBehaviour
                 isPistol = false;
                 isAK = false;
                 isShotgun = true;
+                isGrenade = false;
+            }
+            else if (grenade.activeSelf)
+            {
+                bulletStore.text = grenade.GetComponent<GrenadeBehaviour>().GetCurrentGrenadesCount().ToString() + "/" +
+                    grenade.GetComponent<GrenadeBehaviour>().GetAmountOfGrenades().ToString();
+                isPistol = false;
+                isAK = false;
+                isShotgun = false;
+                isGrenade = true;
             }
         }
     }
@@ -149,6 +163,10 @@ public class GameBehaviour : MonoBehaviour
         return isShotgun;
     }
 
+    public bool CheckGrenade() {
+        return isGrenade;
+    }
+
     public int GetAmountOfPistolBullets() {
         return pistol.GetComponent<PistolBehaviour>().GetAmountOfBullets();
     }
@@ -191,5 +209,20 @@ public class GameBehaviour : MonoBehaviour
     public void AddAmountOfShotgunBullets()
     {
         shotgun.GetComponent<ShotgunBehaviour>().AddAmountOfBullets(5);
+    }
+
+    public int GetAmountOfGrenades()
+    {
+        return grenade.GetComponent<GrenadeBehaviour>().GetAmountOfGrenades();
+    }
+
+    public void InitAmountOfGrenades()
+    {
+        grenade.GetComponent<GrenadeBehaviour>().InitAmountOfGrenades(25);
+    }
+
+    public void AddAmountOfGrenades()
+    {
+        grenade.GetComponent<GrenadeBehaviour>().AddAmountOfGrenades(1);
     }
 }

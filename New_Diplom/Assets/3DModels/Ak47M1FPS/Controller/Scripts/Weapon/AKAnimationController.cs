@@ -9,6 +9,7 @@ public class AKAnimationController : MonoBehaviour
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
     [SerializeField] private GameObject shotgun;
+    [SerializeField] private GameObject grenade;
 
     public Animation WeaponAnim;
     public AnimationClip[] AnimIdle;
@@ -62,7 +63,8 @@ public class AKAnimationController : MonoBehaviour
                     FirePlay();
                 }
             }
-            else if (ak.activeSelf) {
+            else if (ak.activeSelf)
+            {
                 if (Input.GetButton("Fire1") && Time.time > nextShoot && ak.GetComponent<AKBehaviour>().GetCurrentBulletCount() > 0)
                 {
                     nextShoot = Time.time + 1.0f / rate;
@@ -77,6 +79,16 @@ public class AKAnimationController : MonoBehaviour
                     nextShoot = Time.time + 1.0f / 1.5f;
 
                     FirePlay();
+                }
+            }
+            else if (grenade.activeSelf) {
+                if (Input.GetButtonDown("Fire1") && Time.time > nextShoot && grenade.GetComponent<GrenadeBehaviour>().GetCurrentGrenadesCount() > 0)
+                {
+                    nextShoot = Time.time + 1.0f / 1.5f;
+                    
+                    //this.gameObject.GetComponent<AKAnimationController>().SetBlockMouse(true);
+                    WeaponAnim.Stop();
+                    WeaponAnim.Play(AnimGet.name);
                 }
             }
         }

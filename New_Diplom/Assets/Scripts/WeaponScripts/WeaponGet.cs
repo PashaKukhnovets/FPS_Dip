@@ -26,15 +26,13 @@ public class WeaponGet : MonoBehaviour
                     {
                         if (gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() < 120)
                         {
-                            if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20.0f)
+                            if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20)
                             {
                                 gameManager.GetComponent<GameBehaviour>().InitAmountOfAKBullets();
-                                Destroy(this.gameObject);
                             }
                             else
                             {
                                 gameManager.GetComponent<GameBehaviour>().AddAmountOfAKBullets();
-                                Destroy(this.gameObject);
                             }
                         }
                     }
@@ -52,15 +50,38 @@ public class WeaponGet : MonoBehaviour
                     {
                         if (gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() < 120)
                         {
-                            if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20.0f)
+                            if (120 - gameManager.GetComponent<GameBehaviour>().GetAmountOfAKBullets() <= 20)
                             {
                                 gameManager.GetComponent<GameBehaviour>().InitAmountOfAKBullets();
-                                Destroy(this.gameObject);
                             }
                             else
                             {
                                 gameManager.GetComponent<GameBehaviour>().AddAmountOfAKBullets();
-                                Destroy(this.gameObject);
+                            }
+                        }
+                    }
+                }
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.CompareTag("GrenadeGet"))
+            {
+                if (!other.gameObject.GetComponent<PlayerController>().GetUseGrenade())
+                {
+                    other.gameObject.GetComponent<PlayerController>().SetUseGrenade(true);
+                }
+                else
+                {
+                    if (gameManager.GetComponent<GameBehaviour>().CheckGrenade())
+                    {
+                        if (gameManager.GetComponent<GameBehaviour>().GetAmountOfGrenades() < 3)
+                        {
+                            if (3 - gameManager.GetComponent<GameBehaviour>().GetAmountOfGrenades() <= 1)
+                            {
+                                gameManager.GetComponent<GameBehaviour>().InitAmountOfGrenades();
+                            }
+                            else
+                            {
+                                gameManager.GetComponent<GameBehaviour>().AddAmountOfGrenades();    
                             }
                         }
                     }

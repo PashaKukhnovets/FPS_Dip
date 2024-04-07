@@ -10,6 +10,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
     [SerializeField] private GameObject shotgun;
+    [SerializeField] private GameObject grenade;
     [SerializeField] private PlayerController player;
 
     private int RandAnimReload = 0;
@@ -70,6 +71,16 @@ public class ChangeWeaponBehaviour : MonoBehaviour
 
             StartCoroutine(UnblockMouse());
         }
+
+        if (!WeaponAnim.IsPlaying(AnimFire[0].name) && !WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) &&
+            !WeaponAnim.IsPlaying(AnimRemove.name) && Input.GetKeyDown(KeyCode.Z) && (grenade.GetComponent<GrenadeBehaviour>().GetAmountOfGrenades() > 0 || 
+            grenade.GetComponent<GrenadeBehaviour>().GetCurrentGrenadesCount() > 0) && player.GetUseGrenade())
+        {
+            WeaponAnim.Stop();
+            WeaponAnim.Play(AnimGet.name);
+            isPistol = false;
+            SetToGrenade();
+        }
     }
 
     public void SetToPistol() {
@@ -83,6 +94,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
             ak.SetActive(false);
             shotgun.SetActive(false);
             pistol.SetActive(true);
+            grenade.SetActive(false);
         } 
         else {
             this.gameObject.GetComponent<RigBuilder>().enabled = true;
@@ -94,6 +106,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
             ak.SetActive(false);
             shotgun.SetActive(false);
             pistol.SetActive(true);
+            grenade.SetActive(false);
         }
     }
 
@@ -102,6 +115,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         ak.SetActive(true);
         pistol.SetActive(false);
         shotgun.SetActive(false);
+        grenade.SetActive(false);
         if (!wasAK) {
             wasAK = true;
         }
@@ -119,6 +133,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
             ak.SetActive(false);
             pistol.SetActive(false);
             shotgun.SetActive(true);
+            grenade.SetActive(false);
         }
         else {
             this.gameObject.GetComponent<RigBuilder>().enabled = true;
@@ -129,6 +144,35 @@ public class ChangeWeaponBehaviour : MonoBehaviour
             ak.SetActive(false);
             pistol.SetActive(false);
             shotgun.SetActive(true);
+            grenade.SetActive(false);
+        }
+    }
+
+    private void SetToGrenade()
+    {
+        if (!wasAK)
+        {
+            this.gameObject.GetComponent<RigBuilder>().enabled = true;
+            leftTarget.localPosition = new Vector3(0.06f, -6.41f, -0.49f);
+            leftTarget.localRotation = Quaternion.Euler(-22.2f, 119.1f, -93.3f);
+            rightTarget.localPosition = new Vector3(0.005f, -0.374f, -0.073f);
+            rightTarget.localRotation = Quaternion.Euler(1.325f, -257.5f, -91.94f);
+            ak.SetActive(false);
+            pistol.SetActive(false);
+            shotgun.SetActive(false);
+            grenade.SetActive(true);
+        }
+        else
+        {
+            this.gameObject.GetComponent<RigBuilder>().enabled = true;
+            leftTarget.localPosition = new Vector3(0.054f, -0.111f, 0.042f);
+            leftTarget.localRotation = Quaternion.Euler(-20.41f, 43.41f, -105.3f);
+            rightTarget.localPosition = new Vector3(-0.55f, -3.36f, 0.17f);
+            rightTarget.localRotation = Quaternion.Euler(1.325f, -257.5f, -91.94f);
+            ak.SetActive(false);
+            pistol.SetActive(false);
+            shotgun.SetActive(false);
+            grenade.SetActive(true);
         }
     }
 

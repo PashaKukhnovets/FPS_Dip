@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private GameObject playerWeapon;
     private bool useAK = false;
     private bool useShotgun = false;
+    private bool useGrenade = false;
 
     public event UnityAction IsFreezeTime;
     public event UnityAction NoFreezeTime;
@@ -189,4 +190,13 @@ public class PlayerController : MonoBehaviour
         return this.useShotgun;
     }
 
+    public void SetUseGrenade(bool value)
+    {
+        this.useGrenade = value;
+    }
+
+    public bool GetUseGrenade()
+    {
+        return this.useGrenade;
+    }
 }

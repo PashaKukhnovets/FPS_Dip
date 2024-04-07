@@ -16,6 +16,7 @@ TagManager:
   - GameManager
   - AKGet
   - ShotgunGet
+  - GrenadeGet
   layers:
   - Default
   - TransparentFX

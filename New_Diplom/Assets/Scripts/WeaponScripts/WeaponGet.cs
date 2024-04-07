@@ -67,6 +67,7 @@ public class WeaponGet : MonoBehaviour
             {
                 if (!other.gameObject.GetComponent<PlayerController>().GetUseGrenade())
                 {
+                    gameManager.GetComponent<GameBehaviour>().AddAmountOfGrenades();
                     other.gameObject.GetComponent<PlayerController>().SetUseGrenade(true);
                 }
                 else

@@ -73,13 +73,12 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         }
 
         if (!WeaponAnim.IsPlaying(AnimFire[0].name) && !WeaponAnim.IsPlaying(AnimReload[RandAnimReload].name) &&
-            !WeaponAnim.IsPlaying(AnimRemove.name) && Input.GetKeyDown(KeyCode.Z) && (grenade.GetComponent<GrenadeBehaviour>().GetAmountOfGrenades() > 0 || 
-            grenade.GetComponent<GrenadeBehaviour>().GetCurrentGrenadesCount() > 0) && player.GetUseGrenade())
+            !WeaponAnim.IsPlaying(AnimRemove.name) && Input.GetKeyDown(KeyCode.Z) && player.GetUseGrenade())
         {
-            WeaponAnim.Stop();
-            WeaponAnim.Play(AnimGet.name);
             isPistol = false;
             SetToGrenade();
+            WeaponAnim.Stop();
+            WeaponAnim.Play(AnimGet.name);
         }
     }
 

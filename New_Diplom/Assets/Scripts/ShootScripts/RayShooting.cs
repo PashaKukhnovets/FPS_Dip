@@ -86,17 +86,17 @@ public class RayShooting : MonoBehaviour
                 {
                     if (hitObject.gameObject.GetComponent<TerroristController>())
                     {
-                        hitObject.GetComponent<TerroristController>().HitByPlayer();
+                        hitObject.GetComponent<TerroristController>().HitByPlayer(false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<SecondTerroristController>())
                     {
-                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
                     {
-                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer();
+                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(false);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }
@@ -114,17 +114,17 @@ public class RayShooting : MonoBehaviour
                 {
                     if (hitObject.gameObject.GetComponent<TerroristController>())
                     {
-                        hitObject.GetComponent<TerroristController>().HitByPlayer();
+                        hitObject.GetComponent<TerroristController>().HitByPlayer(false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<SecondTerroristController>())
                     {
-                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer();
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
                     {
-                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer();
+                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(false);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }

@@ -91,17 +91,22 @@ public class TerroristController : MonoBehaviour
 
     }
 
-    public void HitByPlayer() {
+    public void HitByPlayer(bool isGrenade) {
         if (isFirstMovement) {
             isFirstMovement = false;
             this.gameObject.GetComponent<Pursue>().enabled = true;
             this.gameObject.GetComponent<Animator>().SetLookAtPosition(player.transform.position);
             this.isTerroristRunning = true;
-            isPatroling = false;
-            
+            isPatroling = false;    
         }
 
-        this.terroristHealth -= PlayerParameters.playerDamage;
+        if (!isGrenade)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamage;
+        }
+        else {
+            this.terroristHealth -= 50.0f;
+        }
     }
 
     private void Freeze() {

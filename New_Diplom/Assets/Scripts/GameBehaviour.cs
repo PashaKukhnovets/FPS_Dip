@@ -218,7 +218,7 @@ public class GameBehaviour : MonoBehaviour
 
     public void InitAmountOfGrenades()
     {
-        grenade.GetComponent<GrenadeBehaviour>().InitAmountOfGrenades(25);
+        grenade.GetComponent<GrenadeBehaviour>().InitAmountOfGrenades(3);
     }
 
     public void AddAmountOfGrenades()

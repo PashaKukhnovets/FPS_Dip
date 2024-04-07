@@ -76,7 +76,7 @@ public class GrenadeBehaviour : MonoBehaviour
     public void GrenadeThrow() {
         grenadeInstance = Instantiate(grenadeThrowPrefab, grenadePoint.transform.position, transform.rotation);
         grenadeInstance.GetComponent<Rigidbody>().AddForce(transform.forward * grenadeSpeed);
-        
+        currentGrenadeCount--;
     }
 
 }

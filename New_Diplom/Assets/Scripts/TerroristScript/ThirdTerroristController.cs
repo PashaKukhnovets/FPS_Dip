@@ -73,7 +73,7 @@ public class ThirdTerroristController : MonoBehaviour
         }
     }
 
-    public void HitByPlayer()
+    public void HitByPlayer(bool isGrenade)
     {
         if (isFirstMovement)
         {
@@ -84,8 +84,15 @@ public class ThirdTerroristController : MonoBehaviour
             isPatroling = false;
 
         }
-
-        this.terroristHealth -= PlayerParameters.playerDamage;
+        
+        if (!isGrenade)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamage;
+        }
+        else
+        {
+            this.terroristHealth -= 50.0f;
+        }
 
         if (!isStunned)
         {

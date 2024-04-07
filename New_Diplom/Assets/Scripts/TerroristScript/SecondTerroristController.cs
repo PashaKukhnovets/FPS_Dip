@@ -55,15 +55,23 @@ public class SecondTerroristController : MonoBehaviour
 
     }
 
-    public void HitByPlayer()
+    public void HitByPlayer(bool isGrenade)
     {
         if (isFirstMovement)
         {
             isFirstMovement = false;
             this.gameObject.GetComponent<Face>().enabled = true;
         }
-
-        this.terroristHealth -= PlayerParameters.playerDamage;
+        Debug.Log("snaruzhi");
+        if (!isGrenade)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamage;
+        }
+        else
+        {
+            Debug.Log("vnutri");
+            this.terroristHealth -= 50.0f;
+        }
     }
 
     private void Freeze()

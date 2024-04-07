@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8460066048454109496}
   - component: {fileID: 5948347420112051698}
   - component: {fileID: 4494097836254382179}
+  - component: {fileID: 6709332767432826875}
   - component: {fileID: 7656781707275090103}
   - component: {fileID: 9082873645140743279}
   m_Layer: 0
@@ -99,6 +100,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.08362741, y: 0.45351982, z: 0.08316934}
   m_Center: {x: -0.001207266, y: -0.005074635, z: -0.00000045634806}
+--- !u!135 &6709332767432826875
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5299674662019300391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: -0.001207266, y: -0.005074635, z: -0.00000045634806}
 --- !u!54 &7656781707275090103
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,3 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93db26b91f47034897e9b1177fd8ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 19800008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}

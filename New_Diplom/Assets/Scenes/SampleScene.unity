@@ -6866,6 +6866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrorist_First (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1927264332376651611, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4793784359854870265, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
       propertyPath: m_StoppingDistance
       value: 4.5
@@ -7633,6 +7637,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3677538914406659137, guid: 756f878363fcf1a4f89e45fa167dd3ed, type: 3}
   m_PrefabInstance: {fileID: 889534435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &913324880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3567571250147448655, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+  m_PrefabInstance: {fileID: 5380992168985983222}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &916321820 stripped
 GameObject:
@@ -9289,6 +9298,10 @@ PrefabInstance:
     - target: {fileID: 1927264332376651611, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
       propertyPath: m_Name
       value: Terrorist_First (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927264332376651611, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
@@ -16006,11 +16019,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5380992170024307432, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
   m_PrefabInstance: {fileID: 5380992168985983222}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &1850025778 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 5380992170031174338, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
-  m_PrefabInstance: {fileID: 5380992168985983222}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1852043128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17966,6 +17974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrorist_First
       objectReference: {fileID: 0}
+    - target: {fileID: 1927264332376651611, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
 --- !u!1001 &1825793011384486331
@@ -18946,6 +18958,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 480778335}
     - target: {fileID: 474153960882755300, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: knife
+      value: 
+      objectReference: {fileID: 913324880}
+    - target: {fileID: 474153960882755300, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: pistol
       value: 
       objectReference: {fileID: 693409168}
@@ -18966,6 +18982,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1128600095}
     - target: {fileID: 474153960882755300, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: AnimDrop
+      value: 
+      objectReference: {fileID: 7400018, guid: 62ee6b85f7e534c46b7aec6c51cbe101, type: 3}
+    - target: {fileID: 474153960882755300, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: isPistol
       value: 1
       objectReference: {fileID: 0}
@@ -18976,7 +18996,7 @@ PrefabInstance:
     - target: {fileID: 474153960882755300, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: WeaponAnim
       value: 
-      objectReference: {fileID: 1850025778}
+      objectReference: {fileID: 5380992168985983231}
     - target: {fileID: 474153960882755300, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: leftTarget
       value: 
@@ -19005,6 +19025,14 @@ PrefabInstance:
       propertyPath: animationController
       value: 
       objectReference: {fileID: 5380992168985983223}
+    - target: {fileID: 3567571250147448655, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666680966663528084, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 58e3e711126e2f441ab92c47d010aec5, type: 2}
     - target: {fileID: 4399347900245767983, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: grenadePoint
       value: 
@@ -19190,6 +19218,10 @@ PrefabInstance:
       value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5380992170031174338, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+      propertyPath: m_Animations.Array.data[9]
+      value: 
+      objectReference: {fileID: 7400018, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}
+    - target: {fileID: 5380992170031174338, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
       propertyPath: m_Animations.Array.data[17]
       value: 
       objectReference: {fileID: 7400028, guid: 6cae2f82a0a62ff4ab9be3eeeda19688, type: 3}
@@ -19231,6 +19263,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd97e98038ff30344afce243953dd765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &5380992168985983231 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: 5380992170031174338, guid: ad41f3814a7884441a347ac40b2d4931, type: 3}
+  m_PrefabInstance: {fileID: 5380992168985983222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9097764473666569634
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class TerroristController : MonoBehaviour
 {
     [SerializeField] private GameObject AKGet;
     [SerializeField] private TerroristRayShooting shooting;
+    [SerializeField] private GameObject knifeHitPoint;
+    [SerializeField] private ParticleSystem bloodPrefab;
 
     private GameObject player;
     private bool isFirstMovement = true;
@@ -131,6 +133,11 @@ public class TerroristController : MonoBehaviour
         isFreeze = false;
     }
 
+    public void BloodInstanceOfKnifeHit()
+    {
+        StartCoroutine(BloodKnifeDelay());
+    }
+
     public void CheckTerroristDeath() {
         if (this.terroristHealth <= 0.0f && !isDeath)
         {
@@ -158,6 +165,13 @@ public class TerroristController : MonoBehaviour
         player.gameObject.GetComponent<PlayerController>().IsFreezeTime -= Freeze;
         player.gameObject.GetComponent<PlayerController>().NoFreezeTime -= Unfreeze;
         Destroy(this.gameObject);
+    }
+
+    private IEnumerator BloodKnifeDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        ParticleSystem blood = Instantiate(bloodPrefab, knifeHitPoint.transform);
+        blood.Play();
     }
 
     public bool IsTerroristRunning()

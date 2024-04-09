@@ -455,6 +455,7 @@ Transform:
   - {fileID: 7616086218562094727}
   - {fileID: 6747666381948915061}
   - {fileID: 1620853187899558004}
+  - {fileID: 6972367720243234649}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -560,6 +561,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AKGet: {fileID: 166532, guid: 6aa9645a267fb39498fba44f567baa21, type: 3}
   shooting: {fileID: 1620853188387061010}
+  knifeHitPoint: {fileID: 8926604884271947569}
+  bloodPrefab: {fileID: 3548588485384254794, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
   terroristHealth: 100
   damage: 7
 --- !u!195 &4793784359854870265
@@ -2304,6 +2307,37 @@ Transform:
   m_Father: {fileID: 273010170160927801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8926604884271947569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6972367720243234649}
+  m_Layer: 0
+  m_Name: PointOfKnifeHit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6972367720243234649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926604884271947569}
+  m_LocalRotation: {x: -0.51654965, y: -0.5185408, z: -0.47278717, w: -0.49067733}
+  m_LocalPosition: {x: -0.043, y: 1.348, z: 0.174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1293892219973365217}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
 --- !u!1 &9021016342470033397
 GameObject:
   m_ObjectHideFlags: 0

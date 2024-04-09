@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class SecondTerroristController : MonoBehaviour
 {
     [SerializeField] private SecondTerroristRayShooting shooting;
+    [SerializeField] private GameObject knifeHitPoint;
+    [SerializeField] private ParticleSystem bloodPrefab;
 
     private GameObject player;
     private bool isFirstMovement = true;
@@ -53,6 +55,11 @@ public class SecondTerroristController : MonoBehaviour
             TerroristSitFireFalse?.Invoke();
         }
 
+    }
+
+    public void BloodInstanceOfKnifeHit()
+    {
+        StartCoroutine(BloodKnifeDelay());
     }
 
     public void HitByPlayer(bool isGrenade)
@@ -119,4 +126,10 @@ public class SecondTerroristController : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    private IEnumerator BloodKnifeDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        ParticleSystem blood = Instantiate(bloodPrefab, knifeHitPoint.transform);
+        blood.Play();
+    }
 }

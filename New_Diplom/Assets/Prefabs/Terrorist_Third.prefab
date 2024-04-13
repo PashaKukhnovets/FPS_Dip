@@ -1113,7 +1113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be61c03645d7c943a04d36f5f3493d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AKGet: {fileID: 0}
+  weaponDrop:
+  - {fileID: 166532, guid: 6aa9645a267fb39498fba44f567baa21, type: 3}
+  - {fileID: 5299674662019300391, guid: 6d9bccde8fdc887479e2fcf6128733d8, type: 3}
+  - {fileID: 107960, guid: f9430978bd2bb6049a6bfb3cd528f158, type: 3}
   knifeHitPoint: {fileID: 4660572849610993582}
   bloodPrefab: {fileID: 3548588485384254794, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
   terroristHealth: 400

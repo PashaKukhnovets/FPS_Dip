@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class SecondTerroristController : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> weaponDrop;
     [SerializeField] private SecondTerroristRayShooting shooting;
     [SerializeField] private GameObject knifeHitPoint;
     [SerializeField] private ParticleSystem bloodPrefab;
@@ -13,6 +14,7 @@ public class SecondTerroristController : MonoBehaviour
     private bool isFirstMovement = true;
     private bool isFreeze = false;
     private bool isDeath = false;
+    private int isDropWeapon;
 
     public float terroristHealth = 100.0f;
     public float damage = 15.0f;
@@ -27,6 +29,7 @@ public class SecondTerroristController : MonoBehaviour
         player.gameObject.GetComponent<PlayerController>().IsFreezeTime += Freeze;
         player.gameObject.GetComponent<PlayerController>().NoFreezeTime += Unfreeze;
         this.gameObject.GetComponent<Face>().enabled = false;
+        isDropWeapon = Random.Range(0, 2);
     }
 
     void Update()
@@ -107,6 +110,12 @@ public class SecondTerroristController : MonoBehaviour
             TerroristDeath?.Invoke();
             this.gameObject.GetComponent<Face>().enabled = false;
             shooting.enabled = false;
+
+            if (isDropWeapon == 1) {
+                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
+                    Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
+            }
+
             StartCoroutine(DeathCoroutine());
         }
     }

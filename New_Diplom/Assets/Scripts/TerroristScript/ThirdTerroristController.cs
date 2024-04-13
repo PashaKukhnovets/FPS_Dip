@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class ThirdTerroristController : MonoBehaviour
 {
-    [SerializeField] private GameObject AKGet;
+    [SerializeField] private List<GameObject> weaponDrop;
     [SerializeField] private GameObject knifeHitPoint;
     [SerializeField] private ParticleSystem bloodPrefab;
 
@@ -18,6 +18,7 @@ public class ThirdTerroristController : MonoBehaviour
     private NavMeshAgent agent;
     private bool isPatroling = true;
     private float maxTerroristHealth;
+    private int isDropWeapon;
 
     public float terroristHealth = 400.0f;
     public float damage = 15.0f;
@@ -46,6 +47,7 @@ public class ThirdTerroristController : MonoBehaviour
         }
 
         agent.SetDestination(Points[Random.Range(0, Points.Count)].position);
+        isDropWeapon = Random.Range(0, 2);
     }
 
     void Update()
@@ -133,8 +135,13 @@ public class ThirdTerroristController : MonoBehaviour
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             this.gameObject.GetComponent<Pursue>().enabled = false;
             ThirdTerroristDeath?.Invoke();
-            Instantiate(AKGet, new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
-                Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
+
+            if (isDropWeapon == 1)
+            {
+                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
+                        Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
+            }
+
             StartCoroutine(DeathCoroutine());
         }
     }

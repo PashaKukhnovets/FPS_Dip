@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class PuzzleBehaviour : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PuzzleBehaviour : MonoBehaviour
         {
             //Cursor.lockState = CursorLockMode.Confined;
             //Cursor.visible = true;
+            playerWeapon.GetComponent<RigBuilder>().enabled = false;
             puzzleCamera.gameObject.SetActive(true);
             playerCamera.gameObject.SetActive(false);
             player.GetComponent<PlayerController>().BlockPlayerMove(false);

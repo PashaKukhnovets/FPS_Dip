@@ -13,6 +13,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
     [SerializeField] private GameObject grenade;
     [SerializeField] private GameObject knife;
     [SerializeField] private PlayerController player;
+    [SerializeField] private GameBehaviour gameManager;
 
     private int RandAnimReload = 0;
     private AKAnimationController animController;
@@ -32,20 +33,31 @@ public class ChangeWeaponBehaviour : MonoBehaviour
     {
         animController = gameObject.GetComponent<AKAnimationController>();
 
-        if (isPistol)
+        if (isPistol && !gameManager.CheckPuzzleActivity())
         {
             SetToPistol();
-            leftTarget.localPosition = new Vector3(-0.091f, -0.438f, 0.66f);
-            leftTarget.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            rightTarget.localPosition = new Vector3(0.053f, -0.441f, -0.026f);
-            rightTarget.localRotation = Quaternion.Euler(12.535f, -262.3f, -86.8f);
+        }
+        else if (gameManager.CheckPuzzleActivity())
+        {
+            wasAK = true;
+            SetToPistol();
         }
         else
+        {
             SetToAk();
+        }
+
     }
 
     void Update()
     {
+        if (gameManager.CheckPuzzleActivity())
+        {
+            gameManager.SetPuzzleActivity(false);
+            wasAK = true;
+            StartCoroutine(PuzzleExit());
+        }
+
         WeaponGet();
     }
 
@@ -269,4 +281,11 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         WeaponAnim.Play(AnimGet.name);
         isKnifeAttack = true;
     }
+
+    private IEnumerator PuzzleExit() {
+        yield return new WaitForSeconds(0.3f);
+
+        SetToPistol();
+    }
+
 }

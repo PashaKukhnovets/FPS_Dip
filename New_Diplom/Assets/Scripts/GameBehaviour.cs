@@ -24,6 +24,7 @@ public class GameBehaviour : MonoBehaviour
     private bool isAK;
     private bool isShotgun;
     private bool isGrenade;
+    private bool isWasPuzzle = false;
 
     private void Start()
     {
@@ -40,6 +41,11 @@ public class GameBehaviour : MonoBehaviour
         EscapeWindowVisibility();
         CheckPlayerDeath();
         DeathBlock();
+
+        if (!isWasPuzzle && puzzle.CheckPuzzleActivity())
+        {
+            isWasPuzzle = true;
+        }
     }
 
     private void CheckPlayerDeath() {
@@ -224,5 +230,14 @@ public class GameBehaviour : MonoBehaviour
     public void AddAmountOfGrenades()
     {
         grenade.GetComponent<GrenadeBehaviour>().AddAmountOfGrenades(1);
+    }
+
+    public bool CheckPuzzleActivity() {
+        return isWasPuzzle;
+    }
+
+    public void SetPuzzleActivity(bool value)
+    {
+        isWasPuzzle = value;
     }
 }

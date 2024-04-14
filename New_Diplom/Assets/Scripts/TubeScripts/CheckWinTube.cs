@@ -7,7 +7,7 @@ public class CheckWinTube : MonoBehaviour
 {
     [SerializeField] private GameObject[] tube;
     [SerializeField] private GameObject[] tubeForm;
-    [SerializeField] private GameObject winLabel;
+    [SerializeField] private GameObject upperLock;
 
     private bool isEndPuzzles = false;
 
@@ -31,7 +31,6 @@ public class CheckWinTube : MonoBehaviour
             Mathf.Abs(tube[5].transform.position.y - tubeForm[5].transform.position.y) <= 0.3f) {
             if (!isEndPuzzles) {
                 isEndPuzzles = true;
-                winLabel.SetActive(true);
                 StartCoroutine(OffPuzzles());
             }
         }
@@ -43,7 +42,12 @@ public class CheckWinTube : MonoBehaviour
     }
 
     private IEnumerator OffPuzzles() {
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.0f);
+
+        upperLock.gameObject.transform.localPosition = new Vector3(0.0245f, 0.07f, 0.0f);
+        upperLock.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+
+        yield return new WaitForSeconds(2.0f);
 
         PlayerParameters.SetWindowOpen(false);
         this.gameObject.SetActive(false);

@@ -6868,7 +6868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1927264332376651611, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4793784359854870265, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
       propertyPath: m_StoppingDistance
@@ -8922,7 +8922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3803544622672862627, guid: 14aa4122fde7a564f84dc32bd3100f4b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4576562128931194649, guid: 14aa4122fde7a564f84dc32bd3100f4b, type: 3}
       propertyPath: m_RootOrder
@@ -9301,7 +9301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1927264332376651611, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
@@ -17196,6 +17196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrorist_Second
       objectReference: {fileID: 0}
+    - target: {fileID: 2514261256500132066, guid: 80573a621ac5f124fb509f8f12d23b1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3003799685531427416, guid: 80573a621ac5f124fb509f8f12d23b1d, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -18101,7 +18105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1927264332376651611, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9977c45af51a91e429fad0e5021c4f66, type: 3}
@@ -18891,11 +18895,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4969702771923543821, guid: 49a4bdb0fa5557c40b50c498c8dc547d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 350
+      value: 302.68
       objectReference: {fileID: 0}
     - target: {fileID: 4969702771923543821, guid: 49a4bdb0fa5557c40b50c498c8dc547d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 350
+      value: 299.7
       objectReference: {fileID: 0}
     - target: {fileID: 5012264789946621151, guid: 49a4bdb0fa5557c40b50c498c8dc547d, type: 3}
       propertyPath: m_MassScale

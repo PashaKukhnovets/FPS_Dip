@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class DoorBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject puzzle;
-    [SerializeField] private TerroristSpawn terroristSpawn;
+    //[SerializeField] private TerroristSpawn terroristSpawn;
 
     private bool isPuzzleActive = false;
     private bool isWire = false;
@@ -56,7 +56,7 @@ public class DoorBehaviour : MonoBehaviour
                 Debug.Log("Tube");
                 this.gameObject.transform.Find("door").transform.rotation = Quaternion.Euler(0.0f, 100.0f, 0.0f);
                 isEndPuzzle = true;
-                terroristSpawn.TerroristsOn();
+                //terroristSpawn.TerroristsOn();
                 if (this.gameObject.CompareTag("WinDoor")) {
                     SceneManager.LoadScene(0);
                 }
@@ -68,7 +68,7 @@ public class DoorBehaviour : MonoBehaviour
                 //GetComponent<Animator>().SetTrigger("DoorATrigger");
                 this.gameObject.transform.Find("door").transform.rotation = Quaternion.Euler(0.0f, 100.0f, 0.0f);
                 isEndPuzzle = true;
-                terroristSpawn.TerroristsOn();
+                //terroristSpawn.TerroristsOn();
                 if (this.gameObject.CompareTag("WinDoor"))
                 {
                     SceneManager.LoadScene(0);

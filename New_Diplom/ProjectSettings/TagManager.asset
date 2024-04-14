@@ -17,6 +17,8 @@ TagManager:
   - AKGet
   - ShotgunGet
   - GrenadeGet
+  - BrownWire
+  - PinkWire
   layers:
   - Default
   - TransparentFX

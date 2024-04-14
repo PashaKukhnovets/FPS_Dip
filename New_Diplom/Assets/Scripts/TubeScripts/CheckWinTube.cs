@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class CheckWinTube : MonoBehaviour
 {
-    [SerializeField] private GameObject[] tube;
-    [SerializeField] private GameObject[] tubeForm;
+    [SerializeField] private int countOfForms;
     [SerializeField] private GameObject upperLock;
 
+    private int countOfTubeEndPosition = 0;
     private bool isEndPuzzles = false;
 
     void Update()
@@ -17,18 +17,7 @@ public class CheckWinTube : MonoBehaviour
     }
 
     private void CheckWin() {
-        if (Mathf.Abs(tube[0].transform.position.x - tubeForm[0].transform.position.x) <= 0.3f &&
-            Mathf.Abs(tube[0].transform.position.y - tubeForm[0].transform.position.y) <= 0.3f &&
-            Mathf.Abs(tube[1].transform.position.x - tubeForm[1].transform.position.x) <= 0.3f &&
-            Mathf.Abs(tube[1].transform.position.y - tubeForm[1].transform.position.y) <= 0.3f &&
-            Mathf.Abs(tube[2].transform.position.x - tubeForm[2].transform.position.x) <= 0.3f &&
-            Mathf.Abs(tube[2].transform.position.y - tubeForm[2].transform.position.y) <= 0.3f &&
-            Mathf.Abs(tube[3].transform.position.x - tubeForm[3].transform.position.x) <= 0.3f &&
-            Mathf.Abs(tube[3].transform.position.y - tubeForm[3].transform.position.y) <= 0.3f &&
-            Mathf.Abs(tube[4].transform.position.x - tubeForm[4].transform.position.x) <= 0.3f &&
-            Mathf.Abs(tube[4].transform.position.y - tubeForm[4].transform.position.y) <= 0.3f &&
-            Mathf.Abs(tube[5].transform.position.x - tubeForm[5].transform.position.x) <= 0.3f &&
-            Mathf.Abs(tube[5].transform.position.y - tubeForm[5].transform.position.y) <= 0.3f) {
+        if (countOfTubeEndPosition == countOfForms) {
             if (!isEndPuzzles) {
                 isEndPuzzles = true;
                 StartCoroutine(OffPuzzles());
@@ -51,5 +40,9 @@ public class CheckWinTube : MonoBehaviour
 
         PlayerParameters.SetWindowOpen(false);
         this.gameObject.SetActive(false);
+    }
+
+    public void AddCountOffTubeEndPosition() {
+        countOfTubeEndPosition++;
     }
 }

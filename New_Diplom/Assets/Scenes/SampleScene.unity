@@ -4583,6 +4583,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2478961553079219844, guid: b4f729d9618a65543baedfac3b0a7311, type: 3}
   m_PrefabInstance: {fileID: 533130107}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &541157016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2220419314565453461, guid: 49a4bdb0fa5557c40b50c498c8dc547d, type: 3}
+  m_PrefabInstance: {fileID: 2879082700439955265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &544491879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14046,7 +14051,7 @@ PrefabInstance:
     - target: {fileID: 114809449196239576, guid: e193aeba793b2ed4da311c6a1f433691, type: 3}
       propertyPath: puzzle
       value: 
-      objectReference: {fileID: 1013840399}
+      objectReference: {fileID: 541157016}
     - target: {fileID: 114809449196239576, guid: e193aeba793b2ed4da311c6a1f433691, type: 3}
       propertyPath: puzzleWire_1
       value: 

@@ -18,6 +18,10 @@ public class PuzzleBehaviour : MonoBehaviour
     [SerializeField] private CheckWinWires puzzleWires_3;
     [SerializeField] private CheckWinTube puzzleTube_4;
     [SerializeField] private CheckWinWires puzzleWires_4;
+    [SerializeField] private CheckWinTube puzzleTube_5;
+    [SerializeField] private CheckWinWires puzzleWires_5;
+    [SerializeField] private CheckWinTube puzzleTube_6;
+    [SerializeField] private CheckWinWires puzzleWires_6;
 
     void Start()
     {
@@ -55,7 +59,8 @@ public class PuzzleBehaviour : MonoBehaviour
         if (puzzleTube_1.gameObject.activeSelf || puzzleWires_1.gameObject.activeSelf ||
             puzzleTube_2.gameObject.activeSelf || puzzleWires_2.gameObject.activeSelf ||
             puzzleTube_3.gameObject.activeSelf || puzzleWires_3.gameObject.activeSelf ||
-            puzzleTube_4.gameObject.activeSelf || puzzleWires_4.gameObject.activeSelf)
+            puzzleTube_4.gameObject.activeSelf || puzzleWires_4.gameObject.activeSelf || 
+            puzzleTube_5.gameObject.activeSelf || puzzleTube_6.gameObject.activeSelf)
         {
             return true;
         }

@@ -60,7 +60,8 @@ public class PuzzleBehaviour : MonoBehaviour
             puzzleTube_2.gameObject.activeSelf || puzzleWires_2.gameObject.activeSelf ||
             puzzleTube_3.gameObject.activeSelf || puzzleWires_3.gameObject.activeSelf ||
             puzzleTube_4.gameObject.activeSelf || puzzleWires_4.gameObject.activeSelf || 
-            puzzleTube_5.gameObject.activeSelf || puzzleTube_6.gameObject.activeSelf)
+            puzzleTube_5.gameObject.activeSelf || puzzleWires_5.gameObject.activeSelf ||
+            puzzleTube_6.gameObject.activeSelf || puzzleWires_6.gameObject.activeSelf)
         {
             return true;
         }

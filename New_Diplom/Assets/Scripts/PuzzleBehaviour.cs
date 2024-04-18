@@ -12,10 +12,13 @@ public class PuzzleBehaviour : MonoBehaviour
 
     [SerializeField] private CheckWinTube puzzleTube_1;
     [SerializeField] private CheckWinWires puzzleWires_1;
+    [SerializeField] private CheckWinTube puzzleNumbers_1;
     [SerializeField] private CheckWinTube puzzleTube_2;
     [SerializeField] private CheckWinWires puzzleWires_2;
+    [SerializeField] private CheckWinTube puzzleNumbers_2;
     [SerializeField] private CheckWinTube puzzleTube_3;
     [SerializeField] private CheckWinWires puzzleWires_3;
+    [SerializeField] private CheckWinTube puzzleNumbers_3;
     [SerializeField] private CheckWinTube puzzleTube_4;
     [SerializeField] private CheckWinWires puzzleWires_4;
     [SerializeField] private CheckWinTube puzzleTube_5;
@@ -61,7 +64,9 @@ public class PuzzleBehaviour : MonoBehaviour
             puzzleTube_3.gameObject.activeSelf || puzzleWires_3.gameObject.activeSelf ||
             puzzleTube_4.gameObject.activeSelf || puzzleWires_4.gameObject.activeSelf || 
             puzzleTube_5.gameObject.activeSelf || puzzleWires_5.gameObject.activeSelf ||
-            puzzleTube_6.gameObject.activeSelf || puzzleWires_6.gameObject.activeSelf)
+            puzzleTube_6.gameObject.activeSelf || puzzleWires_6.gameObject.activeSelf ||
+            puzzleNumbers_1.gameObject.activeSelf || puzzleNumbers_2.gameObject.activeSelf ||
+            puzzleNumbers_3.gameObject.activeSelf)
         {
             return true;
         }

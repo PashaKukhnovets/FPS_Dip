@@ -54,7 +54,7 @@ public class DoorBehaviour : MonoBehaviour
             {
                 //GetComponent<Animator>().SetTrigger("DoorATrigger");
                 Debug.Log("Tube");
-                this.gameObject.transform.Find("door").transform.rotation = Quaternion.Euler(0.0f, 100.0f, 0.0f);
+                this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, -180.0f, 0.0f);
                 isEndPuzzle = true;
                 //terroristSpawn.TerroristsOn();
                 if (this.gameObject.CompareTag("WinDoor")) {
@@ -66,7 +66,7 @@ public class DoorBehaviour : MonoBehaviour
             if (isPuzzleActive && puzzle.GetComponent<CheckWinWires>().IsEndWires() && !isEndPuzzle)
             {
                 //GetComponent<Animator>().SetTrigger("DoorATrigger");
-                this.gameObject.transform.Find("door").transform.rotation = Quaternion.Euler(0.0f, 100.0f, 0.0f);
+                this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, -180.0f, 0.0f);
                 isEndPuzzle = true;
                 //terroristSpawn.TerroristsOn();
                 if (this.gameObject.CompareTag("WinDoor"))

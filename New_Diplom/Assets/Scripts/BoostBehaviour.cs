@@ -23,6 +23,7 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostHealth() {
+        Debug.Log("Health");
         switch (healthLevel) {
             case 0: {
                     if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 1500)
@@ -60,6 +61,7 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostEnergy() {
+        Debug.Log("Energy");
         switch (energyLevel)
         {
             case 0:
@@ -101,6 +103,7 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostSuperPoints() {
+        Debug.Log("Superpoints");
         switch (superPointsLevel)
         {
             case 0:

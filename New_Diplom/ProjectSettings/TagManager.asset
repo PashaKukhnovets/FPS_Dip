@@ -19,6 +19,7 @@ TagManager:
   - GrenadeGet
   - BrownWire
   - PinkWire
+  - door
   layers:
   - Default
   - TransparentFX

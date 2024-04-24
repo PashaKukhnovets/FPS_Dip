@@ -96,7 +96,7 @@ public class TerroristController : MonoBehaviour
 
     }
 
-    public void HitByPlayer(bool isGrenade) {
+    public void HitByPlayer(bool isGrenade, bool isPistol, bool isAK, bool isShotgun, bool isKnife) {
         if (isFirstMovement) {
             isFirstMovement = false;
             this.gameObject.GetComponent<Pursue>().enabled = true;
@@ -105,18 +105,34 @@ public class TerroristController : MonoBehaviour
             isPatroling = false;    
         }
 
-        if (!isGrenade)
+        if (isPistol)
         {
-            this.terroristHealth -= PlayerParameters.playerDamage;
+            this.terroristHealth -= PlayerParameters.playerDamagePistol;
         }
-        else {
-            this.terroristHealth -= 50.0f;
+
+        if (isAK)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageAK;
+        }
+
+        if (isShotgun)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageShotgun;
+        }
+
+        if (isGrenade)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageGrenade;
+        }
+
+        if (isKnife) {
+            this.terroristHealth -= PlayerParameters.playerDamageKnife;
         }
     }
 
     private void Freeze() {
         agent.speed = 0.7f;
-        this.gameObject.GetComponentInChildren<TerroristRayShooting>().changeRateAttackTerrorist(0.5f);
+        this.gameObject.GetComponentInChildren<TerroristRayShooting>().ChangeRateAttackTerrorist(0.5f);
         this.gameObject.GetComponent<Animator>().speed = 0.1f;
         isFreeze = true;
     }
@@ -130,7 +146,7 @@ public class TerroristController : MonoBehaviour
             agent.speed = 4.8f;
         }
 
-        this.gameObject.GetComponentInChildren<TerroristRayShooting>().changeRateAttackTerrorist(3.5f);
+        this.gameObject.GetComponentInChildren<TerroristRayShooting>().ChangeRateAttackTerrorist(3.5f);
         this.gameObject.GetComponent<Animator>().speed = 1.0f;
         
         isFreeze = false;

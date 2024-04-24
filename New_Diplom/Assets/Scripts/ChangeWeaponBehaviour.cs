@@ -67,19 +67,19 @@ public class ChangeWeaponBehaviour : MonoBehaviour
         {
             if (other.gameObject.GetComponent<TerroristController>())
             {
-                other.gameObject.GetComponent<TerroristController>().HitByPlayer(false);
+                other.gameObject.GetComponent<TerroristController>().HitByPlayer(false, false, false, false, true);
                 other.gameObject.GetComponent<TerroristController>().BloodInstanceOfKnifeHit();
             }
 
             if (other.gameObject.GetComponent<SecondTerroristController>())
             {
-                other.gameObject.GetComponent<SecondTerroristController>().HitByPlayer(false);
+                other.gameObject.GetComponent<SecondTerroristController>().HitByPlayer(false, false, false, false, true);
                 other.gameObject.GetComponent<SecondTerroristController>().BloodInstanceOfKnifeHit();
             }
 
             if (other.gameObject.GetComponent<ThirdTerroristController>())
             {
-                other.gameObject.GetComponent<ThirdTerroristController>().HitByPlayer(false);
+                other.gameObject.GetComponent<ThirdTerroristController>().HitByPlayer(false, false, false, false, true);
                 other.gameObject.GetComponent<ThirdTerroristController>().BloodInstanceOfKnifeHit();
             }
 

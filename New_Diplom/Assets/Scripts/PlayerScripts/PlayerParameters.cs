@@ -4,7 +4,11 @@ using UnityEngine;
 
 public static class PlayerParameters
 {
-    public static float playerDamage = 20.0f;
+    public static float playerDamageAK = 20.0f;
+    public static float playerDamagePistol = 10.0f;
+    public static float playerDamageShotgun = 35.0f;
+    public static float playerDamageGrenade = 50.0f;
+    public static float playerDamageKnife = 25.0f;
 
     private static float playerMaxHealth = 100.0f;
     private static float playerMaxEnergy = 100.0f;

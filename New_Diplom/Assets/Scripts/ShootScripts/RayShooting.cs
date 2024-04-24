@@ -12,10 +12,10 @@ public class RayShooting : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private AKAnimationController weaponAnim;
-    [SerializeField] private PuzzleBehaviour puzzleBehaviour;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
     [SerializeField] private GameObject shotgun;
+    [SerializeField] private GameObject grenade;
 
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
@@ -86,17 +86,17 @@ public class RayShooting : MonoBehaviour
                 {
                     if (hitObject.gameObject.GetComponent<TerroristController>())
                     {
-                        hitObject.GetComponent<TerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<TerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<SecondTerroristController>())
                     {
-                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
                     {
-                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }
@@ -114,17 +114,17 @@ public class RayShooting : MonoBehaviour
                 {
                     if (hitObject.gameObject.GetComponent<TerroristController>())
                     {
-                        hitObject.GetComponent<TerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<TerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<SecondTerroristController>())
                     {
-                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
                     {
-                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }

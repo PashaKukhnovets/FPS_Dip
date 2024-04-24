@@ -382,10 +382,10 @@ MonoBehaviour:
   playerCamera: {fileID: 5380992168304858501}
   mouseLook: {fileID: 5380992168304858499}
   weaponAnim: {fileID: 5380992169695010758}
-  puzzleBehaviour: {fileID: 0}
   pistol: {fileID: 7722214444157981394}
   ak: {fileID: 5380992170024307434}
   shotgun: {fileID: 130931513966044246}
+  grenade: {fileID: 6413133982268159337}
 --- !u!1001 &130931513965937134
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1189,8 +1189,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.99164385, y: 2.1531525, z: 1.4679451}
-  m_Center: {x: 0.037602812, y: -0.57657635, z: -0.23397255}
+  m_Size: {x: 0.99164385, y: 2.1531525, z: 2.0601177}
+  m_Center: {x: 0.037602812, y: -0.57657635, z: -0.53005886}
 --- !u!82 &5380992169695010759
 AudioSource:
   m_ObjectHideFlags: 0

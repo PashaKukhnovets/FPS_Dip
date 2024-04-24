@@ -82,7 +82,7 @@ public class ThirdTerroristController : MonoBehaviour
         StartCoroutine(BloodKnifeDelay());
     }
 
-    public void HitByPlayer(bool isGrenade)
+    public void HitByPlayer(bool isGrenade, bool isPistol, bool isAK, bool isShotgun, bool isKnife)
     {
         if (isFirstMovement)
         {
@@ -93,14 +93,30 @@ public class ThirdTerroristController : MonoBehaviour
             isPatroling = false;
 
         }
-        
-        if (!isGrenade)
+
+        if (isPistol)
         {
-            this.terroristHealth -= PlayerParameters.playerDamage;
+            this.terroristHealth -= PlayerParameters.playerDamagePistol;
         }
-        else
+
+        if (isAK)
         {
-            this.terroristHealth -= 50.0f;
+            this.terroristHealth -= PlayerParameters.playerDamageAK;
+        }
+
+        if (isShotgun)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageShotgun;
+        }
+
+        if (isGrenade)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageGrenade;
+        }
+
+        if (isKnife)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageKnife;
         }
 
         if (!isStunned)
@@ -114,6 +130,7 @@ public class ThirdTerroristController : MonoBehaviour
         }
     }
 
+    
     private void Freeze()
     {
         agent.speed = 0.7f;

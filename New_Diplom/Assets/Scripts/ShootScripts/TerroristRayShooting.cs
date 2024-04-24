@@ -38,9 +38,9 @@ public class TerroristRayShooting : MonoBehaviour
 
     private void Shoot()
     {
-        if (countOfShooting <= 5)
+        if (countOfShooting <= 3)
         {
-            if (Time.time > nextShoot && isShooting)
+            if (Time.time > nextShoot && isShooting && !terrorist.IsTerroristRunning())
             {
                 countOfShooting++;
 
@@ -127,7 +127,7 @@ public class TerroristRayShooting : MonoBehaviour
         isStartShooting = true;
     }
 
-    public void changeRateAttackTerrorist(float currentRate) {
+    public void ChangeRateAttackTerrorist(float currentRate) {
         this.terroristRate = currentRate;
     }
 

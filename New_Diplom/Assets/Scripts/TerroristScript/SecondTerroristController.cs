@@ -65,22 +65,37 @@ public class SecondTerroristController : MonoBehaviour
         StartCoroutine(BloodKnifeDelay());
     }
 
-    public void HitByPlayer(bool isGrenade)
+    public void HitByPlayer(bool isGrenade, bool isPistol, bool isAK, bool isShotgun, bool isKnife)
     {
         if (isFirstMovement)
         {
             isFirstMovement = false;
             this.gameObject.GetComponent<Face>().enabled = true;
         }
-        Debug.Log("snaruzhi");
-        if (!isGrenade)
+
+        if (isPistol)
         {
-            this.terroristHealth -= PlayerParameters.playerDamage;
+            this.terroristHealth -= PlayerParameters.playerDamagePistol;
         }
-        else
+
+        if (isAK)
         {
-            Debug.Log("vnutri");
-            this.terroristHealth -= 50.0f;
+            this.terroristHealth -= PlayerParameters.playerDamageAK;
+        }
+
+        if (isShotgun)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageShotgun;
+        }
+
+        if (isGrenade)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageGrenade;
+        }
+
+        if (isKnife)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageKnife;
         }
     }
 

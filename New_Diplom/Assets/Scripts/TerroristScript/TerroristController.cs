@@ -10,6 +10,7 @@ public class TerroristController : MonoBehaviour
     [SerializeField] private TerroristRayShooting shooting;
     [SerializeField] private GameObject knifeHitPoint;
     [SerializeField] private ParticleSystem bloodPrefab;
+    [SerializeField] private List<Transform> Points;
 
     private GameObject player;
     private bool isFirstMovement = true;
@@ -17,7 +18,6 @@ public class TerroristController : MonoBehaviour
     private bool isInPlayerRadius = false;
     private bool isFreeze = false;
     private bool isDeath = false;
-    private List<Transform> Points = new List<Transform>();
     private NavMeshAgent agent;
     private bool isPatroling = true;
     private int isDropWeapon;
@@ -37,16 +37,13 @@ public class TerroristController : MonoBehaviour
         this.gameObject.GetComponent<Pursue>().enabled = false;
         agent = this.gameObject.GetComponent<NavMeshAgent>();
         agent.speed = 2.7f;
-        agent.angularSpeed = 240.0f;
+        agent.angularSpeed = 3600.0f;
 
-        Transform pointsObject = GameObject.FindGameObjectWithTag("Points").transform;
+        if (Points.Count <= 0)
+            isPatroling = false;
 
-        foreach (Transform point in pointsObject)
-        {
-            Points.Add(point);
-        }
-
-        agent.SetDestination(Points[Random.Range(0, Points.Count)].position);
+        if (isPatroling)
+            agent.SetDestination(Points[Random.Range(0, Points.Count)].position);
 
         isDropWeapon = Random.Range(0, 2);
     }

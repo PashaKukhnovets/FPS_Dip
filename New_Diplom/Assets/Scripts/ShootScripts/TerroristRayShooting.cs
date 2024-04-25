@@ -55,7 +55,7 @@ public class TerroristRayShooting : MonoBehaviour
 
                     if (hitObject.GetComponent<PlayerController>())
                     {
-                        PlayerParameters.AddPlayerDamage(15.0f);
+                        PlayerParameters.AddPlayerDamage(terrorist.damage);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }

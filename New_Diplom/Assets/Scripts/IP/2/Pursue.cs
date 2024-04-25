@@ -10,6 +10,7 @@ public class Pursue : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private GameObject player;
+    private Vector3 direction;
    
     public event UnityAction TerroristRunning;
     public event UnityAction TerroristStandFire;
@@ -25,6 +26,11 @@ public class Pursue : MonoBehaviour
         //agent.stoppingDistance = 7.0f;
         animator = this.gameObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+        agent.SetDestination(player.transform.position);
+
+        if (this.gameObject.GetComponent<TerroristController>()) {
+            agent.updateRotation = false;
+        }
     }
 
     private void Update()
@@ -34,19 +40,21 @@ public class Pursue : MonoBehaviour
 
     public void CheckDistance()
     {
-        agent.SetDestination(player.transform.position);
-        //animator.SetLookAtPosition(player.transform.position);
+        direction = (player.transform.position - transform.position).normalized;
+        direction.y = 0f;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), 2.5f);
 
+        agent.SetDestination(player.transform.position);
+
+        //animator.SetLookAtPosition(player.transform.position);
         if (this.gameObject.GetComponent<TerroristController>())
         {
             if (this.gameObject.GetComponent<TerroristController>().IsTerroristRunning())
             {
-                Debug.Log(agent.stoppingDistance);
                 TerroristRunning?.Invoke();
-
             }
 
-            if (agent.remainingDistance <= 7.0f)
+            if (agent.remainingDistance <= 5f)
             {
                 if (!isLowDistance)
                     isLowDistance = true;
@@ -54,7 +62,7 @@ public class Pursue : MonoBehaviour
                 agent.speed = 0.1f;
                 TerroristStandFire?.Invoke();
             }
-            else if (agent.remainingDistance > 7.0f)
+            else if (agent.remainingDistance > 5.1f)
             {
                 if (isLowDistance)
                 {

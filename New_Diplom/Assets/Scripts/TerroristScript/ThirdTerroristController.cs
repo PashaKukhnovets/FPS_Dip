@@ -9,12 +9,12 @@ public class ThirdTerroristController : MonoBehaviour
     [SerializeField] private List<GameObject> weaponDrop;
     [SerializeField] private GameObject knifeHitPoint;
     [SerializeField] private ParticleSystem bloodPrefab;
+    [SerializeField] private List<Transform> Points;
 
     private GameObject player;
     private bool isFirstMovement = true;
     private bool isTerroristRunning = false;
     private bool isDeath = false;
-    private List<Transform> Points = new List<Transform>();
     private NavMeshAgent agent;
     private bool isPatroling = true;
     private float maxTerroristHealth;
@@ -38,13 +38,6 @@ public class ThirdTerroristController : MonoBehaviour
         agent = this.gameObject.GetComponent<NavMeshAgent>();
         agent.speed = 2.7f;
         agent.angularSpeed = 240.0f;
-
-        Transform pointsObject = GameObject.FindGameObjectWithTag("Points").transform;
-
-        foreach (Transform point in pointsObject)
-        {
-            Points.Add(point);
-        }
 
         agent.SetDestination(Points[Random.Range(0, Points.Count)].position);
         isDropWeapon = Random.Range(0, 2);

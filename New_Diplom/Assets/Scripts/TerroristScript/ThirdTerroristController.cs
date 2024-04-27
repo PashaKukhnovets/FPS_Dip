@@ -126,12 +126,14 @@ public class ThirdTerroristController : MonoBehaviour
     
     private void Freeze()
     {
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.5f);
         agent.speed = 0.7f;
         this.gameObject.GetComponent<Animator>().speed = 0.1f;    
     }
 
     private void Unfreeze()
     {
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(2.5f);
         agent.speed = 4.5f;
         this.gameObject.GetComponent<Animator>().speed = 1.0f;
     }
@@ -148,7 +150,7 @@ public class ThirdTerroristController : MonoBehaviour
 
             if (isDropWeapon == 1)
             {
-                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
+                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1.0f, this.gameObject.transform.position.z),
                         Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
             }
 
@@ -164,6 +166,7 @@ public class ThirdTerroristController : MonoBehaviour
         }
 
         PlayerParameters.AddPlayerCurrentBoostPoints(Random.Range(30, 50));
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.0f);
 
         yield return new WaitForSeconds(4.0f);
         player.gameObject.GetComponent<PlayerController>().IsFreezeTime -= Freeze;

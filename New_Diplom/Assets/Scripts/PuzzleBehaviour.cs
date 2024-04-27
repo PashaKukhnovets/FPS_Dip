@@ -9,6 +9,7 @@ public class PuzzleBehaviour : MonoBehaviour
     [SerializeField] private Camera puzzleCamera;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject playerWeapon;
+    [SerializeField] private GameObject UI;
 
     [SerializeField] private CheckWinTube puzzleTube_1;
     [SerializeField] private CheckWinWires puzzleWires_1;
@@ -49,6 +50,7 @@ public class PuzzleBehaviour : MonoBehaviour
             puzzleCamera.gameObject.SetActive(true);
             playerCamera.gameObject.SetActive(false);
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
+            UI.SetActive(false);
         }
         else
         {
@@ -57,6 +59,7 @@ public class PuzzleBehaviour : MonoBehaviour
             puzzleCamera.gameObject.SetActive(false);
             playerCamera.gameObject.SetActive(true);
             player.GetComponent<PlayerController>().BlockPlayerMove(true);
+            UI.SetActive(true);
         }
     }
 

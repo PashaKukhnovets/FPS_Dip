@@ -1028,7 +1028,7 @@ Transform:
   m_GameObject: {fileID: 3803544622672862627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.409293, y: -0.36009073, z: 13.97951}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8346126472179443597}
@@ -1119,6 +1119,7 @@ MonoBehaviour:
   - {fileID: 107960, guid: f9430978bd2bb6049a6bfb3cd528f158, type: 3}
   knifeHitPoint: {fileID: 4660572849610993582}
   bloodPrefab: {fileID: 3548588485384254794, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
+  Points: []
   terroristHealth: 400
   damage: 15
   isStunned: 0

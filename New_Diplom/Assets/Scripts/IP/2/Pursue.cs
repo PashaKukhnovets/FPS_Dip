@@ -11,6 +11,7 @@ public class Pursue : MonoBehaviour
     private Animator animator;
     private GameObject player;
     private Vector3 direction;
+    private float maxDegreesDelta = 2.5f;
    
     public event UnityAction TerroristRunning;
     public event UnityAction TerroristStandFire;
@@ -42,10 +43,9 @@ public class Pursue : MonoBehaviour
     {
         direction = (player.transform.position - transform.position).normalized;
         direction.y = 0f;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), 2.5f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), maxDegreesDelta);
 
-        agent.SetDestination(player.transform.position);
-
+        
         //animator.SetLookAtPosition(player.transform.position);
         if (this.gameObject.GetComponent<TerroristController>())
         {
@@ -53,23 +53,26 @@ public class Pursue : MonoBehaviour
             {
                 TerroristRunning?.Invoke();
             }
-
-            if (agent.remainingDistance <= 5f)
+            
+            if (Vector3.Distance(agent.gameObject.GetComponent<Transform>().position, player.transform.position) <= 4.0f)
             {
                 if (!isLowDistance)
                     isLowDistance = true;
 
-                agent.speed = 0.1f;
+                agent.speed = 0.01f;
+                this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 TerroristStandFire?.Invoke();
             }
-            else if (agent.remainingDistance > 5.1f)
+            else if (Vector3.Distance(agent.gameObject.GetComponent<Transform>().position, player.transform.position) > 4.0f)
             {
                 if (isLowDistance)
                 {
                     isLowDistance = false;
                     agent.speed = 1.3f;
                     TerroristStandFireFalse?.Invoke();
+                    this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 }
+                agent.SetDestination(player.transform.position);
             }
         }
         else if (this.gameObject.GetComponent<ThirdTerroristController>()) {
@@ -98,5 +101,7 @@ public class Pursue : MonoBehaviour
         }
     }
 
-    //проблема в том, что терик доходит до цели, и перестает двигаться
+    public void SetDegreesDeltaRotation(float value) {
+        maxDegreesDelta = value;
+    }
 }

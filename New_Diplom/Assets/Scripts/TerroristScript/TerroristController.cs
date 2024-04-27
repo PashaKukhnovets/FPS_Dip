@@ -128,6 +128,7 @@ public class TerroristController : MonoBehaviour
     }
 
     private void Freeze() {
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.5f);
         agent.speed = 0.7f;
         this.gameObject.GetComponentInChildren<TerroristRayShooting>().ChangeRateAttackTerrorist(0.5f);
         this.gameObject.GetComponent<Animator>().speed = 0.1f;
@@ -135,6 +136,8 @@ public class TerroristController : MonoBehaviour
     }
 
     private void Unfreeze() {
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(2.5f);
+
         if (isInPlayerRadius)
         {
             agent.speed = 1.3f;
@@ -166,7 +169,7 @@ public class TerroristController : MonoBehaviour
 
             if (isDropWeapon == 1)
             {
-                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
+                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1.0f, this.gameObject.transform.position.z),
                     Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
             }
 
@@ -180,6 +183,7 @@ public class TerroristController : MonoBehaviour
             PlayerParameters.AddPlayerCurrentPoints(20.0f);
         }
 
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.0f);
         PlayerParameters.AddPlayerCurrentBoostPoints(Random.Range(30, 50));
 
         yield return new WaitForSeconds(4.0f);

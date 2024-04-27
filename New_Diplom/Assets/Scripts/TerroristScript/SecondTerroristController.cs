@@ -127,7 +127,7 @@ public class SecondTerroristController : MonoBehaviour
             shooting.enabled = false;
 
             if (isDropWeapon == 1) {
-                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
+                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1.0f, this.gameObject.transform.position.z),
                     Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
             }
 

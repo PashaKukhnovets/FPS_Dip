@@ -36,7 +36,7 @@ public class TerroristController : MonoBehaviour
         player.gameObject.GetComponent<PlayerController>().NoFreezeTime += Unfreeze;
         this.gameObject.GetComponent<Pursue>().enabled = false;
         agent = this.gameObject.GetComponent<NavMeshAgent>();
-        agent.speed = 2.7f;
+        agent.speed = 1.3f;
         agent.angularSpeed = 3600.0f;
 
         if (Points.Count <= 0)
@@ -138,12 +138,19 @@ public class TerroristController : MonoBehaviour
     private void Unfreeze() {
         this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(2.5f);
 
-        if (isInPlayerRadius)
+        if (!isPatroling)
         {
-            agent.speed = 1.3f;
+            if (isInPlayerRadius)
+            {
+                agent.speed = 1.3f;
+            }
+            else if (!isInPlayerRadius)
+            {
+                agent.speed = 4.8f;
+            }
         }
-        else if (!isInPlayerRadius) {
-            agent.speed = 4.8f;
+        else {
+            agent.speed = 1.3f;
         }
 
         this.gameObject.GetComponentInChildren<TerroristRayShooting>().ChangeRateAttackTerrorist(3.5f);
@@ -179,7 +186,7 @@ public class TerroristController : MonoBehaviour
 
     private IEnumerator DeathCoroutine()
     {
-        if (PlayerParameters.GetPlayerCurrentPoints() < 100.0f) {
+        if (PlayerParameters.GetPlayerCurrentPoints() < PlayerParameters.GetPlayerMaxPoints()) {
             PlayerParameters.AddPlayerCurrentPoints(20.0f);
         }
 

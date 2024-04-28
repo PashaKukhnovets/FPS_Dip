@@ -160,7 +160,7 @@ public class ThirdTerroristController : MonoBehaviour
 
     private IEnumerator DeathCoroutine()
     {
-        if (PlayerParameters.GetPlayerCurrentPoints() < 100.0f)
+        if (PlayerParameters.GetPlayerCurrentPoints() < PlayerParameters.GetPlayerMaxPoints())
         {
             PlayerParameters.AddPlayerCurrentPoints(20.0f);
         }

@@ -5,19 +5,26 @@ using UnityEngine.UI;
 
 public class SuperPointsBarBehaviour : MonoBehaviour
 {
+    [SerializeField] private BoostBehaviour boostBehaviour;
+
     private Slider superPointsBarSlider;
 
     void Start()
     {
+        boostBehaviour.updatePoints += UpdateMaxPoints;
         superPointsBarSlider = this.GetComponent<Slider>();
 
-        superPointsBarSlider.maxValue = 100.0f;
+        superPointsBarSlider.maxValue = PlayerParameters.GetPlayerMaxPoints();
         superPointsBarSlider.value = PlayerParameters.GetPlayerCurrentPoints();
     }
 
     void Update()
     {
         UpdateHealth();
+    }
+
+    private void UpdateMaxPoints() {
+        superPointsBarSlider.maxValue = PlayerParameters.GetPlayerMaxPoints();
     }
 
     public void UpdateHealth()

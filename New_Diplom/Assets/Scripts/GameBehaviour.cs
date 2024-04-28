@@ -16,6 +16,10 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private GameObject shotgun;
     [SerializeField] private GameObject grenade;
 
+    [SerializeField] private TextMeshProUGUI healthPoints;
+    [SerializeField] private TextMeshProUGUI energyPoints;
+    [SerializeField] private TextMeshProUGUI superPoints;
+
     private GameObject player;
     private bool isBoostOpen = false;
     private bool isCursorActive = false;
@@ -36,6 +40,7 @@ public class GameBehaviour : MonoBehaviour
     {
         UpdateBulletStoreText();
         UpdateBoostPointsText();
+        UpdateParametersText();
         BoostWindowVisibility();
         ShowCursor();
         EscapeWindowVisibility();
@@ -153,6 +158,11 @@ public class GameBehaviour : MonoBehaviour
             Cursor.visible = true;
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
+    }
+    private void UpdateParametersText() {
+        healthPoints.text = PlayerParameters.GetPlayerCurrentHealth() + "/" + PlayerParameters.GetPlayerMaxHealth();
+        energyPoints.text = PlayerParameters.GetPlayerCurrentEnergy() + "/" + PlayerParameters.GetPlayerMaxEnergy();
+        superPoints.text = PlayerParameters.GetPlayerCurrentPoints() + "/" + PlayerParameters.GetPlayerMaxPoints();
     }
 
     public bool CheckPistol()

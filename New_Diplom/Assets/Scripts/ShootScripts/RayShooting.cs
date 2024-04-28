@@ -71,10 +71,9 @@ public class RayShooting : MonoBehaviour
 
     private void PlayerRayCast(bool isShotgun) {
 
-        mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
-
         if (!isShotgun)
         {
+            mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
             Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
             Ray ray = playerCamera.ScreenPointToRay(point);
             RaycastHit hit;
@@ -103,6 +102,7 @@ public class RayShooting : MonoBehaviour
             }
         }
         else {
+            mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 7.0f), Random.Range(-7.0f, 7.0f));
             Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
             Ray ray = playerCamera.ScreenPointToRay(point);
             RaycastHit hit;

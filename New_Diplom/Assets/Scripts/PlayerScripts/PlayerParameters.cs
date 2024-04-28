@@ -12,12 +12,12 @@ public static class PlayerParameters
 
     private static float playerMaxHealth = 100.0f;
     private static float playerMaxEnergy = 100.0f;
-    private static float playerMaxPoints = 20.0f;
+    private static float playerMaxPoints = 100.0f;
 
     private static float playerCurrentHealth;
     private static float playerCurrentEnergy;
     private static float playerCurrentPoints;
-    private static int playerCurrentBoostPoints = 10000;
+    private static int playerCurrentBoostPoints = 30000;
 
     private static bool isWindowOpen = false;
 

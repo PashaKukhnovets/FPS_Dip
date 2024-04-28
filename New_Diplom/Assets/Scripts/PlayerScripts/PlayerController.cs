@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerParameters.InitPlayerCurrentHealth(PlayerParameters.GetPlayerMaxHealth());
         PlayerParameters.InitPlayerCurrentEnergy(PlayerParameters.GetPlayerMaxEnergy());
-        PlayerParameters.InitPlayerCurrentPoints(PlayerParameters.GetPlayerMaxPoints());
+        PlayerParameters.InitPlayerCurrentPoints(20.0f);
     }
 
     void Update()
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     private void RefillEnergy() {
         if (!Input.GetKey(KeyCode.LeftShift)) {
-            if (PlayerParameters.GetPlayerCurrentEnergy() < 100.0f)
+            if (PlayerParameters.GetPlayerCurrentEnergy() < PlayerParameters.GetPlayerMaxEnergy())
             {
                 if (Time.time > nextStepEnergy)
                 {
@@ -149,13 +149,13 @@ public class PlayerController : MonoBehaviour
             if (GetUseAK())
             {
                 SetUseAK(false);
-                Instantiate(droppingAK, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, 0.3f,
+                Instantiate(droppingAK, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, this.gameObject.transform.position.y,
                     this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
                 changeWeapon.SetToPistol();
             }
             else if (GetUseShotgun()) {
                 SetUseShotgun(false);
-                Instantiate(droppingShotgun, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, 0.3f,
+                Instantiate(droppingShotgun, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, this.gameObject.transform.position.y,
                     this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
                 changeWeapon.SetToPistol();
             }

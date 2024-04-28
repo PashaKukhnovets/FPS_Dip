@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 437188}
   - component: {fileID: 6571310}
   - component: {fileID: 3964030568733555181}
+  - component: {fileID: 7342368057226227086}
   m_Layer: 0
   m_Name: Ak47M1 Base
   m_TagString: AKGet
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166532}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -34,7 +35,7 @@ Transform:
   - {fileID: 4671213336785720}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6571310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60,6 +61,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76643b5573bdc024e94e1d80b330aecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &7342368057226227086
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166532}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0e677866e526a9e4db2d7f94a7d6eaf9, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 0e677866e526a9e4db2d7f94a7d6eaf9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1002497902448850
 GameObject:
   m_ObjectHideFlags: 0

@@ -177,9 +177,11 @@ public class ThirdTerroristController : MonoBehaviour
     private IEnumerator StunCoroutine() {
         agent.isStopped = true;
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.0f);
+
         yield return new WaitForSeconds(10.0f);
 
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(2.5f);
         agent.isStopped = false;
         this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         ThirdTerroristStunningFalse?.Invoke();

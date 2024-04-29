@@ -17,7 +17,7 @@ public static class PlayerParameters
     private static float playerCurrentHealth;
     private static float playerCurrentEnergy;
     private static float playerCurrentPoints;
-    private static int playerCurrentBoostPoints = 30000;
+    private static int playerCurrentBoostPoints = 0;
 
     private static bool isWindowOpen = false;
 

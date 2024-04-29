@@ -81,7 +81,7 @@ public class Pursue : MonoBehaviour
                 ThirdTerroristAgrWalking?.Invoke();
             }
 
-            if (agent.remainingDistance <= 4.0f)
+            if (Vector3.Distance(agent.gameObject.GetComponent<Transform>().position, player.transform.position) <= 4.0f)
             {
                 if (!isLowDistance)
                     isLowDistance = true;
@@ -89,7 +89,7 @@ public class Pursue : MonoBehaviour
                 agent.speed = 0.1f;
                 ThirdTerroristAttacking?.Invoke();
             }
-            else if (agent.remainingDistance > 4.0f)
+            else if (Vector3.Distance(agent.gameObject.GetComponent<Transform>().position, player.transform.position) > 4.0f)
             {
                 if (isLowDistance)
                 {
@@ -97,6 +97,7 @@ public class Pursue : MonoBehaviour
                     agent.speed = 4.5f;
                     ThirdTerroristAttackingFalse?.Invoke();
                 }
+                agent.SetDestination(player.transform.position);
             }
         }
     }

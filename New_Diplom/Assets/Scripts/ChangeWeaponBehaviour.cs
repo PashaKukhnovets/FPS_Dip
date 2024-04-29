@@ -63,7 +63,7 @@ public class ChangeWeaponBehaviour : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (isKnifeDamage)
+        if (isKnifeDamage && Vector3.Distance(player.gameObject.GetComponent<Transform>().position, other.gameObject.transform.position) <= 4.0f)
         {
             if (other.gameObject.GetComponent<TerroristController>())
             {

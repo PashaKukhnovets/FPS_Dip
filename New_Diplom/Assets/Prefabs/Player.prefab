@@ -1357,11 +1357,13 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   isPistol: 0
   WeaponAnim: {fileID: 5380992170031174338}
-  AnimFire: []
+  AnimFire:
+  - {fileID: 7400024, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}
   AnimGet: {fileID: 7400018, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}
   AnimDrop: {fileID: 7400018, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}
   AnimRemove: {fileID: 7400020, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}
-  AnimReload: []
+  AnimReload:
+  - {fileID: 7400030, guid: 87ae02bce6f993a4bab8ce297f790ad1, type: 3}
 --- !u!114 &5380992169695010758
 MonoBehaviour:
   m_ObjectHideFlags: 0

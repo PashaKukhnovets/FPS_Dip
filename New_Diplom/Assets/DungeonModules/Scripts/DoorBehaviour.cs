@@ -60,6 +60,11 @@ public class DoorBehaviour : MonoBehaviour
                 if (this.gameObject.CompareTag("WinDoor")) {
                     SceneManager.LoadScene(0);
                 }
+
+                if (this.gameObject.CompareTag("baddoor"))
+                {
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 310.0f, 0.0f);
+                }
             }
         }
         if (isWire) {
@@ -72,6 +77,11 @@ public class DoorBehaviour : MonoBehaviour
                 if (this.gameObject.CompareTag("WinDoor"))
                 {
                     SceneManager.LoadScene(0);
+                }
+
+                if (this.gameObject.CompareTag("baddoor"))
+                {
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 310.0f, 0.0f);
                 }
             }
         }

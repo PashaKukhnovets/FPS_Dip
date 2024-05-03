@@ -160,9 +160,32 @@ public class GameBehaviour : MonoBehaviour
         }
     }
     private void UpdateParametersText() {
-        healthPoints.text = PlayerParameters.GetPlayerCurrentHealth() + "/" + PlayerParameters.GetPlayerMaxHealth();
-        energyPoints.text = PlayerParameters.GetPlayerCurrentEnergy() + "/" + PlayerParameters.GetPlayerMaxEnergy();
-        superPoints.text = PlayerParameters.GetPlayerCurrentPoints() + "/" + PlayerParameters.GetPlayerMaxPoints();
+        if (PlayerParameters.GetPlayerCurrentHealth() <= 0.0f)
+        {
+            healthPoints.text = "0/" + PlayerParameters.GetPlayerMaxHealth();
+        }
+        else
+        {
+            healthPoints.text = PlayerParameters.GetPlayerCurrentHealth() + "/" + PlayerParameters.GetPlayerMaxHealth();
+        }
+
+        if (PlayerParameters.GetPlayerCurrentEnergy() <= 0.0f)
+        {
+            energyPoints.text = "0/" + PlayerParameters.GetPlayerMaxEnergy();
+        }
+        else
+        {
+            energyPoints.text = PlayerParameters.GetPlayerCurrentEnergy() + "/" + PlayerParameters.GetPlayerMaxEnergy();
+        }
+
+        if (PlayerParameters.GetPlayerCurrentPoints() <= 0.0f)
+        {
+            superPoints.text = "0/" + PlayerParameters.GetPlayerMaxPoints();
+        }
+        else
+        {
+            superPoints.text = PlayerParameters.GetPlayerCurrentPoints() + "/" + PlayerParameters.GetPlayerMaxPoints();
+        }
     }
 
     public bool CheckPistol()

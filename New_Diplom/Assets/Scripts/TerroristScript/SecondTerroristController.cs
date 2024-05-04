@@ -50,16 +50,6 @@ public class SecondTerroristController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.gameObject.GetComponent<PlayerController>())
-        {
-            TerroristSitFireFalse?.Invoke();
-        }
-
-    }
-
     public void BloodInstanceOfKnifeHit()
     {
         StartCoroutine(BloodKnifeDelay());

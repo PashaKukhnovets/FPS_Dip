@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class DoorBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject puzzle;
-    //[SerializeField] private TerroristSpawn terroristSpawn;
+    [SerializeField] private List<GameObject> terrorists;
 
     private bool isPuzzleActive = false;
     private bool isWire = false;
@@ -52,36 +52,60 @@ public class DoorBehaviour : MonoBehaviour
         {
             if (isPuzzleActive && puzzle.GetComponent<CheckWinTube>().IsEndTubes() && !isEndPuzzle)
             {
-                //GetComponent<Animator>().SetTrigger("DoorATrigger");
-                Debug.Log("Tube");
-                this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, -180.0f, 0.0f);
-                isEndPuzzle = true;
-                //terroristSpawn.TerroristsOn();
-                if (this.gameObject.CompareTag("WinDoor")) {
-                    SceneManager.LoadScene(0);
+                if (this.gameObject.CompareTag("OfficeDoor"))
+                {
+                    this.gameObject.transform.localPosition = new Vector3(0.0f, 30.0f, 0.0f);
+                }
+                else
+                {
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, -180.0f, 0.0f);
+
+                    if (this.gameObject.CompareTag("baddoor"))
+                    {
+                        this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 310.0f, 0.0f);
+                    }
                 }
 
-                if (this.gameObject.CompareTag("baddoor"))
+                foreach (var i in terrorists)
                 {
-                    this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 310.0f, 0.0f);
+                    i.SetActive(true);
+                }
+
+                isEndPuzzle = true;
+
+                if (this.gameObject.CompareTag("WinDoor"))
+                {
+                    SceneManager.LoadScene(0);
                 }
             }
         }
         if (isWire) {
             if (isPuzzleActive && puzzle.GetComponent<CheckWinWires>().IsEndWires() && !isEndPuzzle)
             {
-                //GetComponent<Animator>().SetTrigger("DoorATrigger");
-                this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, -180.0f, 0.0f);
+                if (this.gameObject.CompareTag("OfficeDoor"))
+                {
+                    this.gameObject.transform.localPosition = new Vector3(0.0f, 30.0f, 0.0f);
+                }
+                else
+                {
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, -180.0f, 0.0f);
+
+                    if (this.gameObject.CompareTag("baddoor"))
+                    {
+                        this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 310.0f, 0.0f);
+                    }
+                }
+
+                foreach (var i in terrorists)
+                {
+                    i.SetActive(true);
+                }
+
                 isEndPuzzle = true;
-                //terroristSpawn.TerroristsOn();
+
                 if (this.gameObject.CompareTag("WinDoor"))
                 {
                     SceneManager.LoadScene(0);
-                }
-
-                if (this.gameObject.CompareTag("baddoor"))
-                {
-                    this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 310.0f, 0.0f);
                 }
             }
         }

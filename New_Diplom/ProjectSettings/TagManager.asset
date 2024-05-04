@@ -21,6 +21,8 @@ TagManager:
   - PinkWire
   - door
   - baddoor
+  - Door
+  - OfficeDoor
   layers:
   - Default
   - TransparentFX

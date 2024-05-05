@@ -11,6 +11,10 @@ public class AKAnimationController : MonoBehaviour
     [SerializeField] private GameObject shotgun;
     [SerializeField] private GameObject grenade;
 
+    [SerializeField] private AudioSource akReload;
+    [SerializeField] private AudioSource pistolReload;
+    [SerializeField] private AudioSource shotgunReload;
+
     public Animation WeaponAnim;
     public AnimationClip[] AnimIdle;
     public AnimationClip[] AnimWalk;
@@ -105,6 +109,7 @@ public class AKAnimationController : MonoBehaviour
                 blockMouse = true;
                 RandAnimReload = Random.Range(0, AnimReload.Length);
                 ReloadPlay();
+                pistolReload.Play();
                 StartCoroutine(UnblockMouse());
             }
         }
@@ -116,6 +121,7 @@ public class AKAnimationController : MonoBehaviour
                 blockMouse = true;
                 RandAnimReload = Random.Range(0, AnimReload.Length);
                 ReloadPlay();
+                akReload.Play();
                 StartCoroutine(UnblockMouse());
             }
         }
@@ -128,6 +134,7 @@ public class AKAnimationController : MonoBehaviour
                 blockMouse = true;
                 RandAnimReload = Random.Range(0, AnimReload.Length);
                 ReloadPlay();
+                shotgunReload.Play();
                 StartCoroutine(UnblockMouse());
             }
         }

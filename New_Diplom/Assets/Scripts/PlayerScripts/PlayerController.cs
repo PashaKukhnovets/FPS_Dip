@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject droppingShotgun;
     [SerializeField] private ChangeWeaponBehaviour changeWeapon;
 
+    [SerializeField] private AudioSource playerStep;
+    [SerializeField] private AudioSource playerSprint;
+    [SerializeField] private AudioSource playerJump;
+
     public float speed = 6.0f;
 
     public float gravity = -9.8f;
@@ -30,6 +34,10 @@ public class PlayerController : MonoBehaviour
     private bool useShotgun = false;
     private bool useGrenade = false;
 
+    private bool isPlayerStepSound = false;
+    private bool isPlayerSprintSound = false;
+    private bool isPlayerSprintToStepSound = true;
+
     public event UnityAction IsFreezeTime;
     public event UnityAction NoFreezeTime;
 
@@ -45,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Input.GetAxis("Vertical"));
         PlayerMove();
         Sprint();
         RefillEnergy();
@@ -54,6 +63,16 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayerMove() {
+        if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && !isPlayerStepSound)
+        {
+            isPlayerStepSound = true;
+            playerStep.Play();
+        }
+        else if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0 && isPlayerStepSound) {
+            isPlayerStepSound = false;
+            playerStep.Stop();
+        }
+
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
         movement = new Vector3(deltaX, 0, deltaZ);
@@ -61,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
         {
+            playerJump.Play();
             vertSpeed = jumpForce;
         }
         else
@@ -84,6 +104,13 @@ public class PlayerController : MonoBehaviour
         {
             if (PlayerParameters.GetPlayerCurrentEnergy() > 0.0f)
             {
+                if (!isPlayerSprintSound)
+                {
+                    isPlayerSprintSound = true;
+                    isPlayerSprintToStepSound = false;
+                    playerStep.Stop();
+                    playerSprint.Play();
+                }
                 if (Time.time > nextStepEnergy)
                 {
                     nextStepEnergy = Time.time + 1.0f / rate;
@@ -97,7 +124,15 @@ public class PlayerController : MonoBehaviour
                 this.speed = 6.0f;
         }
         else
+        {
+            if (!isPlayerSprintToStepSound) {
+                isPlayerSprintToStepSound = true;
+                playerStep.Play();
+            }
+            isPlayerSprintSound = false;
+            playerSprint.Stop();
             this.speed = 6.0f;
+        }
     }
 
     private void FreezeTime() {

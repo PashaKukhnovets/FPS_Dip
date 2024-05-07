@@ -10,6 +10,7 @@ public class ThirdTerroristController : MonoBehaviour
     [SerializeField] private GameObject knifeHitPoint;
     [SerializeField] private ParticleSystem bloodPrefab;
     [SerializeField] private List<Transform> Points;
+    [SerializeField] private ThirdTerroristAnimController thirdTerroristAnimController;
 
     private GameObject player;
     private bool isFirstMovement = true;
@@ -21,7 +22,7 @@ public class ThirdTerroristController : MonoBehaviour
     private int isDropWeapon;
 
     public float terroristHealth = 400.0f;
-    public float damage = 15.0f;
+    public float damage = 25.0f;
     public bool isStunned = false;
 
     public event UnityAction ThirdTerroristDeath;
@@ -185,6 +186,7 @@ public class ThirdTerroristController : MonoBehaviour
         agent.isStopped = false;
         this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         ThirdTerroristStunningFalse?.Invoke();
+        thirdTerroristAnimController.SetWalkSoundVariable(true);
     }
 
     private IEnumerator BloodKnifeDelay()

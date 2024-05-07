@@ -8,6 +8,7 @@ public class DoorBehaviour : MonoBehaviour
     [SerializeField] private GameObject puzzle;
     [SerializeField] private List<GameObject> terrorists;
 
+    private PlayerController player;
     private bool isPuzzleActive = false;
     private bool isWire = false;
     private bool isTube = false;
@@ -16,6 +17,7 @@ public class DoorBehaviour : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         CheckTypeOfPuzzle();
     }
 
@@ -35,6 +37,7 @@ public class DoorBehaviour : MonoBehaviour
                 isPuzzleActive = true;
                 PlayerParameters.SetWindowOpen(true);
                 isInTrigger = true;
+                player.StopPlayerSounds();
             }
         }
     }

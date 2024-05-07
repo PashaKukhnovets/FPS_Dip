@@ -234,4 +234,10 @@ public class PlayerController : MonoBehaviour
     {
         return this.useGrenade;
     }
+
+    public void StopPlayerSounds() {
+        playerStep.Stop();
+        playerJump.Stop();
+        playerSprint.Stop();
+    }
 }

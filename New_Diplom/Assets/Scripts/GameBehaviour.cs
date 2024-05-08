@@ -11,6 +11,7 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private PuzzleBehaviour puzzle;
     [SerializeField] private GameObject escapeWindow;
     [SerializeField] private GameObject deathWindow;
+    [SerializeField] private GameObject settingsWindow;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
     [SerializeField] private GameObject shotgun;
@@ -129,13 +130,13 @@ public class GameBehaviour : MonoBehaviour
     }
 
     private void ShowCursor() {
-        if (boostWindow.activeSelf || escapeWindow.activeSelf || puzzle.CheckPuzzleActivity())
+        if (boostWindow.activeSelf || escapeWindow.activeSelf || puzzle.CheckPuzzleActivity() || settingsWindow.activeSelf)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
-        else if(!boostWindow.activeSelf && !escapeWindow.activeSelf && !puzzle.CheckPuzzleActivity()) {
+        else if(!boostWindow.activeSelf && !escapeWindow.activeSelf && !puzzle.CheckPuzzleActivity() && !settingsWindow.activeSelf) {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }

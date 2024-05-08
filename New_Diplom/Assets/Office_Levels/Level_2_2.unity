@@ -4381,6 +4381,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4793939834710983131, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: escapeWindow
+      value: 
+      objectReference: {fileID: 795998024}
+    - target: {fileID: 4793939834710983131, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: settingsWindow
+      value: 
+      objectReference: {fileID: 248788861}
     - target: {fileID: 9097764474388853364, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -4441,10 +4449,18 @@ PrefabInstance:
       propertyPath: healthPoints
       value: 
       objectReference: {fileID: 795998033}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: settingsWindow
+      value: 
+      objectReference: {fileID: 248788861}
     - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: escapeWindow
       value: 
       objectReference: {fileID: 795998024}
+    - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: settingsWindow
+      value: 
+      objectReference: {fileID: 248788861}
     - target: {fileID: 9097764474388853370, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4534,6 +4550,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39c61b3d7384dbd4fa703e18286ea818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &108863773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4793939834710983131, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+  m_PrefabInstance: {fileID: 108863769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35f544b6270eac4394c0c731940b73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &110598896 stripped
@@ -9709,6 +9736,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5201423646680458952, guid: ea0853a3b2545524481b0c984f27afd1, type: 3}
   m_PrefabInstance: {fileID: 248462257}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &248788861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4891128142369073306, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+  m_PrefabInstance: {fileID: 795998022}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &251007759
 PrefabInstance:
@@ -30049,6 +30081,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 833558580680889290, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 108863772}
+    - target: {fileID: 833558580680889290, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Settings
+      objectReference: {fileID: 0}
     - target: {fileID: 1825793011809831312, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -30208,6 +30248,18 @@ PrefabInstance:
     - target: {fileID: 1825793013389483557, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.00024414062
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296017628137488668, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 108863773}
+    - target: {fileID: 6296017628137488668, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitToEscapeWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296017628137488668, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsWindowBehaviour, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}

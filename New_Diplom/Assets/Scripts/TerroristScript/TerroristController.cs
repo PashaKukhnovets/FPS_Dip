@@ -187,7 +187,14 @@ public class TerroristController : MonoBehaviour
     private IEnumerator DeathCoroutine()
     {
         if (PlayerParameters.GetPlayerCurrentPoints() < PlayerParameters.GetPlayerMaxPoints()) {
-            PlayerParameters.AddPlayerCurrentPoints(20.0f);
+            if (PlayerParameters.GetPlayerCurrentPoints() + 20.0f > 100.0f)
+            {
+                PlayerParameters.InitPlayerCurrentPoints(100.0f);
+            }
+            else
+            {
+                PlayerParameters.AddPlayerCurrentPoints(20.0f);
+            }
         }
 
         this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.0f);

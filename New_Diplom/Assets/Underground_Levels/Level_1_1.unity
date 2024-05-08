@@ -4794,6 +4794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrorist_Third
       objectReference: {fileID: 0}
+    - target: {fileID: 3803544622672862627, guid: 14aa4122fde7a564f84dc32bd3100f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4576562128931194649, guid: 14aa4122fde7a564f84dc32bd3100f4b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4863,6 +4867,11 @@ PrefabInstance:
 --- !u!4 &128229074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4576562128931194649, guid: 14aa4122fde7a564f84dc32bd3100f4b, type: 3}
+  m_PrefabInstance: {fileID: 128229073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &128229075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3803544622672862627, guid: 14aa4122fde7a564f84dc32bd3100f4b, type: 3}
   m_PrefabInstance: {fileID: 128229073}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &128385915
@@ -16562,6 +16571,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 833558580680889290, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1371912457}
+    - target: {fileID: 833558580680889290, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Settings
+      objectReference: {fileID: 0}
     - target: {fileID: 1825793011699508575, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -16805,6 +16822,18 @@ PrefabInstance:
     - target: {fileID: 1825793013389483557, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296017628137488668, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1371912458}
+    - target: {fileID: 6296017628137488668, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitToEscapeWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6296017628137488668, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsWindowBehaviour, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1825793013212856665, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
@@ -51162,6 +51191,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4793939834710983131, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: escapeWindow
+      value: 
+      objectReference: {fileID: 456470700}
+    - target: {fileID: 4793939834710983131, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: settingsWindow
+      value: 
+      objectReference: {fileID: 1820276676}
     - target: {fileID: 9097764474388853364, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -51222,10 +51259,18 @@ PrefabInstance:
       propertyPath: healthPoints
       value: 
       objectReference: {fileID: 1712189253}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: settingsWindow
+      value: 
+      objectReference: {fileID: 1820276676}
     - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: escapeWindow
       value: 
       objectReference: {fileID: 456470700}
+    - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: settingsWindow
+      value: 
+      objectReference: {fileID: 1820276676}
     - target: {fileID: 9097764474388853370, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -51304,6 +51349,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39c61b3d7384dbd4fa703e18286ea818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1371912458 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4793939834710983131, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+  m_PrefabInstance: {fileID: 1371912455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35f544b6270eac4394c0c731940b73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1373162438
@@ -60689,6 +60745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 1694482811}
+  terrorists: []
 --- !u!65 &1623654606
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64992,6 +65049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 746301002}
+  terrorists: []
 --- !u!1001 &1774570384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66366,6 +66424,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4456619313388836, guid: 124bcae420da23f4e9e18ecadf5aa074, type: 3}
   m_PrefabInstance: {fileID: 1817367788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1820276676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4891128142369073306, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+  m_PrefabInstance: {fileID: 456470698}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1820782382
 PrefabInstance:
@@ -75420,6 +75483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzle: {fileID: 838341527}
+  terrorists:
+  - {fileID: 128229075}
 --- !u!65 &2058518554
 BoxCollider:
   m_ObjectHideFlags: 0

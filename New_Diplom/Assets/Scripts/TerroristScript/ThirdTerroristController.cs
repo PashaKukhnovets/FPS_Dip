@@ -163,7 +163,14 @@ public class ThirdTerroristController : MonoBehaviour
     {
         if (PlayerParameters.GetPlayerCurrentPoints() < PlayerParameters.GetPlayerMaxPoints())
         {
-            PlayerParameters.AddPlayerCurrentPoints(20.0f);
+            if (PlayerParameters.GetPlayerCurrentPoints() + 20.0f > 100.0f)
+            {
+                PlayerParameters.InitPlayerCurrentPoints(100.0f);
+            }
+            else
+            {
+                PlayerParameters.AddPlayerCurrentPoints(20.0f);
+            }
         }
 
         PlayerParameters.AddPlayerCurrentBoostPoints(Random.Range(30, 50));

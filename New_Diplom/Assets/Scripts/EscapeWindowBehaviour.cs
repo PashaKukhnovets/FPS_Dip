@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class EscapeWindowBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject escapeWindow;
+    [SerializeField] private GameObject settingsWindow;
 
     private GameObject player;
 
@@ -22,6 +23,11 @@ public class EscapeWindowBehaviour : MonoBehaviour
 
     public void Save() { 
         
+    }
+
+    public void Settings() {
+        escapeWindow.SetActive(false);
+        settingsWindow.SetActive(true);
     }
 
     public void ExitToMainMenu() {

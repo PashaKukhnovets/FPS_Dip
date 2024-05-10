@@ -5624,7 +5624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d045977188e37544488d977ef61c8b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSrc: {fileID: 0}
   settingsPanel: {fileID: 4891128142369073306}
   slider: {fileID: 4570417542126801745}
 --- !u!1 &4510075637001762582

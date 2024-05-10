@@ -35,6 +35,7 @@ public class GameBehaviour : MonoBehaviour
     {
         Time.timeScale = 1;
         player = GameObject.FindGameObjectWithTag("Player");
+        PlayerParameters.SetWindowOpen(false);
     }
 
     private void Update()

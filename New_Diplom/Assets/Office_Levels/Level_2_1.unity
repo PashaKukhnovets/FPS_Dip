@@ -9814,6 +9814,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5201423646680458952, guid: ea0853a3b2545524481b0c984f27afd1, type: 3}
   m_PrefabInstance: {fileID: 214517570}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &214937137 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2133988767344387211, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+  m_PrefabInstance: {fileID: 1503513623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &216139065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57763,6 +57774,10 @@ PrefabInstance:
       propertyPath: settingsWindow
       value: 
       objectReference: {fileID: 1650305356}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: dropdownQuality
+      value: 
+      objectReference: {fileID: 214937137}
     - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: escapeWindow
       value: 
@@ -78832,8 +78847,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 22
+  m_Intensity: 1.3
+  m_Range: 45
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -78890,7 +78905,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881039523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54, y: 29.46, z: 1.78}
+  m_LocalPosition: {x: 0, y: 29.46, z: 2.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

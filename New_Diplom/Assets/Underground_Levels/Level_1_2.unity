@@ -32113,6 +32113,10 @@ PrefabInstance:
       propertyPath: settingsWindow
       value: 
       objectReference: {fileID: 280576380}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: dropdownQuality
+      value: 
+      objectReference: {fileID: 1322880565}
     - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: escapeWindow
       value: 
@@ -38327,6 +38331,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4114892262612660, guid: ba307b47d3b80724a81ad4ef24168864, type: 3}
   m_PrefabInstance: {fileID: 1321957133}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1322880565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2133988767344387211, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+  m_PrefabInstance: {fileID: 931193476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1325127693
 GameObject:
   m_ObjectHideFlags: 0

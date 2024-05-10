@@ -20,6 +20,7 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthPoints;
     [SerializeField] private TextMeshProUGUI energyPoints;
     [SerializeField] private TextMeshProUGUI superPoints;
+    [SerializeField] private TMP_Dropdown dropdownQuality;
 
     private GameObject player;
     private bool isBoostOpen = false;
@@ -36,6 +37,8 @@ public class GameBehaviour : MonoBehaviour
         Time.timeScale = 1;
         player = GameObject.FindGameObjectWithTag("Player");
         PlayerParameters.SetWindowOpen(false);
+        QualitySettings.SetQualityLevel(PlayerParameters.GetQualityIndex());
+        dropdownQuality.value = PlayerParameters.GetQualityIndex();
     }
 
     private void Update()

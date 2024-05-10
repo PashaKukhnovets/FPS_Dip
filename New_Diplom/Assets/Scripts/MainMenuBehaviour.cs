@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,13 @@ public class MainMenuBehaviour : MonoBehaviour
     [SerializeField] private GameObject settingsWindow;
     [SerializeField] private GameObject levelWindow;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private TMP_Dropdown dropdownQuality;
+
+    private void Start()
+    {
+        QualitySettings.SetQualityLevel(PlayerParameters.GetQualityIndex());
+        dropdownQuality.value = PlayerParameters.GetQualityIndex();
+    }
 
     public void StartNewGame() {
         SceneManager.LoadScene(1);

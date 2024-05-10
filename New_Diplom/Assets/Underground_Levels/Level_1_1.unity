@@ -19102,6 +19102,17 @@ Transform:
   m_Father: {fileID: 1147229316}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+--- !u!114 &549415561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2133988767344387211, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+  m_PrefabInstance: {fileID: 456470698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &549433822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51226,6 +51237,10 @@ PrefabInstance:
       propertyPath: settingsWindow
       value: 
       objectReference: {fileID: 1820276676}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: dropdownQuality
+      value: 
+      objectReference: {fileID: 549415561}
     - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: escapeWindow
       value: 

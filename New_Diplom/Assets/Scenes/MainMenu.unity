@@ -1914,6 +1914,7 @@ MonoBehaviour:
   settingsWindow: {fileID: 2068438796}
   levelWindow: {fileID: 2034693051}
   mainMenu: {fileID: 1188856418}
+  dropdownQuality: {fileID: 1822801320}
 --- !u!1 &740543063
 GameObject:
   m_ObjectHideFlags: 0

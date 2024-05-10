@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public static class PlayerParameters
@@ -22,6 +23,8 @@ public static class PlayerParameters
     private static int playerCurrentBoostPoints = 0;
 
     private static bool isWindowOpen = false;
+
+    private static int qualityIndex;
 
     public static void InitPlayerCurrentHealth(float health) {
         playerCurrentHealth = health;
@@ -123,6 +126,15 @@ public static class PlayerParameters
 
     public static float GetPlayerAudioListener() {
         return playerAudioListener;
+    }
+
+    public static void SetQualityIndex(int value) {
+        qualityIndex = value;
+    }
+
+    public static int GetQualityIndex()
+    {
+        return qualityIndex;
     }
 
 }

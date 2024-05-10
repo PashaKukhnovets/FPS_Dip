@@ -8,6 +8,12 @@ public class VolumeSliderBehaviour : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider slider;
 
+    private void Start()
+    {
+        AudioListener.volume = PlayerParameters.GetPlayerAudioListener();
+        slider.value = AudioListener.volume;
+    }
+
     private void Update()
     {
         ChangeVolume();
@@ -16,6 +22,13 @@ public class VolumeSliderBehaviour : MonoBehaviour
     private void ChangeVolume()
     {
         if (settingsPanel.activeSelf)
-           AudioListener.volume = slider.value;
+        {
+            AudioListener.volume = slider.value;
+            SaveAudioListenerVolume();
+        }
+    }
+
+    private void SaveAudioListenerVolume() {
+        PlayerParameters.SetPlayerAudioListener(slider.value);
     }
 }

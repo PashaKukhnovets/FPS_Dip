@@ -54686,7 +54686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1934477721412038, guid: dd632f63abe4be341a6f4b5d32f9c800, type: 3}
       propertyPath: m_TagString
-      value: baddoor
+      value: WinDoor
       objectReference: {fileID: 0}
     - target: {fileID: 1934477721412038, guid: dd632f63abe4be341a6f4b5d32f9c800, type: 3}
       propertyPath: m_StaticEditorFlags

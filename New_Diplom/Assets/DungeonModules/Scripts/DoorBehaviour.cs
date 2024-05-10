@@ -78,7 +78,7 @@ public class DoorBehaviour : MonoBehaviour
 
                 if (this.gameObject.CompareTag("WinDoor"))
                 {
-                    SceneManager.LoadScene(0);
+                    StartCoroutine(NextLevelPlay());
                 }
             }
         }
@@ -108,7 +108,7 @@ public class DoorBehaviour : MonoBehaviour
 
                 if (this.gameObject.CompareTag("WinDoor"))
                 {
-                    SceneManager.LoadScene(0);
+                    StartCoroutine(NextLevelPlay());
                 }
             }
         }
@@ -136,5 +136,21 @@ public class DoorBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         PlayerParameters.SetWindowOpen(false);
         puzzle.SetActive(false);
+    }
+
+    private IEnumerator NextLevelPlay() {
+        yield return new WaitForSeconds(4.0f);
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            SceneManager.LoadScene(3);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3) {
+            SceneManager.LoadScene(4);
+        }
     }
 }

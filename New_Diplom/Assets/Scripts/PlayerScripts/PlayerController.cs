@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Input.GetAxis("Vertical"));
         PlayerMove();
         Sprint();
         RefillEnergy();

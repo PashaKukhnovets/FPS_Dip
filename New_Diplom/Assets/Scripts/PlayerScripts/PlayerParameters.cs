@@ -14,6 +14,8 @@ public static class PlayerParameters
     private static float playerMaxEnergy = 100.0f;
     private static float playerMaxPoints = 100.0f;
 
+    private static float playerAudioListener = 100.0f;
+
     private static float playerCurrentHealth;
     private static float playerCurrentEnergy;
     private static float playerCurrentPoints;
@@ -113,6 +115,14 @@ public static class PlayerParameters
 
     public static bool GetWindowOpen() {
         return isWindowOpen;
+    }
+
+    public static void SetPlayerAudioListener(float value) {
+        playerAudioListener = value;
+    }
+
+    public static float GetPlayerAudioListener() {
+        return playerAudioListener;
     }
 
 }

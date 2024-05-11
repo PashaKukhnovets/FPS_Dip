@@ -178,8 +178,11 @@ public class GameBehaviour : MonoBehaviour
         {
             energyPoints.text = "0/" + PlayerParameters.GetPlayerMaxEnergy();
         }
-        else
+        else if (PlayerParameters.GetPlayerCurrentEnergy() > PlayerParameters.GetPlayerMaxEnergy())
         {
+            energyPoints.text = PlayerParameters.GetPlayerMaxEnergy() + "/" + PlayerParameters.GetPlayerMaxEnergy(); 
+        }
+        else {
             energyPoints.text = PlayerParameters.GetPlayerCurrentEnergy() + "/" + PlayerParameters.GetPlayerMaxEnergy();
         }
 

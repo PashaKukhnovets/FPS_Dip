@@ -19,6 +19,8 @@ public class WeaponGet : MonoBehaviour
                 if (!other.gameObject.GetComponent<PlayerController>().GetUseAK())
                 {
                     other.gameObject.GetComponent<PlayerController>().SetUseAK(true);
+                    PlayerParameters.SetAK(true);
+                    PlayerParameters.SetShotgun(false);
                 }
                 else
                 {
@@ -43,6 +45,8 @@ public class WeaponGet : MonoBehaviour
                 if (!other.gameObject.GetComponent<PlayerController>().GetUseShotgun())
                 {
                     other.gameObject.GetComponent<PlayerController>().SetUseShotgun(true);
+                    PlayerParameters.SetAK(false);
+                    PlayerParameters.SetShotgun(true);
                 }
                 else
                 {
@@ -69,6 +73,7 @@ public class WeaponGet : MonoBehaviour
                 {
                     gameManager.GetComponent<GameBehaviour>().AddAmountOfGrenades();
                     other.gameObject.GetComponent<PlayerController>().SetUseGrenade(true);
+                    PlayerParameters.SetGrenade(true);
                 }
                 else
                 {

@@ -26,6 +26,10 @@ public static class PlayerParameters
 
     private static int qualityIndex;
 
+    private static bool isShotgun = false;
+    private static bool isAK = false;
+    private static bool isGrenade = false;
+
     public static void InitPlayerCurrentHealth(float health) {
         playerCurrentHealth = health;
     }
@@ -137,4 +141,30 @@ public static class PlayerParameters
         return qualityIndex;
     }
 
+    public static void SetShotgun(bool value) {
+        isShotgun = value;
+    }
+
+    public static void SetAK(bool value)
+    {
+        isAK = value;
+    }
+
+    public static void SetGrenade(bool value)
+    {
+        isGrenade = value;
+    }
+
+    public static bool GetIsShotgun() {
+        return isShotgun;
+    }
+
+    public static bool GetIsAK() {
+        return isAK;
+    }
+
+    public static bool GetIsGrenade() {
+        return isGrenade;
+    }
 }
+

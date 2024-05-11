@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     private bool useAK = false;
     private bool useShotgun = false;
     private bool useGrenade = false;
+    private GameObject gameManager;
 
     private bool isPlayerStepSound = false;
     private bool isPlayerSprintSound = false;
@@ -43,12 +44,26 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
         characterController = GetComponent<CharacterController>();
         playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
 
         PlayerParameters.InitPlayerCurrentHealth(PlayerParameters.GetPlayerMaxHealth());
         PlayerParameters.InitPlayerCurrentEnergy(PlayerParameters.GetPlayerMaxEnergy());
         PlayerParameters.InitPlayerCurrentPoints(20.0f);
+
+        if (PlayerParameters.GetIsAK()) {
+            SetUseAK(true);
+        }
+
+        if (PlayerParameters.GetIsShotgun()) {
+            SetUseShotgun(true);
+        }
+
+        if (PlayerParameters.GetIsGrenade()) {
+            gameManager.GetComponent<GameBehaviour>().AddAmountOfGrenades();
+            SetUseGrenade(true);
+        }
     }
 
     void Update()
@@ -186,12 +201,14 @@ public class PlayerController : MonoBehaviour
                 Instantiate(droppingAK, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, this.gameObject.transform.position.y,
                     this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
                 changeWeapon.SetToPistol();
+                PlayerParameters.SetAK(false);
             }
             else if (GetUseShotgun()) {
                 SetUseShotgun(false);
                 Instantiate(droppingShotgun, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, this.gameObject.transform.position.y,
                     this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
                 changeWeapon.SetToPistol();
+                PlayerParameters.SetShotgun(false);
             }
         }
     }

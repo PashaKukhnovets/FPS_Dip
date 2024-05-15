@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject settingsWindow;
+    [SerializeField] private GameObject helpWindow;
     [SerializeField] private GameObject levelWindow;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private TMP_Dropdown dropdownQuality;
@@ -31,6 +32,12 @@ public class MainMenuBehaviour : MonoBehaviour
         settingsWindow.SetActive(true);
     }
 
+    public void HelpWindowOpen()
+    {
+        mainMenu.SetActive(false);
+        helpWindow.SetActive(true);
+    }
+
     public void LevelWindowClose() {
         mainMenu.SetActive(true);
         levelWindow.SetActive(false);
@@ -39,6 +46,12 @@ public class MainMenuBehaviour : MonoBehaviour
     public void SettingsWindowClose() {
         mainMenu.SetActive(true);
         settingsWindow.SetActive(false);
+    }
+
+    public void HelpWindowClose()
+    {
+        mainMenu.SetActive(true);
+        helpWindow.SetActive(false);
     }
 
     public void StartFirstUndergroundLevel() {

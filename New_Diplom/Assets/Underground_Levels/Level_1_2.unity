@@ -25500,6 +25500,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4782633720729560, guid: 36f93eff5128b424aac262f48cebadd3, type: 3}
   m_PrefabInstance: {fileID: 914518623}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &914909245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4120564068667264355, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+  m_PrefabInstance: {fileID: 931193476}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &917710584
 GameObject:
   m_ObjectHideFlags: 0
@@ -26068,6 +26073,30 @@ PrefabInstance:
       propertyPath: audioSrc
       value: 
       objectReference: {fileID: 1566654545}
+    - target: {fileID: 4865156270768499952, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1159356991}
+    - target: {fileID: 4865156270768499952, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Help
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865156270768499952, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EscapeWindowBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240753473297590830, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1159356995}
+    - target: {fileID: 5240753473297590830, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: WindowHelpClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5240753473297590830, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HelpWindowBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5703101529038413994, guid: 04ba2ba3407f85b45bcf599a3671fc6a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -32041,6 +32070,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1945900177155160951, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: helpWindow
+      value: 
+      objectReference: {fileID: 914909245}
+    - target: {fileID: 1945900177155160951, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: escapeWindow
+      value: 
+      objectReference: {fileID: 931193488}
     - target: {fileID: 4793939834710983131, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: escapeWindow
       value: 
@@ -32077,6 +32114,10 @@ PrefabInstance:
       propertyPath: shotgun
       value: 
       objectReference: {fileID: 1118090226}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: helpWindow
+      value: 
+      objectReference: {fileID: 914909245}
     - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: boostPoints
       value: 
@@ -32117,6 +32158,10 @@ PrefabInstance:
       propertyPath: dropdownQuality
       value: 
       objectReference: {fileID: 1322880565}
+    - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: helpWindow
+      value: 
+      objectReference: {fileID: 914909245}
     - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: escapeWindow
       value: 
@@ -32225,6 +32270,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a264d79a6e5c8842a0ae0a628191342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1159356995 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1945900177155160951, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+  m_PrefabInstance: {fileID: 1159356990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1484e63fc08b64245b430fa812109802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1159356996 stripped

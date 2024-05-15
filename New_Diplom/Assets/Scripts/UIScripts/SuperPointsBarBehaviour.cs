@@ -20,14 +20,14 @@ public class SuperPointsBarBehaviour : MonoBehaviour
 
     void Update()
     {
-        UpdateHealth();
+        UpdateSuperPoints();
     }
 
     private void UpdateMaxPoints() {
         superPointsBarSlider.maxValue = PlayerParameters.GetPlayerMaxPoints();
     }
 
-    public void UpdateHealth()
+    public void UpdateSuperPoints()
     {
         superPointsBarSlider.value = PlayerParameters.GetPlayerCurrentPoints();
     }

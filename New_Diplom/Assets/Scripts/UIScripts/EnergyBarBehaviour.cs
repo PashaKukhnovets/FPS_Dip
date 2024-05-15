@@ -20,14 +20,14 @@ public class EnergyBarBehaviour : MonoBehaviour
 
     void Update()
     {
-        UpdateHealth();
+        UpdateEnergy();
     }
 
     private void UpdateMaxEnergy() {
         energyBarSlider.maxValue = PlayerParameters.GetPlayerMaxEnergy();
     }
 
-    public void UpdateHealth()
+    public void UpdateEnergy()
     {
         energyBarSlider.value = PlayerParameters.GetPlayerCurrentEnergy();
     }

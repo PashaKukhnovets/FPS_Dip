@@ -5,8 +5,6 @@ using UnityEngine;
 public class UnlimEnduranceBehaviour : MonoBehaviour
 {
     private GameObject player;
-    //private GameObject gameManager;
-    private float currentDamage;
 
     void Start()
     {
@@ -17,8 +15,6 @@ public class UnlimEnduranceBehaviour : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            //gameManager = GameObject.FindGameObjectWithTag("GameManager");
-            //gameManager.GetComponent<GameManagerBehaviour>().SetDDTimer(true);
             player.GetComponent<PlayerController>().SetEnergyBonus(true);
             StartCoroutine(UnlimEnduranceCoroutine());
             this.gameObject.transform.position = new Vector3(0.0f, 100.0f, 0.0f);

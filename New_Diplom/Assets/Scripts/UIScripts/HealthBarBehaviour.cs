@@ -11,7 +11,7 @@ public class HealthBarBehaviour: MonoBehaviour
     
     void Start()
     {
-        boostBehaviour.updateHealth += UpdateMaxHealh;
+        boostBehaviour.updateHealth += UpdateMaxHealth;
         healthBarSlider = this.GetComponent<Slider>();
 
         healthBarSlider.maxValue = PlayerParameters.GetPlayerMaxHealth();
@@ -23,7 +23,7 @@ public class HealthBarBehaviour: MonoBehaviour
         UpdateHealth();
     }
 
-    private void UpdateMaxHealh() {
+    private void UpdateMaxHealth() {
         healthBarSlider.maxValue = PlayerParameters.GetPlayerMaxHealth();
     }
 

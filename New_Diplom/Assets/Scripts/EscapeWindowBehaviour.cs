@@ -7,6 +7,7 @@ public class EscapeWindowBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject escapeWindow;
     [SerializeField] private GameObject settingsWindow;
+    [SerializeField] private GameObject helpWindow;
 
     private GameObject player;
 
@@ -28,6 +29,12 @@ public class EscapeWindowBehaviour : MonoBehaviour
     public void Settings() {
         escapeWindow.SetActive(false);
         settingsWindow.SetActive(true);
+    }
+
+    public void Help()
+    {
+        escapeWindow.SetActive(false);
+        helpWindow.SetActive(true);
     }
 
     public void ExitToMainMenu() {

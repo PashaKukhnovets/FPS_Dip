@@ -75,6 +75,8 @@ public class TerroristController : MonoBehaviour
 
             if (!isFreeze)
                 agent.speed = 1.3f;
+
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 

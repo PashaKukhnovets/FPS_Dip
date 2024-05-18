@@ -68,6 +68,8 @@ public class ThirdTerroristController : MonoBehaviour
             isTerroristRunning = true;
             isPatroling = false;
             agent.speed = 4.5f;
+
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 

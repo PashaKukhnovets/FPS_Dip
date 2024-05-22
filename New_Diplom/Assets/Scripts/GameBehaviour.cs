@@ -19,6 +19,7 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private GameObject grenade;
 
     [SerializeField] private TextMeshProUGUI healthPoints;
+    [SerializeField] private TextMeshProUGUI puzzleHealthPoints;
     [SerializeField] private TextMeshProUGUI energyPoints;
     [SerializeField] private TextMeshProUGUI superPoints;
     [SerializeField] private TMP_Dropdown dropdownQuality;
@@ -169,10 +170,12 @@ public class GameBehaviour : MonoBehaviour
         if (PlayerParameters.GetPlayerCurrentHealth() <= 0.0f)
         {
             healthPoints.text = "0/" + PlayerParameters.GetPlayerMaxHealth();
+            puzzleHealthPoints.text = "0/" + PlayerParameters.GetPlayerMaxHealth();
         }
         else
         {
             healthPoints.text = PlayerParameters.GetPlayerCurrentHealth() + "/" + PlayerParameters.GetPlayerMaxHealth();
+            puzzleHealthPoints.text = PlayerParameters.GetPlayerCurrentHealth() + "/" + PlayerParameters.GetPlayerMaxHealth();
         }
 
         if (PlayerParameters.GetPlayerCurrentEnergy() <= 0.0f)

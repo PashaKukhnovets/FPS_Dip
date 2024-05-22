@@ -32041,6 +32041,10 @@ PrefabInstance:
       propertyPath: dropdownQuality
       value: 
       objectReference: {fileID: 1322880565}
+    - target: {fileID: 9097764474388853365, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
+      propertyPath: puzzleHealthPoints
+      value: 
+      objectReference: {fileID: 2093543810}
     - target: {fileID: 9097764474388853368, guid: 5212b72d6c6d7d94b93db2cf32f623f6, type: 3}
       propertyPath: helpWindow
       value: 
@@ -58733,6 +58737,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3026935f5ed891d4e8c84af8edd267f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2093543810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1097275587338006111, guid: 49a4bdb0fa5557c40b50c498c8dc547d, type: 3}
+  m_PrefabInstance: {fileID: 2093543808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2095754382

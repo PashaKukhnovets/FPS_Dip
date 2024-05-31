@@ -10,14 +10,6 @@ public class BoostBehaviour : MonoBehaviour
     [SerializeField] private TextMeshProUGUI boostEnergyText;
     [SerializeField] private TextMeshProUGUI boostSuperPointsText;
 
-    private int healthLevel = 0;
-    private int energyLevel = 0;
-    private int superPointsLevel = 0;
-
-    private int healthPrice = 100;
-    private int energyPrice = 100;
-    private int superPointsPrice = 100;
-
     public event UnityAction updateHealth;
     public event UnityAction updateEnergy;
     public event UnityAction updatePoints;
@@ -28,14 +20,14 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostHealth() {
-        switch (healthLevel) {
+        switch (PlayerParameters.GetHealthLevel()) {
             case 0: {
                     if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 100)
                     {
                         PlayerParameters.AddPlayerMaxHealth(20.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-100);
-                        healthPrice = 300;
-                        healthLevel = 1;
+                        PlayerParameters.InitHealthPrice(300);
+                        PlayerParameters.InitHealthLevel(1);
                         updateHealth?.Invoke();
                     }
                 }
@@ -45,8 +37,8 @@ public class BoostBehaviour : MonoBehaviour
                     {
                         PlayerParameters.AddPlayerMaxHealth(30.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-300);
-                        healthLevel = 2;
-                        healthPrice = 500;
+                        PlayerParameters.InitHealthPrice(500);
+                        PlayerParameters.InitHealthLevel(2);
                         updateHealth?.Invoke();
                     }
                 }
@@ -56,7 +48,7 @@ public class BoostBehaviour : MonoBehaviour
                     {
                         PlayerParameters.AddPlayerMaxHealth(40.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-500);
-                        healthLevel = 3;
+                        PlayerParameters.InitHealthLevel(3);
                         updateHealth?.Invoke();
                     }
                 }
@@ -67,7 +59,7 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostEnergy() {
-        switch (energyLevel)
+        switch (PlayerParameters.GetEnergyLevel())
         {
             case 0:
                 {
@@ -75,8 +67,8 @@ public class BoostBehaviour : MonoBehaviour
                     {
                         PlayerParameters.AddPlayerMaxEnergy(20.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-100);
-                        energyPrice = 300;
-                        energyLevel = 1;
+                        PlayerParameters.InitEnergyPrice(300);
+                        PlayerParameters.InitEnergyLevel(1);
                         updateEnergy?.Invoke();
                     }
                 }
@@ -87,8 +79,8 @@ public class BoostBehaviour : MonoBehaviour
                     {
                         PlayerParameters.AddPlayerMaxEnergy(30.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-300);
-                        energyPrice = 500;
-                        energyLevel = 2;
+                        PlayerParameters.InitEnergyPrice(500);
+                        PlayerParameters.InitEnergyLevel(2); 
                         updateEnergy?.Invoke();
                     }
                 }
@@ -99,7 +91,7 @@ public class BoostBehaviour : MonoBehaviour
                     {
                         PlayerParameters.AddPlayerMaxEnergy(40.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-500);
-                        energyLevel = 3;
+                        PlayerParameters.InitEnergyLevel(3); 
                         updateEnergy?.Invoke();
                     }
                 }
@@ -110,7 +102,7 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostSuperPoints() {
-        switch (superPointsLevel)
+        switch (PlayerParameters.GetSuperPointsLevel())
         {
             case 0:
                 {
@@ -118,8 +110,8 @@ public class BoostBehaviour : MonoBehaviour
                     {
                         PlayerParameters.AddPlayerMaxPoints(20.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-100);
-                        superPointsPrice = 300;
-                        superPointsLevel = 1;
+                        PlayerParameters.InitSuperPointsPrice(300);
+                        PlayerParameters.InitSuperPointsLevel(1);
                         updatePoints?.Invoke();
                     }
                 }
@@ -130,8 +122,8 @@ public class BoostBehaviour : MonoBehaviour
                     {
                         PlayerParameters.AddPlayerMaxPoints(30.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-300);
-                        superPointsPrice = 500;
-                        superPointsLevel = 2;
+                        PlayerParameters.InitSuperPointsPrice(500);
+                        PlayerParameters.InitSuperPointsLevel(2);
                         updatePoints?.Invoke();
                     }
                 }
@@ -142,7 +134,7 @@ public class BoostBehaviour : MonoBehaviour
                     {
                         PlayerParameters.AddPlayerMaxPoints(40.0f);
                         PlayerParameters.AddPlayerCurrentBoostPoints(-500);
-                        superPointsLevel = 3;
+                        PlayerParameters.InitSuperPointsLevel(3);
                         updatePoints?.Invoke();
                     }
                 }
@@ -154,43 +146,43 @@ public class BoostBehaviour : MonoBehaviour
 
     private void UpdateBoostText()
     {
-        if (healthLevel == 3)
+        if (PlayerParameters.GetHealthLevel() == 3)
         {
             boostHealthText.text = "Health Upgrade Max";
         }
         else
         {
-            boostHealthText.text = "Health Upgrade " + healthPrice.ToString();
+            boostHealthText.text = "Health Upgrade " + PlayerParameters.GetHealthPrice().ToString();
         }
 
-        if (energyLevel == 3)
+        if (PlayerParameters.GetEnergyLevel() == 3)
         {
             boostEnergyText.text = "Energy Upgrade Max";
         }
         else
         {
-            boostEnergyText.text = "Energy Upgrade " + energyPrice.ToString();
+            boostEnergyText.text = "Energy Upgrade " + PlayerParameters.GetEnergyPrice().ToString();
         }
 
-        if (superPointsLevel == 3)
+        if (PlayerParameters.GetSuperPointsLevel() == 3)
         {
             boostSuperPointsText.text = "Super Points Upgrade Max";
         }
         else
         {
-            boostSuperPointsText.text = "Super Points Upgrade " + superPointsPrice.ToString();
+            boostSuperPointsText.text = "Super Points Upgrade " + PlayerParameters.GetSuperPointsPrice().ToString();
         }
     }
 
     public int GetHealthPrice() {
-        return healthPrice;
+        return PlayerParameters.GetHealthPrice();
     }
 
     public int GetEnergyPrice() {
-        return energyPrice;
+        return PlayerParameters.GetEnergyPrice();
     }
 
     public int GetSuperPointsPrice() {
-        return superPointsPrice;
+        return PlayerParameters.GetSuperPointsPrice();
     }
 }

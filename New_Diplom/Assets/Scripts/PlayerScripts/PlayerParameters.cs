@@ -11,6 +11,14 @@ public static class PlayerParameters
     public static float playerDamageGrenade = 50.0f;
     public static float playerDamageKnife = 25.0f;
 
+    private static int healthLevel = 0;
+    private static int energyLevel = 0;
+    private static int superPointsLevel = 0;
+
+    private static int healthPrice = 100;
+    private static int energyPrice = 100;
+    private static int superPointsPrice = 100;
+
     private static float playerMaxHealth = 100.0f;
     private static float playerMaxEnergy = 100.0f;
     private static float playerMaxPoints = 100.0f;
@@ -97,7 +105,7 @@ public static class PlayerParameters
         return playerCurrentPoints;
     }
 
-    public static float GetPlayerCurrentBoostPoints() {
+    public static int GetPlayerCurrentBoostPoints() {
         return playerCurrentBoostPoints;
     }
 
@@ -166,5 +174,79 @@ public static class PlayerParameters
     public static bool GetIsGrenade() {
         return isGrenade;
     }
+
+    public static void InitHealthLevel(int value) {
+        healthLevel = value;
+    }
+
+    public static void InitEnergyLevel(int value)
+    {
+        energyLevel = value;
+    }
+
+    public static void InitSuperPointsLevel(int value)
+    {
+        superPointsLevel = value;
+    }
+
+    public static void InitHealthPrice(int value)
+    {
+        healthPrice = value;
+    }
+
+    public static void InitEnergyPrice(int value)
+    {
+        energyPrice = value;
+    }
+
+    public static void InitSuperPointsPrice(int value)
+    {
+        superPointsPrice = value;
+    }
+
+    public static int GetHealthLevel()
+    {
+        return healthLevel;
+    }
+
+    public static int GetEnergyLevel()
+    {
+        return energyLevel;
+    }
+
+    public static int GetSuperPointsLevel()
+    {
+        return superPointsLevel;
+    }
+
+    public static int GetHealthPrice()
+    {
+        return healthPrice;
+    }
+
+    public static int GetEnergyPrice()
+    {
+        return energyPrice;
+    }
+
+    public static int GetSuperPointsPrice()
+    {
+        return superPointsPrice;
+    }
+
+    public static void InitMaxHealth(float value) {
+        playerMaxHealth = value;
+    }
+
+    public static void InitMaxEnergy(float value)
+    {
+        playerMaxEnergy = value;
+    }
+
+    public static void InitMaxSuperPoints(float value)
+    {
+        playerMaxPoints = value;
+    }
+
 }
 

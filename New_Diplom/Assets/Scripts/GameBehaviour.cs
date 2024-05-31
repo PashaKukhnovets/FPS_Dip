@@ -22,6 +22,7 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private TextMeshProUGUI puzzleHealthPoints;
     [SerializeField] private TextMeshProUGUI energyPoints;
     [SerializeField] private TextMeshProUGUI superPoints;
+    [SerializeField] private TextMeshProUGUI paperText;
     [SerializeField] private TMP_Dropdown dropdownQuality;
 
     private GameObject player;
@@ -33,6 +34,7 @@ public class GameBehaviour : MonoBehaviour
     private bool isShotgun;
     private bool isGrenade;
     private bool isWasPuzzle = false;
+    private int countOfPapers = 0;
 
     private void Start()
     {
@@ -53,6 +55,7 @@ public class GameBehaviour : MonoBehaviour
         EscapeWindowVisibility();
         CheckPlayerDeath();
         DeathBlock();
+        UpdatePaperText();
 
         if (!isWasPuzzle && puzzle.CheckPuzzleActivity())
         {
@@ -114,6 +117,11 @@ public class GameBehaviour : MonoBehaviour
 
     private void UpdateBoostPointsText() {
         boostPoints.text = PlayerParameters.GetPlayerCurrentBoostPoints().ToString();
+    }
+
+    private void UpdatePaperText()
+    {
+        paperText.text = countOfPapers.ToString() + "/7";
     }
 
     private void BoostWindowVisibility() {
@@ -284,5 +292,13 @@ public class GameBehaviour : MonoBehaviour
     public void SetPuzzleActivity(bool value)
     {
         isWasPuzzle = value;
+    }
+
+    public void AddCountOfPapers(int value) {
+        countOfPapers += value;
+    }
+
+    public int GetCountOfPapers() {
+        return countOfPapers;
     }
 }

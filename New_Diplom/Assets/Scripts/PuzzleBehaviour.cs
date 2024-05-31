@@ -30,11 +30,6 @@ public class PuzzleBehaviour : MonoBehaviour
     [SerializeField] private CheckWinWires puzzleWires_6;
     [SerializeField] private CheckWinTube puzzleNumbers_6;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         ChangeCameraProjection();
@@ -44,8 +39,6 @@ public class PuzzleBehaviour : MonoBehaviour
     {
         if (CheckPuzzleActivity())
         {
-            //Cursor.lockState = CursorLockMode.Confined;
-            //Cursor.visible = true;
             playerWeapon.GetComponent<RigBuilder>().enabled = false;
             puzzleCamera.gameObject.SetActive(true);
             playerCamera.gameObject.SetActive(false);
@@ -54,8 +47,6 @@ public class PuzzleBehaviour : MonoBehaviour
         }
         else
         {
-            //Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
             puzzleCamera.gameObject.SetActive(false);
             playerCamera.gameObject.SetActive(true);
             player.GetComponent<PlayerController>().BlockPlayerMove(true);

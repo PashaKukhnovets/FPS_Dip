@@ -19,6 +19,7 @@ public class MainMenuBehaviour : MonoBehaviour
     }
 
     public void StartNewGame() {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene(1);
     }
 

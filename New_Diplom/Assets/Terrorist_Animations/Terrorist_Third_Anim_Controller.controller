@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBlood: {fileID: 3548588485384254794, guid: 2f9e7dc163581394da1e00b561eed65d, type: 3}
+  thirdTerroristAttack: {fileID: 8300000, guid: 1c0d9309fd8e5c640ac4e713a8fb4cab, type: 3}
 --- !u!1102 &-6124788391966973971
 AnimatorState:
   serializedVersion: 6

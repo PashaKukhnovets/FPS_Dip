@@ -11,10 +11,19 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private PuzzleBehaviour puzzle;
     [SerializeField] private GameObject escapeWindow;
     [SerializeField] private GameObject deathWindow;
+    [SerializeField] private GameObject settingsWindow;
+    [SerializeField] private GameObject helpWindow;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
     [SerializeField] private GameObject shotgun;
     [SerializeField] private GameObject grenade;
+
+    [SerializeField] private TextMeshProUGUI healthPoints;
+    [SerializeField] private TextMeshProUGUI puzzleHealthPoints;
+    [SerializeField] private TextMeshProUGUI energyPoints;
+    [SerializeField] private TextMeshProUGUI superPoints;
+    [SerializeField] private TextMeshProUGUI paperText;
+    [SerializeField] private TMP_Dropdown dropdownQuality;
 
     private GameObject player;
     private bool isBoostOpen = false;
@@ -25,22 +34,28 @@ public class GameBehaviour : MonoBehaviour
     private bool isShotgun;
     private bool isGrenade;
     private bool isWasPuzzle = false;
+    private int countOfPapers = 0;
 
     private void Start()
     {
         Time.timeScale = 1;
         player = GameObject.FindGameObjectWithTag("Player");
+        PlayerParameters.SetWindowOpen(false);
+        QualitySettings.SetQualityLevel(PlayerParameters.GetQualityIndex());
+        dropdownQuality.value = PlayerParameters.GetQualityIndex();
     }
 
     private void Update()
     {
         UpdateBulletStoreText();
         UpdateBoostPointsText();
+        UpdateParametersText();
         BoostWindowVisibility();
         ShowCursor();
         EscapeWindowVisibility();
         CheckPlayerDeath();
         DeathBlock();
+        UpdatePaperText();
 
         if (!isWasPuzzle && puzzle.CheckPuzzleActivity())
         {
@@ -104,6 +119,11 @@ public class GameBehaviour : MonoBehaviour
         boostPoints.text = PlayerParameters.GetPlayerCurrentBoostPoints().ToString();
     }
 
+    private void UpdatePaperText()
+    {
+        paperText.text = countOfPapers.ToString() + "/7";
+    }
+
     private void BoostWindowVisibility() {
         if (Input.GetKeyDown(KeyCode.Q) && !PlayerParameters.GetWindowOpen())
         {
@@ -124,13 +144,13 @@ public class GameBehaviour : MonoBehaviour
     }
 
     private void ShowCursor() {
-        if (boostWindow.activeSelf || escapeWindow.activeSelf || puzzle.CheckPuzzleActivity())
+        if (boostWindow.activeSelf || escapeWindow.activeSelf || puzzle.CheckPuzzleActivity() || settingsWindow.activeSelf || helpWindow.activeSelf)
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
         }
-        else if(!boostWindow.activeSelf && !escapeWindow.activeSelf && !puzzle.CheckPuzzleActivity()) {
+        else if(!boostWindow.activeSelf && !escapeWindow.activeSelf && !puzzle.CheckPuzzleActivity() && !settingsWindow.activeSelf && !helpWindow.activeSelf) {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -152,6 +172,39 @@ public class GameBehaviour : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             player.GetComponent<PlayerController>().BlockPlayerMove(false);
+        }
+    }
+    private void UpdateParametersText() {
+        if (PlayerParameters.GetPlayerCurrentHealth() <= 0.0f)
+        {
+            healthPoints.text = "0/" + PlayerParameters.GetPlayerMaxHealth();
+            puzzleHealthPoints.text = "0/" + PlayerParameters.GetPlayerMaxHealth();
+        }
+        else
+        {
+            healthPoints.text = PlayerParameters.GetPlayerCurrentHealth() + "/" + PlayerParameters.GetPlayerMaxHealth();
+            puzzleHealthPoints.text = PlayerParameters.GetPlayerCurrentHealth() + "/" + PlayerParameters.GetPlayerMaxHealth();
+        }
+
+        if (PlayerParameters.GetPlayerCurrentEnergy() <= 0.0f)
+        {
+            energyPoints.text = "0/" + PlayerParameters.GetPlayerMaxEnergy();
+        }
+        else if (PlayerParameters.GetPlayerCurrentEnergy() > PlayerParameters.GetPlayerMaxEnergy())
+        {
+            energyPoints.text = PlayerParameters.GetPlayerMaxEnergy() + "/" + PlayerParameters.GetPlayerMaxEnergy(); 
+        }
+        else {
+            energyPoints.text = PlayerParameters.GetPlayerCurrentEnergy() + "/" + PlayerParameters.GetPlayerMaxEnergy();
+        }
+
+        if (PlayerParameters.GetPlayerCurrentPoints() <= 0.0f)
+        {
+            superPoints.text = "0/" + PlayerParameters.GetPlayerMaxPoints();
+        }
+        else
+        {
+            superPoints.text = PlayerParameters.GetPlayerCurrentPoints() + "/" + PlayerParameters.GetPlayerMaxPoints();
         }
     }
 
@@ -239,5 +292,13 @@ public class GameBehaviour : MonoBehaviour
     public void SetPuzzleActivity(bool value)
     {
         isWasPuzzle = value;
+    }
+
+    public void AddCountOfPapers(int value) {
+        countOfPapers += value;
+    }
+
+    public int GetCountOfPapers() {
+        return countOfPapers;
     }
 }

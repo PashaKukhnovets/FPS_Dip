@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnergyBarBehaviour : MonoBehaviour
-{
+{ 
+    [SerializeField] private BoostBehaviour boostBehaviour;
+
     private Slider energyBarSlider;
 
     void Start()
     {
+        boostBehaviour.updateEnergy += UpdateMaxEnergy;
         energyBarSlider = this.GetComponent<Slider>();
 
         energyBarSlider.maxValue = PlayerParameters.GetPlayerMaxEnergy();
@@ -17,10 +20,14 @@ public class EnergyBarBehaviour : MonoBehaviour
 
     void Update()
     {
-        UpdateHealth();
+        UpdateEnergy();
     }
 
-    public void UpdateHealth()
+    private void UpdateMaxEnergy() {
+        energyBarSlider.maxValue = PlayerParameters.GetPlayerMaxEnergy();
+    }
+
+    public void UpdateEnergy()
     {
         energyBarSlider.value = PlayerParameters.GetPlayerCurrentEnergy();
     }

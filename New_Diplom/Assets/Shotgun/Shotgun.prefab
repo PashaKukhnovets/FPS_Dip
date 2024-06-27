@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2321356}
   - component: {fileID: 5557869873588598856}
   - component: {fileID: -5197461963166888501}
+  - component: {fileID: 1520165938455795335}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: ShotgunGet
@@ -112,6 +113,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.032947686, y: 0.15421754, z: 0.99432504}
   m_Center: {x: 0, y: -0.03429979, z: 0.19517434}
+--- !u!111 &1520165938455795335
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107960}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 75d997a311aceef469e83d86783e3e2b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 75d997a311aceef469e83d86783e3e2b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &155940
 GameObject:
   m_ObjectHideFlags: 0

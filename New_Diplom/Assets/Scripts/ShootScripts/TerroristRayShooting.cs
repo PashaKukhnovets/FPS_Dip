@@ -8,6 +8,7 @@ public class TerroristRayShooting : MonoBehaviour
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private TerroristController terrorist;
     [SerializeField] private GameObject pointShooting;
+    [SerializeField] private AudioSource terroristAK;
 
     private GameObject player;
     private float nextShoot = 0.0f;
@@ -38,15 +39,17 @@ public class TerroristRayShooting : MonoBehaviour
 
     private void Shoot()
     {
-        if (countOfShooting <= 5)
+        if (countOfShooting <= 3)
         {
-            if (Time.time > nextShoot && isShooting)
+            if (Time.time > nextShoot && isShooting && !terrorist.IsTerroristRunning())
             {
                 countOfShooting++;
 
                 nextShoot = Time.time + 1.0f / terroristRate;
 
                 muzzleEffect.Play();
+
+                terroristAK.Play();
 
                 RaycastHit hit;
                 if (Physics.SphereCast(pointShooting.transform.position, 1.0f, temporaryPlayerPosition - pointShooting.transform.position, out hit, 5000.0f))
@@ -55,7 +58,7 @@ public class TerroristRayShooting : MonoBehaviour
 
                     if (hitObject.GetComponent<PlayerController>())
                     {
-                        PlayerParameters.AddPlayerDamage(15.0f);
+                        PlayerParameters.AddPlayerDamage(terrorist.damage);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }
@@ -127,7 +130,7 @@ public class TerroristRayShooting : MonoBehaviour
         isStartShooting = true;
     }
 
-    public void changeRateAttackTerrorist(float currentRate) {
+    public void ChangeRateAttackTerrorist(float currentRate) {
         this.terroristRate = currentRate;
     }
 

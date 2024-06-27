@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject droppingShotgun;
     [SerializeField] private ChangeWeaponBehaviour changeWeapon;
 
+    [SerializeField] private AudioSource playerStep;
+    [SerializeField] private AudioSource playerSprint;
+    [SerializeField] private AudioSource playerJump;
+
     public float speed = 6.0f;
 
     public float gravity = -9.8f;
@@ -29,18 +33,37 @@ public class PlayerController : MonoBehaviour
     private bool useAK = false;
     private bool useShotgun = false;
     private bool useGrenade = false;
+    private GameObject gameManager;
+
+    private bool isPlayerStepSound = false;
+    private bool isPlayerSprintSound = false;
+    private bool isPlayerSprintToStepSound = true;
 
     public event UnityAction IsFreezeTime;
     public event UnityAction NoFreezeTime;
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
         characterController = GetComponent<CharacterController>();
         playerWeapon = GameObject.FindGameObjectWithTag("PlayerWeapon");
 
         PlayerParameters.InitPlayerCurrentHealth(PlayerParameters.GetPlayerMaxHealth());
         PlayerParameters.InitPlayerCurrentEnergy(PlayerParameters.GetPlayerMaxEnergy());
-        PlayerParameters.InitPlayerCurrentPoints(PlayerParameters.GetPlayerMaxPoints());
+        PlayerParameters.InitPlayerCurrentPoints(20.0f);
+
+        if (PlayerParameters.GetIsAK()) {
+            SetUseAK(true);
+        }
+
+        if (PlayerParameters.GetIsShotgun()) {
+            SetUseShotgun(true);
+        }
+
+        if (PlayerParameters.GetIsGrenade()) {
+            gameManager.GetComponent<GameBehaviour>().AddAmountOfGrenades();
+            SetUseGrenade(true);
+        }
     }
 
     void Update()
@@ -54,6 +77,16 @@ public class PlayerController : MonoBehaviour
     }
 
     private void PlayerMove() {
+        if ((Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) && !isPlayerStepSound)
+        {
+            isPlayerStepSound = true;
+            playerStep.Play();
+        }
+        else if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0 && isPlayerStepSound) {
+            isPlayerStepSound = false;
+            playerStep.Stop();
+        }
+
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
         movement = new Vector3(deltaX, 0, deltaZ);
@@ -61,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
         {
+            playerJump.Play();
             vertSpeed = jumpForce;
         }
         else
@@ -84,6 +118,13 @@ public class PlayerController : MonoBehaviour
         {
             if (PlayerParameters.GetPlayerCurrentEnergy() > 0.0f)
             {
+                if (!isPlayerSprintSound)
+                {
+                    isPlayerSprintSound = true;
+                    isPlayerSprintToStepSound = false;
+                    playerStep.Stop();
+                    playerSprint.Play();
+                }
                 if (Time.time > nextStepEnergy)
                 {
                     nextStepEnergy = Time.time + 1.0f / rate;
@@ -97,7 +138,15 @@ public class PlayerController : MonoBehaviour
                 this.speed = 6.0f;
         }
         else
+        {
+            if (!isPlayerSprintToStepSound) {
+                isPlayerSprintToStepSound = true;
+                playerStep.Play();
+            }
+            isPlayerSprintSound = false;
+            playerSprint.Stop();
             this.speed = 6.0f;
+        }
     }
 
     private void FreezeTime() {
@@ -131,7 +180,7 @@ public class PlayerController : MonoBehaviour
 
     private void RefillEnergy() {
         if (!Input.GetKey(KeyCode.LeftShift)) {
-            if (PlayerParameters.GetPlayerCurrentEnergy() < 100.0f)
+            if (PlayerParameters.GetPlayerCurrentEnergy() < PlayerParameters.GetPlayerMaxEnergy())
             {
                 if (Time.time > nextStepEnergy)
                 {
@@ -149,15 +198,17 @@ public class PlayerController : MonoBehaviour
             if (GetUseAK())
             {
                 SetUseAK(false);
-                Instantiate(droppingAK, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, 0.3f,
+                Instantiate(droppingAK, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, this.gameObject.transform.position.y,
                     this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
                 changeWeapon.SetToPistol();
+                PlayerParameters.SetAK(false);
             }
             else if (GetUseShotgun()) {
                 SetUseShotgun(false);
-                Instantiate(droppingShotgun, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, 0.3f,
+                Instantiate(droppingShotgun, new Vector3(this.gameObject.transform.position.x + 3 * this.gameObject.transform.forward.x, this.gameObject.transform.position.y,
                     this.gameObject.transform.position.z + 3 * this.gameObject.transform.forward.z), Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
                 changeWeapon.SetToPistol();
+                PlayerParameters.SetShotgun(false);
             }
         }
     }
@@ -198,5 +249,11 @@ public class PlayerController : MonoBehaviour
     public bool GetUseGrenade()
     {
         return this.useGrenade;
+    }
+
+    public void StopPlayerSounds() {
+        playerStep.Stop();
+        playerJump.Stop();
+        playerSprint.Stop();
     }
 }

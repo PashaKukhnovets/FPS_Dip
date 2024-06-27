@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5948347420112051698}
   - component: {fileID: 4494097836254382179}
   - component: {fileID: 8639680203154032014}
+  - component: {fileID: 28349902117621904}
   m_Layer: 0
   m_Name: StickGrenade
   m_TagString: GrenadeGet
@@ -110,3 +111,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76643b5573bdc024e94e1d80b330aecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &28349902117621904
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5299674662019300391}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 75d997a311aceef469e83d86783e3e2b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 75d997a311aceef469e83d86783e3e2b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

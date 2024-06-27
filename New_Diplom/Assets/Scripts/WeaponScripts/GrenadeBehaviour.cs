@@ -31,6 +31,7 @@ public class GrenadeBehaviour : MonoBehaviour
         if (amountOfGrenades == 0 && currentGrenadeCount == 0) {
             player.SetUseGrenade(false);
             change.SetToPistol();
+            PlayerParameters.SetGrenade(true);
         }
     }
      

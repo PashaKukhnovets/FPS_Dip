@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class HealthBarBehaviour: MonoBehaviour
 {
+    [SerializeField] private BoostBehaviour boostBehaviour;
+
     private Slider healthBarSlider;
     
     void Start()
     {
+        boostBehaviour.updateHealth += UpdateMaxHealth;
         healthBarSlider = this.GetComponent<Slider>();
 
         healthBarSlider.maxValue = PlayerParameters.GetPlayerMaxHealth();
@@ -18,6 +21,10 @@ public class HealthBarBehaviour: MonoBehaviour
     void Update()
     {
         UpdateHealth();
+    }
+
+    private void UpdateMaxHealth() {
+        healthBarSlider.maxValue = PlayerParameters.GetPlayerMaxHealth();
     }
 
     public void UpdateHealth()

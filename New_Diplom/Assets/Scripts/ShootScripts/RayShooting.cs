@@ -12,10 +12,14 @@ public class RayShooting : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private MouseLook mouseLook;
     [SerializeField] private AKAnimationController weaponAnim;
-    [SerializeField] private PuzzleBehaviour puzzleBehaviour;
     [SerializeField] private GameObject pistol;
     [SerializeField] private GameObject ak;
     [SerializeField] private GameObject shotgun;
+    [SerializeField] private GameObject grenade;
+
+    [SerializeField] private AudioSource akSound;
+    [SerializeField] private AudioSource pistolSound;
+    [SerializeField] private AudioSource shotgunSound;
 
     private float rate = 7.0f;
     private float nextShoot = 0.0f;
@@ -43,6 +47,7 @@ public class RayShooting : MonoBehaviour
                 nextShoot = Time.time + 1.0f / rate;
                 ak.GetComponent<AKBehaviour>().AddCurrentBulletCount(-1);
                 PlayerRayCast(false);
+                akSound.Play();
             }
         }
         else if (pistol.activeSelf){
@@ -53,6 +58,7 @@ public class RayShooting : MonoBehaviour
                 nextShoot = Time.time + 1.0f / rate;
                 pistol.GetComponent<PistolBehaviour>().AddCurrentBulletCount(-1);
                 PlayerRayCast(false);
+                pistolSound.Play();
             }
         }
         else if (shotgun.activeSelf)
@@ -64,6 +70,7 @@ public class RayShooting : MonoBehaviour
                 nextShoot = Time.time + 1.0f / 1.5f;
                 shotgun.GetComponent<ShotgunBehaviour>().AddCurrentBulletCount(-1);
                 PlayerRayCast(true);
+                shotgunSound.Play();
             }
         }
 
@@ -71,10 +78,9 @@ public class RayShooting : MonoBehaviour
 
     private void PlayerRayCast(bool isShotgun) {
 
-        mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
-
         if (!isShotgun)
         {
+            mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 1.7f), Random.Range(-1.9f, 1.9f));
             Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
             Ray ray = playerCamera.ScreenPointToRay(point);
             RaycastHit hit;
@@ -86,23 +92,24 @@ public class RayShooting : MonoBehaviour
                 {
                     if (hitObject.gameObject.GetComponent<TerroristController>())
                     {
-                        hitObject.GetComponent<TerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<TerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<SecondTerroristController>())
                     {
-                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
                     {
-                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }
             }
         }
         else {
+            mouseLook.ChangeOffsetRecoil(Random.Range(0.0f, 7.0f), Random.Range(-7.0f, 7.0f));
             Vector3 point = new Vector3(playerCamera.pixelWidth / 2, playerCamera.pixelHeight / 2, 0);
             Ray ray = playerCamera.ScreenPointToRay(point);
             RaycastHit hit;
@@ -114,17 +121,17 @@ public class RayShooting : MonoBehaviour
                 {
                     if (hitObject.gameObject.GetComponent<TerroristController>())
                     {
-                        hitObject.GetComponent<TerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<TerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<SecondTerroristController>())
                     {
-                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<SecondTerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                     if (hitObject.gameObject.GetComponent<ThirdTerroristController>())
                     {
-                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(false);
+                        hitObject.GetComponent<ThirdTerroristController>().HitByPlayer(grenade.activeSelf, pistol.activeSelf, ak.activeSelf, shotgun.activeSelf, false);
                         StartCoroutine(BloodEffect(hit));
                     }
                 }

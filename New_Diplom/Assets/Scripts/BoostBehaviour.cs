@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BoostBehaviour : MonoBehaviour
 {
@@ -9,13 +10,9 @@ public class BoostBehaviour : MonoBehaviour
     [SerializeField] private TextMeshProUGUI boostEnergyText;
     [SerializeField] private TextMeshProUGUI boostSuperPointsText;
 
-    private int healthLevel = 0;
-    private int energyLevel = 0;
-    private int superPointsLevel = 0;
-
-    private int healthPrice = 1500;
-    private int energyPrice = 1500;
-    private int superPointsPrice = 1500;
+    public event UnityAction updateHealth;
+    public event UnityAction updateEnergy;
+    public event UnityAction updatePoints;
 
     private void Update()
     {
@@ -23,34 +20,36 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostHealth() {
-        switch (healthLevel) {
+        switch (PlayerParameters.GetHealthLevel()) {
             case 0: {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 1500)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 100)
                     {
                         PlayerParameters.AddPlayerMaxHealth(20.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-1500);
-                        healthPrice = 3500;
-                        healthLevel = 1;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-100);
+                        PlayerParameters.InitHealthPrice(300);
+                        PlayerParameters.InitHealthLevel(1);
+                        updateHealth?.Invoke();
                     }
                 }
                 break;
             case 1: {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 3500)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 300)
                     {
                         PlayerParameters.AddPlayerMaxHealth(30.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-3500);
-                        healthLevel = 2;
-                        healthPrice = 5000;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-300);
+                        PlayerParameters.InitHealthPrice(500);
+                        PlayerParameters.InitHealthLevel(2);
+                        updateHealth?.Invoke();
                     }
                 }
                 break;
             case 2: {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 5000)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 500)
                     {
                         PlayerParameters.AddPlayerMaxHealth(40.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-5000);
-                        healthLevel = 3;
-                        healthPrice = 7000;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-500);
+                        PlayerParameters.InitHealthLevel(3);
+                        updateHealth?.Invoke();
                     }
                 }
                 break;
@@ -60,38 +59,40 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostEnergy() {
-        switch (energyLevel)
+        switch (PlayerParameters.GetEnergyLevel())
         {
             case 0:
                 {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 1500)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 100)
                     {
                         PlayerParameters.AddPlayerMaxEnergy(20.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-1500);
-                        energyPrice = 3500;
-                        energyLevel = 1;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-100);
+                        PlayerParameters.InitEnergyPrice(300);
+                        PlayerParameters.InitEnergyLevel(1);
+                        updateEnergy?.Invoke();
                     }
                 }
                 break;
             case 1:
                 {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 3500)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 300)
                     {
                         PlayerParameters.AddPlayerMaxEnergy(30.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-3500);
-                        energyPrice = 5000;
-                        energyLevel = 2;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-300);
+                        PlayerParameters.InitEnergyPrice(500);
+                        PlayerParameters.InitEnergyLevel(2); 
+                        updateEnergy?.Invoke();
                     }
                 }
                 break;
             case 2:
                 {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 5000)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 500)
                     {
                         PlayerParameters.AddPlayerMaxEnergy(40.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-5000);
-                        energyPrice = 7000;
-                        energyLevel = 3;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-500);
+                        PlayerParameters.InitEnergyLevel(3); 
+                        updateEnergy?.Invoke();
                     }
                 }
                 break;
@@ -101,38 +102,40 @@ public class BoostBehaviour : MonoBehaviour
     }
 
     public void BoostSuperPoints() {
-        switch (superPointsLevel)
+        switch (PlayerParameters.GetSuperPointsLevel())
         {
             case 0:
                 {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 1500)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 100)
                     {
                         PlayerParameters.AddPlayerMaxPoints(20.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-1500);
-                        superPointsPrice = 3500;
-                        superPointsLevel = 1;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-100);
+                        PlayerParameters.InitSuperPointsPrice(300);
+                        PlayerParameters.InitSuperPointsLevel(1);
+                        updatePoints?.Invoke();
                     }
                 }
                 break;
             case 1:
                 {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 3500)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 300)
                     {
                         PlayerParameters.AddPlayerMaxPoints(30.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-3500);
-                        superPointsPrice = 5000;
-                        superPointsLevel = 2;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-300);
+                        PlayerParameters.InitSuperPointsPrice(500);
+                        PlayerParameters.InitSuperPointsLevel(2);
+                        updatePoints?.Invoke();
                     }
                 }
                 break;
             case 2:
                 {
-                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 5000)
+                    if (PlayerParameters.GetPlayerCurrentBoostPoints() >= 500)
                     {
                         PlayerParameters.AddPlayerMaxPoints(40.0f);
-                        PlayerParameters.AddPlayerCurrentBoostPoints(-5000);
-                        superPointsPrice = 7000;
-                        superPointsLevel = 3;
+                        PlayerParameters.AddPlayerCurrentBoostPoints(-500);
+                        PlayerParameters.InitSuperPointsLevel(3);
+                        updatePoints?.Invoke();
                     }
                 }
                 break;
@@ -141,21 +144,45 @@ public class BoostBehaviour : MonoBehaviour
         }
     }
 
-    private void UpdateBoostText() {
-        boostHealthText.text = "Health Upgrade " + healthPrice.ToString();
-        boostEnergyText.text = "Energy Upgrade " + energyPrice.ToString();
-        boostSuperPointsText.text = "Super Points Upgrade " + superPointsPrice.ToString();
+    private void UpdateBoostText()
+    {
+        if (PlayerParameters.GetHealthLevel() == 3)
+        {
+            boostHealthText.text = "Health Upgrade Max";
+        }
+        else
+        {
+            boostHealthText.text = "Health Upgrade " + PlayerParameters.GetHealthPrice().ToString();
+        }
+
+        if (PlayerParameters.GetEnergyLevel() == 3)
+        {
+            boostEnergyText.text = "Energy Upgrade Max";
+        }
+        else
+        {
+            boostEnergyText.text = "Energy Upgrade " + PlayerParameters.GetEnergyPrice().ToString();
+        }
+
+        if (PlayerParameters.GetSuperPointsLevel() == 3)
+        {
+            boostSuperPointsText.text = "Super Points Upgrade Max";
+        }
+        else
+        {
+            boostSuperPointsText.text = "Super Points Upgrade " + PlayerParameters.GetSuperPointsPrice().ToString();
+        }
     }
 
     public int GetHealthPrice() {
-        return healthPrice;
+        return PlayerParameters.GetHealthPrice();
     }
 
     public int GetEnergyPrice() {
-        return energyPrice;
+        return PlayerParameters.GetEnergyPrice();
     }
 
     public int GetSuperPointsPrice() {
-        return superPointsPrice;
+        return PlayerParameters.GetSuperPointsPrice();
     }
 }

@@ -8,6 +8,7 @@ public class SecondTerroristRayShooting : MonoBehaviour
     [SerializeField] private GameObject bloodEffect;
     [SerializeField] private SecondTerroristController terrorist;
     [SerializeField] private GameObject pointShooting;
+    [SerializeField] private AudioSource terroristAWP;
 
     private GameObject player;
     private Vector3 temporaryPlayerPosition;
@@ -42,6 +43,8 @@ public class SecondTerroristRayShooting : MonoBehaviour
             nextShoot = Time.time + 1.0f / terroristRate;
 
             muzzleEffect.Play();
+
+            terroristAWP.Play();
 
             RaycastHit hit;
             if (Physics.SphereCast(pointShooting.transform.position, 1.0f, temporaryPlayerPosition - pointShooting.transform.position, out hit, 5000.0f))

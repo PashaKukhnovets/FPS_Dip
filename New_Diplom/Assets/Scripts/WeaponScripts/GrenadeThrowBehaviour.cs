@@ -20,19 +20,19 @@ public class GrenadeThrowBehaviour : MonoBehaviour
         if (other.gameObject.GetComponent<TerroristController>() && isDamageFirst) 
         {
             isDamageFirst = false;
-            other.gameObject.GetComponent<TerroristController>().HitByPlayer(true);
+            other.gameObject.GetComponent<TerroristController>().HitByPlayer(true, false, false, false, false);
         }
 
         if (other.gameObject.GetComponent<SecondTerroristController>() && isDamageSecond)
         {
             isDamageSecond = false;
-            other.gameObject.GetComponent<SecondTerroristController>().HitByPlayer(true);
+            other.gameObject.GetComponent<SecondTerroristController>().HitByPlayer(true, false, false, false, false);
         }
 
         if (other.gameObject.GetComponent<ThirdTerroristController>() && isDamageThird)
         {
             isDamageThird = false;
-            other.gameObject.GetComponent<ThirdTerroristController>().HitByPlayer(true);
+            other.gameObject.GetComponent<ThirdTerroristController>().HitByPlayer(true, false, false, false, false);
         }
     }
 

@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class DoorBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject puzzle;
-    //[SerializeField] private TerroristSpawn terroristSpawn;
+    [SerializeField] private List<GameObject> terrorists;
 
+    private PlayerController player;
+    private GameBehaviour gameManager;
     private bool isPuzzleActive = false;
     private bool isWire = false;
     private bool isTube = false;
@@ -16,6 +18,8 @@ public class DoorBehaviour : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameBehaviour>();
         CheckTypeOfPuzzle();
     }
 
@@ -29,12 +33,24 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            if (!isEndPuzzle)
+            if (!isEndPuzzle && !this.gameObject.CompareTag("WinDoor"))
             {
                 puzzle.SetActive(true);
                 isPuzzleActive = true;
                 PlayerParameters.SetWindowOpen(true);
                 isInTrigger = true;
+                player.StopPlayerSounds();
+            }
+            else if (!isEndPuzzle && this.gameObject.CompareTag("WinDoor"))
+            {
+                if (gameManager.GetCountOfPapers() == 7)
+                {
+                    puzzle.SetActive(true);
+                    isPuzzleActive = true;
+                    PlayerParameters.SetWindowOpen(true);
+                    isInTrigger = true;
+                    player.StopPlayerSounds();
+                }
             }
         }
     }
@@ -52,26 +68,60 @@ public class DoorBehaviour : MonoBehaviour
         {
             if (isPuzzleActive && puzzle.GetComponent<CheckWinTube>().IsEndTubes() && !isEndPuzzle)
             {
-                //GetComponent<Animator>().SetTrigger("DoorATrigger");
-                Debug.Log("Tube");
-                this.gameObject.transform.Find("door").transform.rotation = Quaternion.Euler(0.0f, 100.0f, 0.0f);
+                if (this.gameObject.CompareTag("OfficeDoor"))
+                {
+                    this.gameObject.transform.localPosition = new Vector3(0.0f, 30.0f, 0.0f);
+                }
+                else
+                {
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, -180.0f, 0.0f);
+
+                    if (this.gameObject.CompareTag("baddoor"))
+                    {
+                        this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 310.0f, 0.0f);
+                    }
+                }
+
+                foreach (var i in terrorists)
+                {
+                    i.SetActive(true);
+                }
+
                 isEndPuzzle = true;
-                //terroristSpawn.TerroristsOn();
-                if (this.gameObject.CompareTag("WinDoor")) {
-                    SceneManager.LoadScene(0);
+
+                if (this.gameObject.CompareTag("WinDoor"))
+                {
+                    StartCoroutine(NextLevelPlay());
                 }
             }
         }
         if (isWire) {
             if (isPuzzleActive && puzzle.GetComponent<CheckWinWires>().IsEndWires() && !isEndPuzzle)
             {
-                //GetComponent<Animator>().SetTrigger("DoorATrigger");
-                this.gameObject.transform.Find("door").transform.rotation = Quaternion.Euler(0.0f, 100.0f, 0.0f);
+                if (this.gameObject.CompareTag("OfficeDoor"))
+                {
+                    this.gameObject.transform.localPosition = new Vector3(0.0f, 30.0f, 0.0f);
+                }
+                else
+                {
+                    this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, -180.0f, 0.0f);
+
+                    if (this.gameObject.CompareTag("baddoor"))
+                    {
+                        this.gameObject.transform.localRotation = Quaternion.Euler(0.0f, 310.0f, 0.0f);
+                    }
+                }
+
+                foreach (var i in terrorists)
+                {
+                    i.SetActive(true);
+                }
+
                 isEndPuzzle = true;
-                //terroristSpawn.TerroristsOn();
+
                 if (this.gameObject.CompareTag("WinDoor"))
                 {
-                    SceneManager.LoadScene(0);
+                    StartCoroutine(NextLevelPlay());
                 }
             }
         }
@@ -99,5 +149,25 @@ public class DoorBehaviour : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         PlayerParameters.SetWindowOpen(false);
         puzzle.SetActive(false);
+    }
+
+    private IEnumerator NextLevelPlay() {
+        yield return new WaitForSeconds(4.0f);
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            SceneManager.LoadScene(3);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3) {
+            SceneManager.LoadScene(4);
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

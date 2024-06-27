@@ -5,6 +5,8 @@ using UnityEngine;
 public class ThirdTerroristAttackReleaser : StateMachineBehaviour
 {
     [SerializeField] private ParticleSystem playerBlood;
+    [SerializeField] private AudioClip thirdTerroristAttack;
+
     private GameObject player;
     private float beginPoint = 0.0f;
     private bool check = true;
@@ -46,8 +48,8 @@ public class ThirdTerroristAttackReleaser : StateMachineBehaviour
 
     public void ThirdTerroristAttack()
     {
-        Debug.Log(damage);
         PlayerParameters.AddPlayerDamage(damage);
+        AudioSource.PlayClipAtPoint(thirdTerroristAttack, player.transform.position);
         Instantiate(playerBlood, new Vector3(player.transform.position.x + 0.3f, 1.1f, player.transform.position.z), Quaternion.identity);
     }
 }

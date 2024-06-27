@@ -9,19 +9,20 @@ public class ThirdTerroristController : MonoBehaviour
     [SerializeField] private List<GameObject> weaponDrop;
     [SerializeField] private GameObject knifeHitPoint;
     [SerializeField] private ParticleSystem bloodPrefab;
+    [SerializeField] private List<Transform> Points;
+    [SerializeField] private ThirdTerroristAnimController thirdTerroristAnimController;
 
     private GameObject player;
     private bool isFirstMovement = true;
     private bool isTerroristRunning = false;
     private bool isDeath = false;
-    private List<Transform> Points = new List<Transform>();
     private NavMeshAgent agent;
     private bool isPatroling = true;
     private float maxTerroristHealth;
     private int isDropWeapon;
 
     public float terroristHealth = 400.0f;
-    public float damage = 15.0f;
+    public float damage = 25.0f;
     public bool isStunned = false;
 
     public event UnityAction ThirdTerroristDeath;
@@ -38,13 +39,6 @@ public class ThirdTerroristController : MonoBehaviour
         agent = this.gameObject.GetComponent<NavMeshAgent>();
         agent.speed = 2.7f;
         agent.angularSpeed = 240.0f;
-
-        Transform pointsObject = GameObject.FindGameObjectWithTag("Points").transform;
-
-        foreach (Transform point in pointsObject)
-        {
-            Points.Add(point);
-        }
 
         agent.SetDestination(Points[Random.Range(0, Points.Count)].position);
         isDropWeapon = Random.Range(0, 2);
@@ -74,6 +68,8 @@ public class ThirdTerroristController : MonoBehaviour
             isTerroristRunning = true;
             isPatroling = false;
             agent.speed = 4.5f;
+
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
@@ -82,7 +78,7 @@ public class ThirdTerroristController : MonoBehaviour
         StartCoroutine(BloodKnifeDelay());
     }
 
-    public void HitByPlayer(bool isGrenade)
+    public void HitByPlayer(bool isGrenade, bool isPistol, bool isAK, bool isShotgun, bool isKnife)
     {
         if (isFirstMovement)
         {
@@ -93,14 +89,30 @@ public class ThirdTerroristController : MonoBehaviour
             isPatroling = false;
 
         }
-        
-        if (!isGrenade)
+
+        if (isPistol)
         {
-            this.terroristHealth -= PlayerParameters.playerDamage;
+            this.terroristHealth -= PlayerParameters.playerDamagePistol;
         }
-        else
+
+        if (isAK)
         {
-            this.terroristHealth -= 50.0f;
+            this.terroristHealth -= PlayerParameters.playerDamageAK;
+        }
+
+        if (isShotgun)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageShotgun;
+        }
+
+        if (isGrenade)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageGrenade;
+        }
+
+        if (isKnife)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageKnife;
         }
 
         if (!isStunned)
@@ -114,14 +126,17 @@ public class ThirdTerroristController : MonoBehaviour
         }
     }
 
+    
     private void Freeze()
     {
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.5f);
         agent.speed = 0.7f;
         this.gameObject.GetComponent<Animator>().speed = 0.1f;    
     }
 
     private void Unfreeze()
     {
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(2.5f);
         agent.speed = 4.5f;
         this.gameObject.GetComponent<Animator>().speed = 1.0f;
     }
@@ -138,7 +153,7 @@ public class ThirdTerroristController : MonoBehaviour
 
             if (isDropWeapon == 1)
             {
-                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
+                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1.0f, this.gameObject.transform.position.z),
                         Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
             }
 
@@ -148,12 +163,20 @@ public class ThirdTerroristController : MonoBehaviour
 
     private IEnumerator DeathCoroutine()
     {
-        if (PlayerParameters.GetPlayerCurrentPoints() < 100.0f)
+        if (PlayerParameters.GetPlayerCurrentPoints() < PlayerParameters.GetPlayerMaxPoints())
         {
-            PlayerParameters.AddPlayerCurrentPoints(20.0f);
+            if (PlayerParameters.GetPlayerCurrentPoints() + 20.0f > 100.0f)
+            {
+                PlayerParameters.InitPlayerCurrentPoints(100.0f);
+            }
+            else
+            {
+                PlayerParameters.AddPlayerCurrentPoints(20.0f);
+            }
         }
 
         PlayerParameters.AddPlayerCurrentBoostPoints(Random.Range(30, 50));
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.0f);
 
         yield return new WaitForSeconds(4.0f);
         player.gameObject.GetComponent<PlayerController>().IsFreezeTime -= Freeze;
@@ -164,12 +187,15 @@ public class ThirdTerroristController : MonoBehaviour
     private IEnumerator StunCoroutine() {
         agent.isStopped = true;
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(0.0f);
+
         yield return new WaitForSeconds(10.0f);
 
+        this.gameObject.GetComponent<Pursue>().SetDegreesDeltaRotation(2.5f);
         agent.isStopped = false;
         this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         ThirdTerroristStunningFalse?.Invoke();
+        thirdTerroristAnimController.SetWalkSoundVariable(true);
     }
 
     private IEnumerator BloodKnifeDelay()

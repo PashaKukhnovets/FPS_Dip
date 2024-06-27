@@ -10,6 +10,8 @@ public class Pursue : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     private GameObject player;
+    private Vector3 direction;
+    private float maxDegreesDelta = 2.5f;
    
     public event UnityAction TerroristRunning;
     public event UnityAction TerroristStandFire;
@@ -25,6 +27,11 @@ public class Pursue : MonoBehaviour
         //agent.stoppingDistance = 7.0f;
         animator = this.gameObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
+        agent.SetDestination(player.transform.position);
+
+        if (this.gameObject.GetComponent<TerroristController>()) {
+            agent.updateRotation = false;
+        }
     }
 
     private void Update()
@@ -34,34 +41,38 @@ public class Pursue : MonoBehaviour
 
     public void CheckDistance()
     {
-        agent.SetDestination(player.transform.position);
-        //animator.SetLookAtPosition(player.transform.position);
+        direction = (player.transform.position - transform.position).normalized;
+        direction.y = 0f;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), maxDegreesDelta);
 
+        
+        //animator.SetLookAtPosition(player.transform.position);
         if (this.gameObject.GetComponent<TerroristController>())
         {
             if (this.gameObject.GetComponent<TerroristController>().IsTerroristRunning())
             {
-                Debug.Log(agent.stoppingDistance);
                 TerroristRunning?.Invoke();
-
             }
-
-            if (agent.remainingDistance <= 7.0f)
+            
+            if (Vector3.Distance(agent.gameObject.GetComponent<Transform>().position, player.transform.position) <= 4.0f)
             {
                 if (!isLowDistance)
                     isLowDistance = true;
 
-                agent.speed = 0.1f;
+                agent.speed = 0.01f;
+                this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 TerroristStandFire?.Invoke();
             }
-            else if (agent.remainingDistance > 7.0f)
+            else if (Vector3.Distance(agent.gameObject.GetComponent<Transform>().position, player.transform.position) > 4.0f)
             {
                 if (isLowDistance)
                 {
                     isLowDistance = false;
                     agent.speed = 1.3f;
                     TerroristStandFireFalse?.Invoke();
+                    this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
                 }
+                agent.SetDestination(player.transform.position);
             }
         }
         else if (this.gameObject.GetComponent<ThirdTerroristController>()) {
@@ -70,7 +81,7 @@ public class Pursue : MonoBehaviour
                 ThirdTerroristAgrWalking?.Invoke();
             }
 
-            if (agent.remainingDistance <= 4.0f)
+            if (Vector3.Distance(agent.gameObject.GetComponent<Transform>().position, player.transform.position) <= 4.0f)
             {
                 if (!isLowDistance)
                     isLowDistance = true;
@@ -78,7 +89,7 @@ public class Pursue : MonoBehaviour
                 agent.speed = 0.1f;
                 ThirdTerroristAttacking?.Invoke();
             }
-            else if (agent.remainingDistance > 4.0f)
+            else if (Vector3.Distance(agent.gameObject.GetComponent<Transform>().position, player.transform.position) > 4.0f)
             {
                 if (isLowDistance)
                 {
@@ -86,9 +97,12 @@ public class Pursue : MonoBehaviour
                     agent.speed = 4.5f;
                     ThirdTerroristAttackingFalse?.Invoke();
                 }
+                agent.SetDestination(player.transform.position);
             }
         }
     }
 
-    //проблема в том, что терик доходит до цели, и перестает двигаться
+    public void SetDegreesDeltaRotation(float value) {
+        maxDegreesDelta = value;
+    }
 }

@@ -50,37 +50,42 @@ public class SecondTerroristController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-
-        if (other.gameObject.GetComponent<PlayerController>())
-        {
-            TerroristSitFireFalse?.Invoke();
-        }
-
-    }
-
     public void BloodInstanceOfKnifeHit()
     {
         StartCoroutine(BloodKnifeDelay());
     }
 
-    public void HitByPlayer(bool isGrenade)
+    public void HitByPlayer(bool isGrenade, bool isPistol, bool isAK, bool isShotgun, bool isKnife)
     {
         if (isFirstMovement)
         {
             isFirstMovement = false;
             this.gameObject.GetComponent<Face>().enabled = true;
         }
-        Debug.Log("snaruzhi");
-        if (!isGrenade)
+
+        if (isPistol)
         {
-            this.terroristHealth -= PlayerParameters.playerDamage;
+            this.terroristHealth -= PlayerParameters.playerDamagePistol;
         }
-        else
+
+        if (isAK)
         {
-            Debug.Log("vnutri");
-            this.terroristHealth -= 50.0f;
+            this.terroristHealth -= PlayerParameters.playerDamageAK;
+        }
+
+        if (isShotgun)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageShotgun;
+        }
+
+        if (isGrenade)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageGrenade;
+        }
+
+        if (isKnife)
+        {
+            this.terroristHealth -= PlayerParameters.playerDamageKnife;
         }
     }
 
@@ -112,7 +117,7 @@ public class SecondTerroristController : MonoBehaviour
             shooting.enabled = false;
 
             if (isDropWeapon == 1) {
-                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, 0.3f, this.gameObject.transform.position.z),
+                Instantiate(weaponDrop[Random.Range(0, weaponDrop.Count)], new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1.0f, this.gameObject.transform.position.z),
                     Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)));
             }
 
@@ -122,9 +127,16 @@ public class SecondTerroristController : MonoBehaviour
 
     private IEnumerator DeathCoroutine()
     {
-        if (PlayerParameters.GetPlayerCurrentPoints() < 100.0f)
+        if (PlayerParameters.GetPlayerCurrentPoints() < PlayerParameters.GetPlayerMaxPoints())
         {
-            PlayerParameters.AddPlayerCurrentPoints(20.0f);
+            if (PlayerParameters.GetPlayerCurrentPoints() + 20.0f > 100.0f)
+            {
+                PlayerParameters.InitPlayerCurrentPoints(100.0f);
+            }
+            else
+            {
+                PlayerParameters.AddPlayerCurrentPoints(20.0f);
+            }
         }
 
         PlayerParameters.AddPlayerCurrentBoostPoints(Random.Range(30, 50));
